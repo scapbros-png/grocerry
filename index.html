@@ -1,0 +1,3487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<script async src="../../www.googletagmanager.com/gtag/jsb58d?id=G-GQ4PGMC5DY"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GQ4PGMC5DY');
+</script>
+<script>
+    !function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'../../connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1273537554064173');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="../../www.facebook.com/tr54d8?id=1273537554064173&amp;ev=PageView&amp;noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D-Mart</title>
+    <link rel="stylesheet" href="styles.html">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            width: 100%;
+            max-width: 1395px;
+            margin: auto;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: #fff;
+        }
+        .left-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .menu-icon, .cart-icon {
+            font-size: 24px;
+            cursor: pointer;
+            color: #266D37;
+        }
+        .three-icon {
+            width: 100px; /* Adjust size as needed */
+            height: 40px;
+            margin-top: 10px;
+        }
+        .cart-icon {
+            position: relative;
+        }
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background: red;
+            color: white;
+            font-size: 12px;
+            border-radius: 50%;
+            padding: 2px 6px;
+        }
+        /* Enhanced Banner Carousel Styles */
+        .banner-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, #266D37 0%, #2d7a3d 100%);
+            padding: 5px;
+        }
+        
+        .banner-slider {
+            display: flex;
+            width: 500%; /* 5 slides * 100% */
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .slide {
+            width: 20%; /* 100% / 5 slides */
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide img {
+            width: 100%;
+            height: auto;
+            max-height: 450px;
+            min-height: 300px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.8s ease;
+            filter: brightness(1.1) contrast(1.1);
+        }
+        
+        .slide:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Banner Dots Navigation */
+        .banner-dots {
+            text-align: center;
+            padding: 15px 0;
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+        
+        .dot {
+            height: 14px;
+            width: 14px;
+            margin: 0 8px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+        }
+        
+        .dot::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            background: #fff;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .dot.active::before {
+            width: 8px;
+            height: 8px;
+        }
+        
+        .dot.active {
+            background: #266D37;
+            border-color: #fff;
+            box-shadow: 0 0 15px rgba(38, 109, 55, 0.6);
+            transform: scale(1.2);
+        }
+        
+        .dot:hover {
+            background: rgba(38, 109, 55, 0.8);
+            border-color: #fff;
+            transform: scale(1.1);
+        }
+        
+        /* Arrow Navigation */
+        .banner-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            color: #266D37;
+            z-index: 10;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .banner-arrow:hover {
+            background: rgba(38, 109, 55, 0.6);
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .banner-arrow.prev {
+            left: 15px;
+        }
+        
+        .banner-arrow.next {
+            right: 15px;
+        }
+        
+        /* Banner Overlay Effects */
+        .slide::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(38, 109, 55, 0.1) 0%, transparent 50%, rgba(38, 109, 55, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .slide:hover::after {
+            opacity: 1;
+        }
+        
+        /* Loading Animation */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .slide.active {
+            animation: slideIn 0.8s ease-out;
+        }
+        
+        /* Enhanced Visual Effects */
+        .banner-container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #266D37, #2d7a3d, #266D37, #2d7a3d);
+            border-radius: 17px;
+            z-index: -1;
+            opacity: 0.7;
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+        
+        /* Pulse animation for active slide */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        
+        .slide.active {
+            animation: slideIn 0.8s ease-out, pulse 2s ease-in-out infinite;
+        }
+        
+        /* Fade in animation for images */
+        .slide img {
+            animation: fadeInImage 1s ease-out;
+        }
+        
+        @keyframes fadeInImage {
+            from { opacity: 0; filter: blur(5px); }
+            to { opacity: 1; filter: blur(0); }
+        }
+        
+        /* Enhanced hover effects */
+        .banner-container:hover .banner-arrow {
+            opacity: 1;
+            transform: translateY(-50%) scale(1);
+        }
+        
+        .banner-arrow {
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+        
+        /* Slide transition effects */
+        .slide {
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        /* Loading shimmer effect */
+        .slide img {
+            background: linear-gradient(90deg, #f0f0f0 78.07%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+        
+        .slide img[src] {
+            animation: none;
+            background: none;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        /* Mobile-First Responsive Design */
+        @media (max-width: 768px) {
+            .banner-container {
+                margin: 0 5px 15px 5px;
+                border-radius: 8px;
+                padding: 3px;
+            }
+            
+            .slide img {
+                max-height: 200px;
+                min-height: 150px;
+                object-fit: cover;
+                width: 100%;
+            }
+            
+            .banner-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+                opacity: 0.6;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.3);
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .banner-arrow.prev {
+                left: 5px;
+            }
+            
+            .banner-arrow.next {
+                right: 5px;
+            }
+            
+            .banner-arrow:hover {
+                opacity: 1;
+                transform: translateY(-50%) scale(1.05);
+            }
+            
+            .dot {
+                height: 14px;
+                width: 14px;
+                margin: 0 8px;
+                border: 2px solid rgba(255, 255, 255, 0.8);
+            }
+            
+            .banner-dots {
+                bottom: 10px;
+                padding: 10px 0;
+            }
+            
+            .banner-container::before {
+                border-radius: 10px;
+            }
+        }
+        
+        /* Small Mobile Devices */
+        @media (max-width: 480px) {
+            .banner-container {
+                margin: 0 3px 10px 3px;
+                border-radius: 6px;
+                padding: 2px;
+            }
+            
+            .slide img {
+                max-height: 180px;
+                min-height: 120px;
+            }
+            
+            .banner-arrow {
+                width: 35px;
+                height: 35px;
+                font-size: 14px;
+                background: rgba(255, 255, 255, 0.3);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            }
+            
+            .banner-arrow.prev {
+                left: 3px;
+            }
+            
+            .banner-arrow.next {
+                right: 3px;
+            }
+            
+            .dot {
+                height: 12px;
+                width: 12px;
+                margin: 0 6px;
+            }
+            
+            .banner-dots {
+                bottom: 8px;
+                padding: 8px 0;
+            }
+            
+            .banner-container::before {
+                border-radius: 8px;
+            }
+        }
+        
+        /* Very Small Mobile Devices */
+        @media (max-width: 360px) {
+            .banner-container {
+                margin: 0 2px 8px 2px;
+                border-radius: 4px;
+                padding: 1px;
+            }
+            
+            .slide img {
+                max-height: 160px;
+                min-height: 100px;
+            }
+            
+            .banner-arrow {
+                width: 30px;
+                height: 30px;
+                font-size: 12px;
+                background: rgba(255, 255, 255, 0.3);
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            }
+            
+            .banner-arrow.prev {
+                left: 2px;
+            }
+            
+            .banner-arrow.next {
+                right: 2px;
+            }
+            
+            .dot {
+                height: 10px;
+                width: 10px;
+                margin: 0 4px;
+            }
+            
+            .banner-dots {
+                bottom: 6px;
+                padding: 6px 0;
+            }
+        }
+        
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            .banner-container {
+                border: 2px solid #000;
+            }
+            
+            .dot {
+                border: 2px solid #000;
+            }
+        }
+        
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            .banner-slider,
+            .slide img,
+            .dot,
+            .banner-arrow {
+                transition: none;
+                animation: none;
+            }
+        }
+        
+        /* Mobile Performance Optimizations */
+        .banner-slider {
+            will-change: transform;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        
+        .slide img {
+            will-change: transform;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        
+        /* Touch-friendly improvements */
+        .banner-arrow {
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+        
+        .dot {
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+        
+        /* iOS Safari specific fixes */
+        @supports (-webkit-touch-callout: none) {
+            .banner-container {
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+            }
+            
+            .banner-slider {
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+            }
+        }
+        
+        /* Android Chrome specific optimizations */
+        @media screen and (-webkit-min-device-pixel-ratio: 0) {
+            .banner-slider {
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+        }
+        
+        /* Cart Sidebar Styles */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: right 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .cart-sidebar.open {
+            right: 0;
+        }
+        
+        .cart-header {
+            background: linear-gradient(135deg, #266D37 0%, #2d7a3d 100%);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cart-header h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .close-cart {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .close-cart:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .cart-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0;
+        }
+        
+        .cart-items {
+            padding: 20px;
+        }
+        
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        }
+        
+        .cart-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .cart-item-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 15px;
+        }
+        
+        .cart-item-details {
+            flex: 1;
+        }
+        
+        .cart-item-name {
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #333;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.3;
+            max-height: 2.6em; /* 2 lines * 1.3 line-height */
+        }
+        
+        .cart-item-price {
+            color: #266D37;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .quantity-btn {
+            background: #266D37;
+            color: white;
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .quantity-btn:hover {
+            background: #1e5a2e;
+        }
+        
+        .quantity-display {
+            min-width: 30px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .remove-item {
+            background: #dc3545;
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .remove-item:hover {
+            background: #c82333;
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+        }
+        
+        .empty-cart-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+        
+        .empty-cart p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        
+        .cart-footer {
+            background: white;
+            padding: 20px;
+            border-top: 1px solid #eee;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cart-summary {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 10px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .checkout-btn {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(40, 167, 69, 0.3);
+        }
+        
+        .checkout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+        }
+        
+        .clear-cart-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .clear-cart-btn:hover {
+            background: #c82333;
+            transform: translateY(-1px);
+        }
+        
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .cart-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Mobile Responsive Cart */
+        @media (max-width: 768px) {
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+            
+            .cart-header {
+                padding: 15px;
+            }
+            
+            .cart-header h3 {
+                font-size: 16px;
+            }
+            
+            .cart-items {
+                padding: 15px;
+            }
+            
+            .cart-item {
+                padding: 12px;
+                margin-bottom: 12px;
+            }
+            
+            .cart-item-image {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .cart-item-name {
+                font-size: 13px;
+            }
+            
+            .cart-item-price {
+                font-size: 14px;
+            }
+            
+            .cart-footer {
+                padding: 15px;
+            }
+        }
+        .second-image img {
+            width: 100%;
+            max-height: 500px; /* Ensuring it doesn't increase on larger screens */
+            object-fit:fill;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .search-box {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            font-size: 18px;
+            border: 1px solid #ffffff;
+            background-color: #266D37;
+            border-radius: 0px;
+            color: white;
+            animation: searchPulse 2s ease-in-out infinite;
+        }
+        
+        .search-box::placeholder {
+            color: white;
+            opacity: 0.8;
+            animation: placeholderGlow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes searchPulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.3); }
+            50% { box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.1); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.3); }
+        }
+        
+        @keyframes placeholderGlow {
+            0% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0px;
+          
+            padding: 0px;
+          
+        }
+        .product {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            border-radius: 0px;
+            background: #fff;
+            position: relative;
+        }
+        .product img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto 10px auto;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+        
+        .product img[onclick] {
+            cursor: pointer;
+        }
+
+        /* Sale Icon Styles */
+        .sale-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(135deg, #ff4757 0%, #ff3742 100%);
+            color: white;
+            padding: 5px 8px;
+            border-radius: 15px;
+            font-size: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(255, 71, 87, 0.4);
+            animation: blinkSale 2s ease-in-out infinite;
+            border: 2px solid #fff;
+        }
+
+        .sale-icon.hot-deal {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            animation: pulseSale 1.5s ease-in-out infinite;
+        }
+
+        .sale-icon.flash-sale {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #333;
+            animation: flashSale 1s ease-in-out infinite;
+        }
+
+        .sale-icon.mega-sale {
+            background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%);
+            animation: megaSale 2.5s ease-in-out infinite;
+        }
+
+        /* Sale Icon Animations */
+        @keyframes blinkSale {
+            0%, 50% { 
+                opacity: 1; 
+                transform: scale(1);
+            }
+            25% { 
+                opacity: 0.7; 
+                transform: scale(0.95);
+            }
+            75% { 
+                opacity: 0.8; 
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes pulseSale {
+            0%, 100% { 
+                transform: scale(1); 
+                box-shadow: 0 2px 8px rgba(255, 107, 53, 0.4);
+            }
+            50% { 
+                transform: scale(1.1); 
+                box-shadow: 0 4px 15px rgba(255, 107, 53, 0.6);
+            }
+        }
+
+        @keyframes flashSale {
+            0%, 100% { 
+                opacity: 1; 
+                transform: rotate(0deg) scale(1);
+            }
+            50% { 
+                opacity: 0.8; 
+                transform: rotate(-5deg) scale(1.05);
+            }
+        }
+
+        @keyframes megaSale {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg); 
+                box-shadow: 0 2px 8px rgba(142, 68, 173, 0.4);
+            }
+            25% { 
+                transform: scale(1.05) rotate(2deg); 
+                box-shadow: 0 4px 12px rgba(142, 68, 173, 0.6);
+            }
+            50% { 
+                transform: scale(1.1) rotate(0deg); 
+                box-shadow: 0 6px 16px rgba(142, 68, 173, 0.8);
+            }
+            75% { 
+                transform: scale(1.05) rotate(-2deg); 
+                box-shadow: 0 4px 12px rgba(142, 68, 173, 0.6);
+            }
+        }
+        
+        .product img[onclick]:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            filter: brightness(1.1);
+        }
+        
+        .product img[onclick]:active {
+            transform: scale(0.98);
+        }
+        
+        /* Aspect ratio specific styling */
+        .product.wide-image {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .product.tall-image {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        
+        .product.square-image {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .product p {
+            text-align: left;
+            align-self: flex-start;
+            font-size: 12px;
+            font-weight: normal;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.3;
+            max-height: 2.6em; /* 2 lines * 1.3 line-height */
+            margin-bottom: 5px;
+        }
+        
+      
+
+        .product .price {
+            color: green;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .buy-now {
+            display: inline-block;
+            padding: 8px 30px;
+            margin-top: 10px;
+            background: green;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        .buy-now:hover {
+            background: #006600;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 128, 0, 0.3);
+        }
+        
+        /* Cart Button Styles - Matching Buy Now Button */
+        .cart-btn {
+            display: inline-block;
+            padding: 8px 30px;
+            margin-top: 10px;
+            background: green;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            min-width: 140px;
+        }
+        
+        .cart-btn:hover {
+            background: #006600;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 128, 0, 0.3);
+        }
+        
+        .cart-btn .cart-icon {
+            font-size: 14px;
+            margin-right: 5px;
+        }
+        
+        .cart-btn.added {
+            background: #28a745;
+            animation: successPulse 0.6s ease;
+        }
+        
+        @keyframes successPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Button Container */
+        .product-buttons {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            margin-top: 10px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* Responsive buttons */
+        @media (max-width: 768px) {
+            .cart-btn {
+                padding: 8px 30px;
+                font-size: 14px;
+                margin-top: 10px;
+                flex: 1;
+                min-width: 120px;
+            }
+            
+            .buy-now {
+                padding: 8px 30px;
+                font-size: 14px;
+                flex: 1;
+                min-width: 120px;
+                text-align: center;
+            }
+            
+            .product-buttons {
+                gap: 8px;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .product-buttons {
+                flex-direction: column;
+                gap: 6px;
+            }
+            
+            .cart-btn, .buy-now {
+                width: 100%;
+                margin: 0;
+                margin-top: 10px;
+            }
+        }
+
+
+        .old-price {
+    text-decoration: line-through;
+    color: black; /* Optional: Thoda halka dikhane ke liye */
+}
+
+.discount {
+    color: green;
+    font-weight: bold;
+}
+
+.product .deal {
+    color: black;
+    font-size: 10px;
+    text-align: center;
+    margin-top: 5px;
+    transition: color 0.3s ease, font-size 0.3s ease;
+}
+
+.product .deal:hover {
+    color: blue; /* Hover par color change */
+    font-size: 14px; /* Hover par text thoda bada ho */
+    font-weight: bold; /* Bold effect */
+    cursor: pointer; /* Mouse pointer change */
+}
+
+/* Infinite Scroll Loading Styles */
+.product.hidden {
+    display: none;
+}
+
+.loading-indicator {
+    text-align: center;
+    padding: 30px;
+    color: #666;
+    font-size: 16px;
+}
+
+.loading-spinner {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #266D37;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+/* Smooth fade-in animation for new products */
+.product {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.product.fade-in {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #266D37 0%, #2d7a3d 100%);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    box-shadow: 0 4px 15px rgba(38, 109, 55, 0.3);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+}
+
+.scroll-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.scroll-to-top:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(38, 109, 55, 0.4);
+}
+
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="left-section">
+                <div class="menu-icon">☰</div>
+                <img src="image/threeicon.png" alt="Three Icon" class="three-icon">
+            </div>
+            <div class="cart-icon">🛒<span class="cart-badge"></span></div>
+        </div>
+        <!-- Auto-sliding Banner -->
+        <input type="text" class="search-box" placeholder="Search here...">
+        <div class="banner-container">
+            <!-- Arrow Navigation -->
+            <button class="banner-arrow prev" onclick="prevSlide()">‹</button>
+            <button class="banner-arrow next" onclick="nextSlide()">›</button>
+            
+            <div class="banner-slider">
+                <div class="slide active">
+                    <img src="image/BANNER 1.png" alt="Banner 1">
+                </div>
+                <div class="slide">
+                    <img src="image/BANNER 2.png" alt="Banner 2">
+                </div>
+                <div class="slide">
+                    <img src="image/BANNER 3.png" alt="Banner 3">
+                </div>
+                <div class="slide">
+                    <img src="image/BANNER 4.png" alt="Banner 4">
+                </div>
+                <div class="slide">
+                    <img src="image/BANNER 5.png" alt="Banner 5">
+                </div>
+            </div>
+            <div class="banner-dots">
+                <span class="dot active" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
+            </div>
+        </div>
+   
+        <!-- New Product Section -->
+     <div class="product-grid">
+       
+    
+
+
+        <div class="product">
+            <div class="sale-icon">🏷️ SALE</div>
+            <img src="https://m.media-amazon.com/images/I/61xCdLg8MjS._AC_UL480_FMwebp_QL65_.jpg" alt="Product 1" onclick="openProductDetail('p1', 'LDF Daily Needs Dry Fruits Combo Pack 1Kg | American Almonds, California Walnuts, Afghani Anjeer, Bold Cashews, Dried Apricot (200g Each)', 1899, 399, 78.99, 'https://m.media-amazon.com/images/I/61xCdLg8MjS._AC_UL480_FMwebp_QL65_.jpg')" style="cursor: pointer;">
+            <p>LDF Daily Needs Dry Fruits Combo Pack 1Kg | American Almonds, California Walnuts, Afghani Anjeer, Bold Cashews, Dried Apricot (200g Each)</p>
+            <p><span class="old-price">₹1899</span> <span class="discount">78.99% Off</span></p>
+
+            <p class="price">Now ₹399</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p1', 'LDF Daily Needs Dry Fruits Combo Pack 1Kg | American Almonds, California Walnuts, Afghani Anjeer, Bold Cashews, Dried Apricot (200g Each)', 1899, 399, 78.99, 'https://m.media-amazon.com/images/I/61xCdLg8MjS._AC_UL480_FMwebp_QL65_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('LDF Daily Needs Dry Fruits Combo Pack 1Kg | American Almonds, California Walnuts, Afghani Anjeer, Bold Cashews, Dried Apricot (200g Each)', 399, 'https://m.media-amazon.com/images/I/61xCdLg8MjS._AC_UL480_FMwebp_QL65_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+
+        <div class="product">
+            <div class="sale-icon hot-deal">🔥 HOT</div>
+            <img src="https://m.media-amazon.com/images/I/71UyAg+qymL._AC_UL480_FMwebp_QL65_.jpg" alt="Product 1" onclick="openProductDetail('p3', 'YUM YUM Dry fruits combo 300g Each Pack of 5 Badam, Kaju, Pista, Kishmish & Akhrot 1500g - Almonds, Cashews, Pistachios, Raisins, Walnuts', 2575, 467, 91.51, 'https://m.media-amazon.com/images/I/71UyAg+qymL._AC_UL480_FMwebp_QL65_.jpg')" style="cursor: pointer;">
+            <p>YUM YUM Dry fruits combo 300g Each Pack of 5 Badam, Kaju, Pista, Kishmish & Akhrot 1500g - Almonds, Cashews, Pistachios, Raisins, Walnuts...</p>
+            <p><span class="old-price">₹2575</span> <span class="discount">91.51% Off</span></p>
+
+            <p class="price">Now ₹467</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p3', 'YUM YUM Dry fruits combo 300g Each Pack of 5 Badam, Kaju, Pista, Kishmish & Akhrot 1500g - Almonds, Cashews, Pistachios, Raisins, Walnuts', 2575, 467, 91.51, 'https://m.media-amazon.com/images/I/71UyAg+qymL._AC_UL480_FMwebp_QL65_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('YUM YUM Dry fruits combo 300g Each Pack of 5 Badam, Kaju, Pista, Kishmish & Akhrot 1500g - Almonds, Cashews, Pistachios, Raisins, Walnuts', 467, 'https://m.media-amazon.com/images/I/71UyAg+qymL._AC_UL480_FMwebp_QL65_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+
+
+    </div>
+
+
+
+    <div class="product-grid">
+       
+       
+        <div class="product">
+            <div class="sale-icon flash-sale">⚡ FLASH</div>
+            <img src="https://m.media-amazon.com/images/I/71NMPvNggIL._AC_UL480_FMwebp_QL65_.jpg" alt="Product 1" onclick="openProductDetail('p4', 'WONDERLAND FOODS (DEVICE) 2 Kg (1 Kg X 2) California Almonds & Whole Raw Cashew (Kaju) W320-Grade | Dry Fruits Combo Pack', 3999, 369, 90.77, 'https://m.media-amazon.com/images/I/71NMPvNggIL._AC_UL480_FMwebp_QL65_.jpg')" style="cursor: pointer;">
+            <p>WONDERLAND FOODS (DEVICE) 2 Kg (1 Kg X 2) California Almonds & Whole Raw Cashew (Kaju) W320-Grade | Dry Fruits Combo Pack</p>
+            <p><span class="old-price">₹3999</span> <span class="discount">90.77.99% Off</span></p>
+
+            <p class="price">Now ₹369</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p4', 'WONDERLAND FOODS (DEVICE) 2 Kg (1 Kg X 2) California Almonds & Whole Raw Cashew (Kaju) W320-Grade | Dry Fruits Combo Pack', 3999, 369, 90.77, 'https://m.media-amazon.com/images/I/71NMPvNggIL._AC_UL480_FMwebp_QL65_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('WONDERLAND FOODS (DEVICE) 2 Kg (1 Kg X 2) California Almonds & Whole Raw Cashew (Kaju) W320-Grade | Dry Fruits Combo Pack', 369, 'https://m.media-amazon.com/images/I/71NMPvNggIL._AC_UL480_FMwebp_QL65_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+
+        <div class="product">
+            <div class="sale-icon mega-sale">💥 MEGA</div>
+            <img src="https://m.media-amazon.com/images/I/81tnLdYsezL._AC_UL480_FMwebp_QL65_.jpg" alt="Product 1" onclick="openProductDetail('p5', '41 FOODS Dry Fruits and Nuts Combo Healthy Cashews Almonds Raisins Walnuts Pistachios Figs Badam Kaju Kishmish Akhrot Pista Anjeer 200Gm X 6 1200Gram', 1799, 399, 77.82, 'https://m.media-amazon.com/images/I/81tnLdYsezL._AC_UL480_FMwebp_QL65_.jpg')" style="cursor: pointer;">
+            <p>41 FOODS Dry Fruits and Nuts Combo Healthy Cashews Almonds Raisins Walnuts Pistachios Figs Badam Kaju Kishmish Akhrot Pista Anjeer 200Gm X 6 1200Gram</p>
+            <p><span class="old-price">₹1799</span> <span class="discount">77.82% Off</span></p>
+
+            <p class="price">Now ₹399</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p5', '41 FOODS Dry Fruits and Nuts Combo Healthy Cashews Almonds Raisins Walnuts Pistachios Figs Badam Kaju Kishmish Akhrot Pista Anjeer 200Gm X 6 1200Gram', 1799, 399, 77.82, 'https://m.media-amazon.com/images/I/81tnLdYsezL._AC_UL480_FMwebp_QL65_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('41 FOODS Dry Fruits and Nuts Combo Healthy Cashews Almonds Raisins Walnuts Pistachios Figs Badam Kaju Kishmish Akhrot Pista Anjeer 200Gm X 6 1200Gram', 399, 'https://m.media-amazon.com/images/I/81tnLdYsezL._AC_UL480_FMwebp_QL65_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+
+
+    </div>
+
+
+    <div class="product-grid">
+       
+       
+        <div class="product">
+            <div class="sale-icon">🏷️ SALE</div>
+            <img src="https://m.media-amazon.com/images/I/61dsvt781cL._AC_UL480_FMwebp_QL65_.jpg" alt="Product 1" onclick="openProductDetail('p6', 'YUMFUL Dry Fruits Combo Pack Of 8-2Kg (Each 250g) | Healthy Mix of Almonds, Cashews, Salted Pistachios, Black & Green Raisins, Dried Apricots, Ajeer, Raisins & Walnuts | Badam Kaju Pista Anjeer Kishmish Akhrot | Delicious & Nutritious Snack', 1299, 386, 70.28, 'https://m.media-amazon.com/images/I/61dsvt781cL._AC_UL480_FMwebp_QL65_.jpg')" style="cursor: pointer;">
+            <p>YUMFUL Dry Fruits Combo Pack Of 8-2Kg (Each 250g) | Healthy Mix of Almonds, Cashews, Salted Pistachios, Black & Green Raisins, Dried Apricots, Ajeer, Raisins & Walnuts | Badam Kaju Pista Anjeer Kishmish Akhrot | Delicious & Nutritious Snack</p>
+            <p><span class="old-price">₹1299</span> <span class="discount">70.28% Off</span></p>
+
+            <p class="price">Now ₹386</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p6', 'YUMFUL Dry Fruits Combo Pack Of 8-2Kg (Each 250g) | Healthy Mix of Almonds, Cashews, Salted Pistachios, Black & Green Raisins, Dried Apricots, Ajeer, Raisins & Walnuts | Badam Kaju Pista Anjeer Kishmish Akhrot | Delicious & Nutritious Snack', 1299, 386, 70.28, 'https://m.media-amazon.com/images/I/61dsvt781cL._AC_UL480_FMwebp_QL65_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('YUMFUL Dry Fruits Combo Pack Of 8-2Kg (Each 250g) | Healthy Mix of Almonds, Cashews, Salted Pistachios, Black & Green Raisins, Dried Apricots, Ajeer, Raisins & Walnuts | Badam Kaju Pista Anjeer Kishmish Akhrot | Delicious & Nutritious Snack', 386, 'https://m.media-amazon.com/images/I/61dsvt781cL._AC_UL480_FMwebp_QL65_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+
+        <div class="product">
+            <div class="sale-icon hot-deal">🔥 HOT</div>
+            <img src="https://m.media-amazon.com/images/I/617phoOXGSL._AC_UL480_FMwebp_QL65_.jpg" alt="Product 1" onclick="openProductDetail('p7', 'DailyHerbs California Almonds, Cashew Nuts, and Green Raisins 250gm Each Pack | High in Fiber & Boost Immunity | Real Nuts | Whole Natural Dry Fruits Festive Gift | Jar Pack', 995, 199, 80, 'https://m.media-amazon.com/images/I/617phoOXGSL._AC_UL480_FMwebp_QL65_.jpg')" style="cursor: pointer;">
+            <p>DailyHerbs California Almonds, Cashew Nuts, and Green Raisins 250gm Each Pack | High in Fiber & Boost Immunity | Real Nuts | Whole Natural Dry Fruits Festive Gift | Jar Pack</p>
+            <p><span class="old-price">₹995</span> <span class="discount">80% Off</span></p>
+
+            <p class="price">Now ₹199</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p7', 'DailyHerbs California Almonds, Cashew Nuts, and Green Raisins 250gm Each Pack | High in Fiber & Boost Immunity | Real Nuts | Whole Natural Dry Fruits Festive Gift | Jar Pack', 995, 199, 80, 'https://m.media-amazon.com/images/I/617phoOXGSL._AC_UL480_FMwebp_QL65_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('DailyHerbs California Almonds, Cashew Nuts, and Green Raisins 250gm Each Pack | High in Fiber & Boost Immunity | Real Nuts | Whole Natural Dry Fruits Festive Gift | Jar Pack', 199, 'https://m.media-amazon.com/images/I/617phoOXGSL._AC_UL480_FMwebp_QL65_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+
+
+    </div>
+
+    <div class="product-grid">
+       
+       
+        <div class="product">
+            <div class="sale-icon flash-sale">⚡ FLASH</div>
+            <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/nut-dry-fruit/w/k/6/800-dry-fruits-combo-pack-almond-cashew-kishmish-pista-800g-4-original-imahfhrynhreqzfk.jpeg?q=70" alt="Product 1" onclick="openProductDetail('p8', 'YUM YUM Dry Fruits Combo Pack (Almond,Cashew,Kishmish,Pista) 800g - Almonds, Cashews, Pistachios, Raisins  (4 x 200 g)', 2499, 399, 84.03, 'https://rukminim2.flixcart.com/image/612/612/xif0q/nut-dry-fruit/w/k/6/800-dry-fruits-combo-pack-almond-cashew-kishmish-pista-800g-4-original-imahfhrynhreqzfk.jpeg?q=70')" style="cursor: pointer;">
+            <p>YUM YUM Dry Fruits Combo Pack (Almond,Cashew,Kishmish,Pista) 800g - Almonds, Cashews, Pistachios, Raisins  (4 x 200 g)</p>
+            <p><span class="old-price">₹2499</span> <span class="discount">84.03% Off</span></p>
+
+            <p class="price">Now ₹399</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p8', 'YUM YUM Dry Fruits Combo Pack (Almond,Cashew,Kishmish,Pista) 800g - Almonds, Cashews, Pistachios, Raisins  (4 x 200 g)', 2499, 399, 84.03, 'https://rukminim2.flixcart.com/image/612/612/xif0q/nut-dry-fruit/w/k/6/800-dry-fruits-combo-pack-almond-cashew-kishmish-pista-800g-4-original-imahfhrynhreqzfk.jpeg?q=70')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('YUM YUM Dry Fruits Combo Pack (Almond,Cashew,Kishmish,Pista) 800g - Almonds, Cashews, Pistachios, Raisins  (4 x 200 g)', 399, 'https://rukminim2.flixcart.com/image/612/612/xif0q/nut-dry-fruit/w/k/6/800-dry-fruits-combo-pack-almond-cashew-kishmish-pista-800g-4-original-imahfhrynhreqzfk.jpeg?q=70')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+
+        <div class="product">
+            <div class="sale-icon">🏷️ SALE</div>
+            <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/nut-dry-fruit/g/f/z/300-almonds-cashew-raisins-combo-300gm-3-x-100gm-dryfruits-combo-original-imah4hw4ggjatykb.jpeg?q=70" alt="Product 1" onclick="openProductDetail('p9', 'Hobby Herbs Almonds , Cashew & Raisins Combo 300gm ( 3 x 100gm ) | DryFruits Combo | Almonds, Cashews, Raisins  (3 x 100 g)', 1499, 199, 86.72, 'https://rukminim2.flixcart.com/image/612/612/xif0q/nut-dry-fruit/g/f/z/300-almonds-cashew-raisins-combo-300gm-3-x-100gm-dryfruits-combo-original-imah4hw4ggjatykb.jpeg?q=70')" style="cursor: pointer;">
+            <p>Hobby Herbs Almonds , Cashew & Raisins Combo 300gm ( 3 x 100gm ) | DryFruits Combo | Almonds, Cashews, Raisins  (3 x 100 g)</p>
+            <p><span class="old-price">₹1499</span> <span class="discount">86.72% Off</span></p>
+
+            <p class="price">Now ₹199</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p9', 'Hobby Herbs Almonds , Cashew & Raisins Combo 300gm ( 3 x 100gm ) | DryFruits Combo | Almonds, Cashews, Raisins  (3 x 100 g)', 1499, 199, 86.72, 'https://rukminim2.flixcart.com/image/612/612/xif0q/nut-dry-fruit/g/f/z/300-almonds-cashew-raisins-combo-300gm-3-x-100gm-dryfruits-combo-original-imah4hw4ggjatykb.jpeg?q=70')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Hobby Herbs Almonds , Cashew & Raisins Combo 300gm ( 3 x 100gm ) | DryFruits Combo | Almonds, Cashews, Raisins  (3 x 100 g)', 199, 'https://rukminim2.flixcart.com/image/612/612/xif0q/nut-dry-fruit/g/f/z/300-almonds-cashew-raisins-combo-300gm-3-x-100gm-dryfruits-combo-original-imah4hw4ggjatykb.jpeg?q=70')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+
+
+    </div>
+
+
+    <div class="product-grid">
+       
+       
+        <div class="product">
+            <div class="sale-icon mega-sale">💥 MEGA</div>
+            <img src="https://rukminim2.flixcart.com/image/612/612/ktizdzk0/nut-dry-fruit/o/i/n/1-dry-fruits-combo-pack-250g-4-1kg-almonds-cashews-pistachios-original-imag6uuhpvuzwgjm.jpeg?q=70" alt="Product 1" onclick="openProductDetail('p10', 'Nature Purify Dry Fruits Combo Pack (Almond,Cashew,Pista,Kishmish) (250gm*4) Almonds  (4 x 0.25 kg)', 2499, 299, 88.04, 'https://rukminim2.flixcart.com/image/612/612/ktizdzk0/nut-dry-fruit/o/i/n/1-dry-fruits-combo-pack-250g-4-1kg-almonds-cashews-pistachios-original-imag6uuhpvuzwgjm.jpeg?q=70')" style="cursor: pointer;">
+            <p>Nature Purify Dry Fruits Combo Pack (Almond,Cashew,Pista,Kishmish) (250gm*4) Almonds  (4 x 0.25 kg)</p>
+            <p><span class="old-price">₹2499</span> <span class="discount">88.04% Off</span></p>
+
+            <p class="price">Now ₹299</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p10', 'Nature Purify Dry Fruits Combo Pack (Almond,Cashew,Pista,Kishmish) (250gm*4) Almonds  (4 x 0.25 kg)', 2499, 299, 88.04, 'https://rukminim2.flixcart.com/image/612/612/ktizdzk0/nut-dry-fruit/o/i/n/1-dry-fruits-combo-pack-250g-4-1kg-almonds-cashews-pistachios-original-imag6uuhpvuzwgjm.jpeg?q=70')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Nature Purify Dry Fruits Combo Pack (Almond,Cashew,Pista,Kishmish) (250gm*4) Almonds  (4 x 0.25 kg)', 299, 'https://rukminim2.flixcart.com/image/612/612/ktizdzk0/nut-dry-fruit/o/i/n/1-dry-fruits-combo-pack-250g-4-1kg-almonds-cashews-pistachios-original-imag6uuhpvuzwgjm.jpeg?q=70')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+
+        <div class="product">
+            <div class="sale-icon hot-deal">🔥 HOT</div>
+            <img src="https://rukminim2.flixcart.com/image/612/612/kshtxu80/fmcg-combo/c/z/w/dry-fruits-combo-pack-250g-4-1kg-almonds-cashews-pistachios-original-imag6fypxhnjcnby.jpeg?q=70" alt="Product 1" onclick="openProductDetail('p11', 'Nutro Cart Fresh and Healthy Dry Fruits (Almond, Cashew, Raisin, Pistachio (250g * 4) 1 KG(Pack of 4) For Diwali Festival Celebration | Deepawali Gift Pack For Family, Friends, Corporate Office Gifts Combo  (4 x 0.25 kg)', 1499, 299, 80.05, 'https://rukminim2.flixcart.com/image/612/612/kshtxu80/fmcg-combo/c/z/w/dry-fruits-combo-pack-250g-4-1kg-almonds-cashews-pistachios-original-imag6fypxhnjcnby.jpeg?q=70')" style="cursor: pointer;">
+            <p>Nutro Cart Fresh and Healthy Dry Fruits (Almond, Cashew, Raisin, Pistachio (250g * 4) 1 KG(Pack of 4) For Diwali Festival Celebration | Deepawali Gift Pack For Family, Friends, Corporate Office Gifts Combo  (4 x 0.25 kg)</p>
+            <p><span class="old-price">₹1499</span> <span class="discount">80.05% Off</span></p>
+
+            <p class="price">Now ₹299</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p11', 'Nutro Cart Fresh and Healthy Dry Fruits (Almond, Cashew, Raisin, Pistachio (250g * 4) 1 KG(Pack of 4) For Diwali Festival Celebration | Deepawali Gift Pack For Family, Friends, Corporate Office Gifts Combo  (4 x 0.25 kg)', 1499, 299, 80.05, 'https://rukminim2.flixcart.com/image/612/612/kshtxu80/fmcg-combo/c/z/w/dry-fruits-combo-pack-250g-4-1kg-almonds-cashews-pistachios-original-imag6fypxhnjcnby.jpeg?q=70')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Nutro Cart Fresh and Healthy Dry Fruits (Almond, Cashew, Raisin, Pistachio (250g * 4) 1 KG(Pack of 4) For Diwali Festival Celebration | Deepawali Gift Pack For Family, Friends, Corporate Office Gifts Combo  (4 x 0.25 kg)', 299, 'https://rukminim2.flixcart.com/image/612/612/kshtxu80/fmcg-combo/c/z/w/dry-fruits-combo-pack-250g-4-1kg-almonds-cashews-pistachios-original-imag6fypxhnjcnby.jpeg?q=70')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+
+
+    </div>
+
+
+    <div class="product-grid">
+       
+       
+        <div class="product">
+            <div class="sale-icon">🏷️ SALE</div>
+            <img src="https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/0/6/0611a418012TPSGRBK_1.jpg?rnd=20200526195200&tr=w-256" alt="Product 1" onclick="openProductDetail('p12', 'PURYS is a contemporary western wear clothing brand offering stylish', 2499, 399, 84.03, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/0/6/0611a418012TPSGRBK_1.jpg?rnd=20200526195200&tr=w-256')" style="cursor: pointer;">
+            <p>PURYS is a contemporary western wear clothing brand offering stylish</p>
+            <p><span class="old-price">₹2499</span> <span class="discount">84.03% Off</span></p>
+
+            <p class="price">Now ₹399</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p12', 'PURYS is a contemporary western wear clothing brand offering stylish', 2499, 399, 84.03, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/0/6/0611a418012TPSGRBK_1.jpg?rnd=20200526195200&tr=w-256')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('PURYS is a contemporary western wear clothing brand offering stylish', 399, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/0/6/0611a418012TPSGRBK_1.jpg?rnd=20200526195200&tr=w-256')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+
+        <div class="product">
+            <div class="sale-icon flash-sale">⚡ FLASH</div>
+            <img src="https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/3/e/3ed3931NYKFF_LSDY0020_1.jpg?rnd=20200526195200&tr=w-256" alt="Product 1" onclick="openProductDetail('p13', 'Focusing on occasion wear and ready-to-wear styles, the label was launched by fashion and beauty blogger Shaurya Sanadhya, using her fashion-forward approach.', 12999, 299, 97.7, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/3/e/3ed3931NYKFF_LSDY0020_1.jpg?rnd=20200526195200&tr=w-256')" style="cursor: pointer;">
+            <p>Focusing on occasion wear and ready-to-wear styles, the label was launched by fashion and beauty blogger Shaurya Sanadhya, using her fashion-forward approach.</p>
+            <p><span class="old-price">₹12999</span> <span class="discount">97.7% Off</span></p>
+
+            <p class="price">Now ₹299</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p13', 'Focusing on occasion wear and ready-to-wear styles, the label was launched by fashion and beauty blogger Shaurya Sanadhya, using her fashion-forward approach.', 12999, 299, 97.7, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/3/e/3ed3931NYKFF_LSDY0020_1.jpg?rnd=20200526195200&tr=w-256')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Focusing on occasion wear and ready-to-wear styles, the label was launched by fashion and beauty blogger Shaurya Sanadhya, using her fashion-forward approach.', 299, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/3/e/3ed3931NYKFF_LSDY0020_1.jpg?rnd=20200526195200&tr=w-256')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+
+
+    </div>
+
+    <div class="product-grid">
+       
+       
+        <div class="product">
+            <div class="sale-icon mega-sale">💥 MEGA</div>
+            <img src="https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/b/2/b22ea5e1219PRL_1.jpg?rnd=20200526195200&tr=w-256" alt="Product 1" onclick="openProductDetail('p14', 'LooknBook Art Purple Colour Tussar Silk with Kalamkari Print Lehenga with Unstitched Choli (Set of 3)', 19899, 599, 96.99, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/b/2/b22ea5e1219PRL_1.jpg?rnd=20200526195200&tr=w-256')" style="cursor: pointer;">
+            <p>LooknBook Art Purple Colour Tussar Silk with Kalamkari Print Lehenga with Unstitched Choli (Set of 3)</p>
+            <p><span class="old-price">₹19899</span> <span class="discount">96.99% Off</span></p>
+
+            <p class="price">Now ₹599</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p14', 'LooknBook Art Purple Colour Tussar Silk with Kalamkari Print Lehenga with Unstitched Choli (Set of 3)', 19899, 599, 96.99, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/b/2/b22ea5e1219PRL_1.jpg?rnd=20200526195200&tr=w-256')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('LooknBook Art Purple Colour Tussar Silk with Kalamkari Print Lehenga with Unstitched Choli (Set of 3)', 599, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/b/2/b22ea5e1219PRL_1.jpg?rnd=20200526195200&tr=w-256')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+
+        <div class="product">
+            <div class="sale-icon hot-deal">🔥 HOT</div>
+            <img src="https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/f/1/f12d411Coords9062_1.jpg?rnd=20200526195200&tr=w-256" alt="Product 1" onclick="openProductDetail('p15', 'Tikhi Imli Red Silk Blend Heavy Sequence Work Co-Ord (Set of 2)', 3799, 249, 93.45, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/f/1/f12d411Coords9062_1.jpg?rnd=20200526195200&tr=w-256')" style="cursor: pointer;">
+            <p>Tikhi Imli Red Silk Blend Heavy Sequence Work Co-Ord (Set of 2)</p>
+            <p><span class="old-price">₹3799</span> <span class="discount">93.45% Off</span></p>
+
+            <p class="price">Now ₹249</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p15', 'Tikhi Imli Red Silk Blend Heavy Sequence Work Co-Ord (Set of 2)', 3799, 249, 93.45, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/f/1/f12d411Coords9062_1.jpg?rnd=20200526195200&tr=w-256')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Tikhi Imli Red Silk Blend Heavy Sequence Work Co-Ord (Set of 2)', 249, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/f/1/f12d411Coords9062_1.jpg?rnd=20200526195200&tr=w-256')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+
+
+    </div>
+
+    <div class="product-grid">
+       
+       
+        <div class="product">
+            <div class="sale-icon">🏷️ SALE</div>
+            <img src="https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/3/3/33b2843KR1132Yellow_1.jpg?rnd=20200526195200&tr=w-256" alt="Product 1" onclick="openProductDetail('p16', 'KAFTANIZE Women Yellow Polyester Embroidered Co-Ord (Set of 2)', 999, 149, 85.09, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/3/3/33b2843KR1132Yellow_1.jpg?rnd=20200526195200&tr=w-256')" style="cursor: pointer;">
+            <p>KAFTANIZE Women Yellow Polyester Embroidered Co-Ord (Set of 2)</p>
+            <p><span class="old-price">₹999</span> <span class="discount">85.09% Off</span></p>
+
+            <p class="price">Now ₹149</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p16', 'KAFTANIZE Women Yellow Polyester Embroidered Co-Ord (Set of 2)', 999, 149, 85.09, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/3/3/33b2843KR1132Yellow_1.jpg?rnd=20200526195200&tr=w-256')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('KAFTANIZE Women Yellow Polyester Embroidered Co-Ord (Set of 2)', 149, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/3/3/33b2843KR1132Yellow_1.jpg?rnd=20200526195200&tr=w-256')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+
+        <div class="product">
+            <div class="sale-icon flash-sale">⚡ FLASH</div>
+            <img src="https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/2/2/229bd07KLC6520_1.jpg?rnd=20200526195200&tr=w-256" alt="Product 1" onclick="openProductDetail('p17', 'Odette Blue Embroidered Georgette Saree with Unstitched Blouse', 1699, 266, 84.34, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/2/2/229bd07KLC6520_1.jpg?rnd=20200526195200&tr=w-256')" style="cursor: pointer;">
+            <p>Odette Blue Embroidered Georgette Saree with Unstitched Blouse</p>
+            <p><span class="old-price">₹1699</span> <span class="discount">84.34% Off</span></p>
+
+            <p class="price">Now ₹266</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p17', 'Odette Blue Embroidered Georgette Saree with Unstitched Blouse', 1699, 266, 84.34, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/2/2/229bd07KLC6520_1.jpg?rnd=20200526195200&tr=w-256')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Odette Blue Embroidered Georgette Saree with Unstitched Blouse', 266, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/2/2/229bd07KLC6520_1.jpg?rnd=20200526195200&tr=w-256')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+
+
+    </div>
+
+    <div class="product-grid">
+       
+       
+        <div class="product">
+            <div class="sale-icon mega-sale">💥 MEGA</div>
+            <img src="https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/6/a/6aa16e4AYNKB52YellowYellow_1.jpg?rnd=20200526195200&tr=w-256" alt="Product 1" onclick="openProductDetail('p18', 'Odette Yellow Silk Blend Printed Semi-Stitched Kurta and Palazzo with Dupatta (Set of 3)', 2999, 149, 95.03, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/6/a/6aa16e4AYNKB52YellowYellow_1.jpg?rnd=20200526195200&tr=w-256')" style="cursor: pointer;">
+            <p>Odette Yellow Silk Blend Printed Semi-Stitched Kurta and Palazzo with Dupatta (Set of 3)</p>
+            <p><span class="old-price">₹2999</span> <span class="discount">95.03% Off</span></p>
+
+            <p class="price">Now ₹149</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p18', 'Odette Yellow Silk Blend Printed Semi-Stitched Kurta and Palazzo with Dupatta (Set of 3)', 2999, 149, 95.03, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/6/a/6aa16e4AYNKB52YellowYellow_1.jpg?rnd=20200526195200&tr=w-256')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Odette Yellow Silk Blend Printed Semi-Stitched Kurta and Palazzo with Dupatta (Set of 3)', 149, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/6/a/6aa16e4AYNKB52YellowYellow_1.jpg?rnd=20200526195200&tr=w-256')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+
+        <div class="product">
+            <div class="sale-icon">🏷️ SALE</div>
+            <img src="https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/9/5/9527e371796SETPR_1.jpg?rnd=20200526195200&tr=w-256" alt="Product 1" onclick="openProductDetail('p19', 'Yufta Purple Pure Cotton Floral Embroidery Kurta with Pant (Set of 2)', 2999, 399, 90.23, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/9/5/9527e371796SETPR_1.jpg?rnd=20200526195200&tr=w-256')" style="cursor: pointer;">
+            <p>Yufta Purple Pure Cotton Floral Embroidery Kurta with Pant (Set of 2)</p>
+            <p><span class="old-price">₹2999</span> <span class="discount">90.23% Off</span></p>
+
+            <p class="price">Now ₹399</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p19', 'Yufta Purple Pure Cotton Floral Embroidery Kurta with Pant (Set of 2)', 2999, 399, 90.23, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/9/5/9527e371796SETPR_1.jpg?rnd=20200526195200&tr=w-256')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Yufta Purple Pure Cotton Floral Embroidery Kurta with Pant (Set of 2)', 399, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/9/5/9527e371796SETPR_1.jpg?rnd=20200526195200&tr=w-256')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+
+
+    </div>
+
+    <div class="product-grid">
+       
+       
+        <div class="product">
+            <div class="sale-icon hot-deal">🔥 HOT</div>
+            <img src="https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/5/9/59f045cMD34741_1.jpg?rnd=20200526195200&tr=w-256" alt="Product 1" onclick="openProductDetail('p20', 'LIBAS Green Chanderi Silk Woven Anarkali Kurta & Silk Blend Palazzo with Dupatta (Set of 3)', 5999, 699, 88.48, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/5/9/59f045cMD34741_1.jpg?rnd=20200526195200&tr=w-256')" style="cursor: pointer;">
+            <p>LIBAS Green Chanderi Silk Woven Anarkali Kurta & Silk Blend Palazzo with Dupatta (Set of 3)</p>
+            <p><span class="old-price">₹5999</span> <span class="discount">88.48% Off</span></p>
+
+            <p class="price">Now ₹699</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p20', 'LIBAS Green Chanderi Silk Woven Anarkali Kurta & Silk Blend Palazzo with Dupatta (Set of 3)', 5999, 699, 88.48, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/5/9/59f045cMD34741_1.jpg?rnd=20200526195200&tr=w-256')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('LIBAS Green Chanderi Silk Woven Anarkali Kurta & Silk Blend Palazzo with Dupatta (Set of 3)', 699, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/5/9/59f045cMD34741_1.jpg?rnd=20200526195200&tr=w-256')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+
+        <div class="product">
+            <img src="https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/9/6/967793aK-33BLACK_1.jpg?rnd=20200526195200&tr=w-256" alt="Product 1" onclick="openProductDetail('p21', 'SAK JAIPUR Women Black Rayon Floral Printed Round Neck Kurta', 14986, 599, 96, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/9/6/967793aK-33BLACK_1.jpg?rnd=20200526195200&tr=w-256')" style="cursor: pointer;">
+            <p>SAK JAIPUR Women Black Rayon Floral Printed Round Neck Kurta</p>
+            <p><span class="old-price">₹14986</span> <span class="discount">96% Off</span></p>
+
+            <p class="price">Now ₹599</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p21', 'SAK JAIPUR Women Black Rayon Floral Printed Round Neck Kurta', 14986, 599, 96, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/9/6/967793aK-33BLACK_1.jpg?rnd=20200526195200&tr=w-256')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('SAK JAIPUR Women Black Rayon Floral Printed Round Neck Kurta', 599, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/9/6/967793aK-33BLACK_1.jpg?rnd=20200526195200&tr=w-256')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+
+
+    </div>
+
+
+    <div class="product-grid">
+       
+       
+        <div class="product">
+            <img src="image/5.webp" alt="Product 1" onclick="openProductDetail('p22', '(4kg - 1kg*4) Dry Fruits Combo Pack of 4 - (Almonds, Cashews, Pistachios, Raisins) - Health Dry Fruit Snacks | Tasty & Delicious, Rich in Protein', 2999, 399, 93.81, 'image/5.webp')" style="cursor: pointer;">
+            <p>(4kg - 1kg*4) Dry Fruits Combo Pack of 4 - (Almonds, Cashews, Pistachios, Raisins) - Health Dry Fruit Snacks | Tasty & Delicious, Rich in Protein</p>
+            <p><span class="old-price">₹2999</span> <span class="discount">93.81% Off</span></p>
+
+            <p class="price">Now ₹399</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p22', '(4kg - 1kg*4) Dry Fruits Combo Pack of 4 - (Almonds, Cashews, Pistachios, Raisins) - Health Dry Fruit Snacks | Tasty & Delicious, Rich in Protein', 2999, 399, 93.81, 'image/5.webp')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('(4kg - 1kg*4) Dry Fruits Combo Pack of 4 - (Almonds, Cashews, Pistachios, Raisins) - Health Dry Fruit Snacks | Tasty & Delicious, Rich in Protein', 399, 'image/5.webp')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+
+        <div class="product">
+            <img src="image/4.webp" alt="Product 1" onclick="openProductDetail('p23', 'Aashirvaad Atta 5Kg + India Gate Basmati Rice 5Kg + Fortune Sugar 5Kg + Lipton 1Kg + TATA Agni 1Kg + Super Sarvottom Refined Rice bran Oil 1L ', 3323, 369, 83.75, 'image/4.webp')" style="cursor: pointer;">
+            <p>Aashirvaad Atta 5Kg + India Gate Basmati Rice 5Kg + Fortune Sugar 5Kg + Lipton 1Kg + TATA Agni 1Kg + Super Sarvottom Refined Rice bran Oil 1L </p>
+            <p><span class="old-price">₹3323</span> <span class="discount">83.75% Off</span></p>
+
+            <p class="price">Now ₹369</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p23', 'Aashirvaad Atta 5Kg + India Gate Basmati Rice 5Kg + Fortune Sugar 5Kg + Lipton 1Kg + TATA Agni 1Kg + Super Sarvottom Refined Rice bran Oil 1L ', 3323, 369, 83.75, 'image/4.webp')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Aashirvaad Atta 5Kg + India Gate Basmati Rice 5Kg + Fortune Sugar 5Kg + Lipton 1Kg + TATA Agni 1Kg + Super Sarvottom Refined Rice bran Oil 1L ', 369, 'image/4.webp')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+
+
+    </div>
+
+
+    <div class="product-grid">
+       
+       
+        <div class="product">
+            <img src="image/3.webp" alt="Product 1" onclick="openProductDetail('p24', 'Fortune Oil 5L Combo Pack Of 4  | Health is Wealth ', 4790, 467, 89.03, 'image/3.webp')" style="cursor: pointer;">
+            <p>Fortune Oil 5L Combo Pack Of 4  | Health is Wealth </p>
+            <p><span class="old-price">₹4790</span> <span class="discount">89.03% Off</span></p>
+
+            <p class="price">Now ₹467</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p24', 'Fortune Oil 5L Combo Pack Of 4  | Health is Wealth ', 4790, 467, 89.03, 'image/3.webp')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Fortune Oil 5L Combo Pack Of 4  | Health is Wealth ', 467, 'image/3.webp')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+
+        <div class="product">
+            <img src="image/17.webp" alt="Product 1" onclick="openProductDetail('p25', '(20Kg - 5kg*2+10kg+1) India Gate Basmati Rice Select 5Kg | India Gate Basmati Rice Regular Choise 5Kg | India Gate Basmati Rice Mogra 10Kg | Good in Taste, Best Quality with Brand Packing ', 3099, 266, 76.85, 'image/17.webp')" style="cursor: pointer;">
+            <p>(20Kg - 5kg*2+10kg+1) India Gate Basmati Rice Select 5Kg | India Gate Basmati Rice Regular Choise 5Kg | India Gate Basmati Rice Mogra 10Kg | Good in Taste, Best Quality with Brand Packing </p>
+            <p><span class="old-price">₹3099</span> <span class="discount">76.85% Off</span></p>
+
+            <p class="price">Now ₹266</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p25', '(20Kg - 5kg*2+10kg+1) India Gate Basmati Rice Select 5Kg | India Gate Basmati Rice Regular Choise 5Kg | India Gate Basmati Rice Mogra 10Kg | Good in Taste, Best Quality with Brand Packing ', 3099, 266, 76.85, 'image/17.webp')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('(20Kg - 5kg*2+10kg+1) India Gate Basmati Rice Select 5Kg | India Gate Basmati Rice Regular Choise 5Kg | India Gate Basmati Rice Mogra 10Kg | Good in Taste, Best Quality with Brand Packing ', 266, 'image/17.webp')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+
+
+    </div>
+
+    <div class="product-grid">
+       
+       
+        <div class="product">
+            <div class="sale-icon flash-sale">⚡ FLASH</div>
+            <img src="image/6.webp" alt="Product 1" onclick="openProductDetail('p26', '10 Ltr Oil Combo Pack Offer ( 5L Fortune Oil + 5L Mustard Oil) ', 4099, 386, 79.04, 'image/6.webp')" style="cursor: pointer;">
+            <p>10 Ltr Oil Combo Pack Offer ( 5L Fortune Oil + 5L Mustard Oil) </p>
+            <p><span class="old-price">₹4099</span> <span class="discount">79.04% Off</span></p>
+
+            <p class="price">Now ₹386</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p26', '10 Ltr Oil Combo Pack Offer ( 5L Fortune Oil + 5L Mustard Oil) ', 4099, 386, 79.04, 'image/6.webp')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('10 Ltr Oil Combo Pack Offer ( 5L Fortune Oil + 5L Mustard Oil) ', 386, 'image/6.webp')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+
+        <div class="product">
+            <div class="sale-icon mega-sale">💥 MEGA</div>
+            <img src="image\2.jpg" alt="Product 1" onclick="openProductDetail('p27', '(2Kg - 1Kg+1Kg) Combo Pack of Patanjali Ghee with Good Taste & Healthy Product | Suddh Desi Cow Ghee', 1499, 299, 70.94, 'image/2.jpg')" style="cursor: pointer;">
+            <p>(2Kg - 1Kg+1Kg) Combo Pack of Patanjali Ghee with Good Taste & Healthy Product | Suddh Desi Cow Ghee</p>
+            <p><span class="old-price">₹1499</span> <span class="discount">70.94% Off</span></p>
+
+            <p class="price">Now ₹299</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p27', '(2Kg - 1Kg+1Kg) Combo Pack of Patanjali Ghee with Good Taste & Healthy Product | Suddh Desi Cow Ghee', 1499, 299, 70.94, 'image/2.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('(2Kg - 1Kg+1Kg) Combo Pack of Patanjali Ghee with Good Taste & Healthy Product | Suddh Desi Cow Ghee', 299, 'image/2.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+
+
+    </div>
+
+    <div class="product-grid">
+       
+       
+        <div class="product">
+            <div class="sale-icon">🏷️ SALE</div>
+            <img src="https://m.media-amazon.com/images/I/7109+7ogW6L._AC_UL480_FMwebp_QL65_.jpg" alt="Product 1" onclick="openProductDetail('p28', 'Two Brothers Organic Farms - Khapli Wheat Flour (10kg) | High Dietary Fiber for Easy Digestion | Stoneground Emmer Khapli Atta', 2345, 1099, 69.21, 'https://m.media-amazon.com/images/I/7109+7ogW6L._AC_UL480_FMwebp_QL65_.jpg')" style="cursor: pointer;">
+            <p>Two Brothers Organic Farms - Khapli Wheat Flour (10kg) | High Dietary Fiber for Easy Digestion | Stoneground Emmer Khapli Atta</p>
+            <p><span class="old-price">₹2345</span> <span class="discount">69.21% Off</span></p>
+
+            <p class="price">Now ₹1099</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p28', 'Two Brothers Organic Farms - Khapli Wheat Flour (10kg) | High Dietary Fiber for Easy Digestion | Stoneground Emmer Khapli Atta', 2345, 1099, 69.21, 'https://m.media-amazon.com/images/I/7109+7ogW6L._AC_UL480_FMwebp_QL65_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Two Brothers Organic Farms - Khapli Wheat Flour (10kg) | High Dietary Fiber for Easy Digestion | Stoneground Emmer Khapli Atta', 1099, 'https://m.media-amazon.com/images/I/7109+7ogW6L._AC_UL480_FMwebp_QL65_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/71WkRP7k6VL._AC_UL480_FMwebp_QL65_.jpg" alt="Product 1" onclick="openProductDetail('p29', 'Safari Crescent 8 Wheels Set of 3 (Cabin + Medium + Large) Trolley Bags Hard Case Polycarbonate 360 Degree Wheeling Luggage, Travel Bags, Suitcase for Travel, Trolley Bags for Travel, Thyme Green', 30200, 1655, 81.86, 'https://m.media-amazon.com/images/I/71WkRP7k6VL._AC_UL480_FMwebp_QL65_.jpg')" style="cursor: pointer;">
+            <p>Safari Crescent 8 Wheels Set of 3 (Cabin + Medium + Large) Trolley Bags Hard Case Polycarbonate 360 Degree Wheeling Luggage, Travel Bags, Suitcase for Travel, Trolley Bags for Travel, Thyme Green</p>
+            <p><span class="old-price">₹30200</span> <span class="discount">81.86% Off</span></p>
+
+            <p class="price">Now ₹1655</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p29', 'Safari Crescent 8 Wheels Set of 3 (Cabin + Medium + Large) Trolley Bags Hard Case Polycarbonate 360 Degree Wheeling Luggage, Travel Bags, Suitcase for Travel, Trolley Bags for Travel, Thyme Green', 30200, 1655, 81.86, 'https://m.media-amazon.com/images/I/71WkRP7k6VL._AC_UL480_FMwebp_QL65_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Safari Crescent 8 Wheels Set of 3 (Cabin + Medium + Large) Trolley Bags Hard Case Polycarbonate 360 Degree Wheeling Luggage, Travel Bags, Suitcase for Travel, Trolley Bags for Travel, Thyme Green', 1655, 'https://m.media-amazon.com/images/I/71WkRP7k6VL._AC_UL480_FMwebp_QL65_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+
+
+    </div>
+
+    <div class="product-grid">
+       
+       
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/61lF0RQN6vL._AC_UL480_FMwebp_QL65_.jpg" alt="Product 1" onclick="openProductDetail('p30', 'Safari Ray Neo 8 Wheels Set of 3 Trolley Bags, Hard Case Polycarbonate 360 Degree Wheeling Carry on & Check-in Luggage for Men & Women, Suitcase for Travel, Trolley Bags for Travel, Marina Blue', 23690, 1896, 79.53, 'https://m.media-amazon.com/images/I/61lF0RQN6vL._AC_UL480_FMwebp_QL65_.jpg')" style="cursor: pointer;">
+            <p>Safari Ray Neo 8 Wheels Set of 3 Trolley Bags, Hard Case Polycarbonate 360 Degree Wheeling Carry on & Check-in Luggage for Men & Women, Suitcase for Travel, Trolley Bags for Travel, Marina Blue</p>
+            <p><span class="old-price">₹23690</span> <span class="discount">79.53% Off</span></p>
+
+            <p class="price">Now ₹1896</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p30', 'Safari Ray Neo 8 Wheels Set of 3 Trolley Bags, Hard Case Polycarbonate 360 Degree Wheeling Carry on & Check-in Luggage for Men & Women, Suitcase for Travel, Trolley Bags for Travel, Marina Blue', 23690, 1896, 79.53, 'https://m.media-amazon.com/images/I/61lF0RQN6vL._AC_UL480_FMwebp_QL65_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Safari Ray Neo 8 Wheels Set of 3 Trolley Bags, Hard Case Polycarbonate 360 Degree Wheeling Carry on & Check-in Luggage for Men & Women, Suitcase for Travel, Trolley Bags for Travel, Marina Blue', 1896, 'https://m.media-amazon.com/images/I/61lF0RQN6vL._AC_UL480_FMwebp_QL65_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/71Cz6ClXP9L._SL1500_.jpg" alt="Product 1" onclick="openProductDetail('p31', 'Safari Ray Neo 8 Wheels Set of 3 Trolley Bags, Hard Case Polycarbonate 360 Degree Wheeling Carry on & Check-in Luggage for Men & Women, Suitcase for Travel', 21990, 2096, 77.74, 'https://m.media-amazon.com/images/I/71Cz6ClXP9L._SL1500_.jpg')" style="cursor: pointer;">
+            <p>Safari Ray Neo 8 Wheels Set of 3 Trolley Bags, Hard Case Polycarbonate 360 Degree Wheeling Carry on & Check-in Luggage for Men & Women, Suitcase for Travel</p>
+            <p><span class="old-price">₹21990</span> <span class="discount">77.74% Off</span></p>
+
+            <p class="price">Now ₹2096</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p31', 'Safari Ray Neo 8 Wheels Set of 3 Trolley Bags, Hard Case Polycarbonate 360 Degree Wheeling Carry on & Check-in Luggage for Men & Women, Suitcase for Travel', 21990, 2096, 77.74, 'https://m.media-amazon.com/images/I/71Cz6ClXP9L._SL1500_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Safari Ray Neo 8 Wheels Set of 3 Trolley Bags, Hard Case Polycarbonate 360 Degree Wheeling Carry on & Check-in Luggage for Men & Women, Suitcase for Travel', 2096, 'https://m.media-amazon.com/images/I/71Cz6ClXP9L._SL1500_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+
+
+    </div>
+
+    <div class="product-grid">
+       
+       
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/71iV5Y-QF4L._SL1500_.jpg" alt="Product 1" onclick="openProductDetail('p32', 'acer 80 cm (32 inches) G Plus Series HD Ready LED Smart Google TV AR32HDGGR2841AD', 19390, 3895, 64.44, 'https://m.media-amazon.com/images/I/71iV5Y-QF4L._SL1500_.jpg')" style="cursor: pointer;">
+            <p>acer 80 cm (32 inches) G Plus Series HD Ready LED Smart Google TV AR32HDGGR2841AD</p>
+            <p><span class="old-price">₹19390</span> <span class="discount">64.44% Off</span></p>
+
+            <p class="price">Now ₹3895</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p32', 'acer 80 cm (32 inches) G Plus Series HD Ready LED Smart Google TV AR32HDGGR2841AD', 19390, 3895, 64.44, 'https://m.media-amazon.com/images/I/71iV5Y-QF4L._SL1500_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('acer 80 cm (32 inches) G Plus Series HD Ready LED Smart Google TV AR32HDGGR2841AD', 3895, 'https://m.media-amazon.com/images/I/71iV5Y-QF4L._SL1500_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+        
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/81P2YOHSQRL._SL1500_.jpg" alt="Product 1" onclick="openProductDetail('pac', 'LG 108 cm (43 inches) UA82 Series 4K Ultra HD Smart webOS LED TV 43UA82006LA', 28899, 9499, 78.99, 'https://m.media-amazon.com/images/I/81P2YOHSQRL._SL1500_.jpg')" style="cursor: pointer;">
+            <p>LG 108 cm (43 inches) UA82 Series 4K Ultra HD Smart webOS LED TV 43UA82006LA</p>
+            <p><span class="old-price">₹28899</span> <span class="discount">78.99% Off</span></p>
+
+            <p class="price">Now 9499</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('pac', 'LG 108 cm (43 inches) UA82 Series 4K Ultra HD Smart webOS LED TV 43UA82006LA', 28899, 9499, 78.99, 'https://m.media-amazon.com/images/I/81P2YOHSQRL._SL1500_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('LG 108 cm (43 inches) UA82 Series 4K Ultra HD Smart webOS LED TV 43UA82006LA', 9499, 'https://m.media-amazon.com/images/I/81P2YOHSQRL._SL1500_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+    </div>
+
+    <div class="product-grid">
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/717Q2swzhBL._SL1500_.jpg" alt="Product 33" onclick="openProductDetail('p33', 'Samsung Galaxy S24 Ultra 5G AI Smartphone with Galaxy AI (Titanium Gray, 12GB, 256GB Storage), Snapdragon 8 Gen 3, 200 MP Camera with ProVisual Engine and 5000mAh Battery', 74999, 9916, 80.77, 'https://m.media-amazon.com/images/I/717Q2swzhBL._SL1500_.jpg')" style="cursor: pointer;">
+            <p>Samsung Galaxy S24 Ultra 5G AI Smartphone with Galaxy AI (Titanium Gray, 12GB, 256GB Storage), Snapdragon 8 Gen 3, 200 MP Camera with ProVisual Engine and 5000mAh Battery</p>
+            <p><span class="old-price">₹74999</span> <span class="discount">80.77% Off</span></p>
+            <p class="price">Now ₹9916</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p33', 'Samsung Galaxy S24 Ultra 5G AI Smartphone with Galaxy AI (Titanium Gray, 12GB, 256GB Storage), Snapdragon 8 Gen 3, 200 MP Camera with ProVisual Engine and 5000mAh Battery', 74999, 9916, 80.77, 'https://m.media-amazon.com/images/I/717Q2swzhBL._SL1500_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Samsung Galaxy S24 Ultra 5G AI Smartphone with Galaxy AI (Titanium Gray, 12GB, 256GB Storage), Snapdragon 8 Gen 3, 200 MP Camera with ProVisual Engine and 5000mAh Battery', 9916, 'https://m.media-amazon.com/images/I/717Q2swzhBL._SL1500_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+        <div class="product">
+            <div class="sale-icon flash-sale">⚡ FLASH</div>
+            <img src="https://m.media-amazon.com/images/I/71657TiFeHL._SX679_.jpg" alt="Product 34" onclick="openProductDetail('p34', 'Apple iPhone 15 (128 GB) - Black', 47999, 9844, 25, 'https://m.media-amazon.com/images/I/71657TiFeHL._SX679_.jpg')" style="cursor: pointer;">
+            <p>Apple iPhone 15 (128 GB) - Black</p>
+            <p><span class="old-price">₹47999</span> <span class="discount">78.07% Off</span></p>
+            <p class="price">Now ₹9844</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p34', 'Apple iPhone 15 (128 GB) - Black', 47999, 9844, 25, 'https://m.media-amazon.com/images/I/71657TiFeHL._SX679_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Apple iPhone 15 (128 GB) - Black', 9844, 'https://m.media-amazon.com/images/I/71657TiFeHL._SX679_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+    </div>
+
+    <div class="product-grid">
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/61yC4DN4asL._SL1080_.jpg" alt="Product 35" onclick="openProductDetail('p35', 'Acer Aspire Lite, 13th Gen, Intel Core i5-1334U, 16GB RAM, 512GB SSD, Full HD, 15.6, Windows 11 Home, MS Office, Steel Gray, 1.59KG, AL15-53, Metal Body, Thin and Light Premium Laptop', 65000, 45000, 80.77, 'https://m.media-amazon.com/images/I/61yC4DN4asL._SL1080_.jpg')" style="cursor: pointer;">
+            <p>Acer Aspire Lite, 13th Gen, Intel Core i5-1334U, 16GB RAM, 512GB SSD, Full HD, 15.6"/39.62cm, Windows 11 Home, MS Office, Steel Gray, 1.59KG, AL15-53, Metal Body, Thin and Light Premium Laptop</p>
+            <p><span class="old-price">₹65000</span> <span class="discount">80.77% Off</span></p>
+            <p class="price">Now ₹5500</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p35', 'Acer Aspire Lite, 13th Gen, Intel Core i5-1334U, 16GB RAM, 512GB SSD, Full HD, 15.6, Windows 11 Home, MS Office, Steel Gray, 1.59KG, AL15-53, Metal Body, Thin and Light Premium Laptop', 65000, 45000, 80.77, 'https://m.media-amazon.com/images/I/61yC4DN4asL._SL1080_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Acer Aspire Lite, 13th Gen, Intel Core i5-1334U, 16GB RAM, 512GB SSD, Full HD, 15.6, Windows 11 Home, MS Office, Steel Gray, 1.59KG, AL15-53, Metal Body, Thin and Light Premium Laptop', 45000, 'https://m.media-amazon.com/images/I/61yC4DN4asL._SL1080_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/71Z4mSII9BL._SL1500_.jpg" alt="Product 36" onclick="openProductDetail('p36', 'HP 15, 13th Gen Intel Core i5-1334U, (16GB DDR4,512GB SSD) Anti-Glare, Micro-Edge, FHD, 15.6/39.6cm, Win11, M365 Basic(1yr)* Office24, Silver, 1.59kg, fd0577TU, Iris Xe, FHD Camera w/Shutter Laptop', 75000, 55000, 26.67, 'https://m.media-amazon.com/images/I/71Z4mSII9BL._SL1500_.jpg')" style="cursor: pointer;">
+            <p>HP 15, 13th Gen Intel Core i5-1334U, (16GB DDR4,512GB SSD) Anti-Glare, Micro-Edge, FHD, 15.6''/39.6cm, Win11, M365 Basic(1yr)* Office24, Silver, 1.59kg, fd0577TU, Iris Xe, FHD Camera w/Shutter Laptop</p>
+            <p><span class="old-price">₹75000</span> <span class="discount">76.67% Off</span></p>
+            <p class="price">Now ₹5516</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p36', 'HP 15, 13th Gen Intel Core i5-1334U, (16GB DDR4,512GB SSD) Anti-Glare, Micro-Edge, FHD, 15.6/39.6cm, Win11, M365 Basic(1yr)* Office24, Silver, 1.59kg, fd0577TU, Iris Xe, FHD Camera w/Shutter Laptop', 75000, 55000, 26.67, 'https://m.media-amazon.com/images/I/71Z4mSII9BL._SL1500_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('HP 15, 13th Gen Intel Core i5-1334U, (16GB DDR4,512GB SSD) Anti-Glare, Micro-Edge, FHD, 15.6/39.6cm, Win11, M365 Basic(1yr)* Office24, Silver, 1.59kg, fd0577TU, Iris Xe, FHD Camera w/Shutter Laptop', 55000, 'https://m.media-amazon.com/images/I/71Z4mSII9BL._SL1500_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+    </div>
+
+    <div class="product-grid">
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/61135j8fPJL._SL1500_.jpg" alt="Product 37" onclick="openProductDetail('p37', 'iPhone 16 128 GB: 5G Mobile Phone with Camera Control, A18 Chip and a Big Boost in Battery Life. Works with AirPods; Black', 66990, 8790, 73.34, 'https://m.media-amazon.com/images/I/61135j8fPJL._SL1500_.jpg')" style="cursor: pointer;">
+            <p>iPhone 16 128 GB: 5G Mobile Phone with Camera Control, A18 Chip and a Big Boost in Battery Life. Works with AirPods; Black</p>
+            <p><span class="old-price">₹66990</span> <span class="discount">73.34% Off</span></p>
+            <p class="price">Now ₹8790</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p37', 'iPhone 16 128 GB: 5G Mobile Phone with Camera Control, A18 Chip and a Big Boost in Battery Life. Works with AirPods; Black', 66990, 8790, 73.34, 'https://m.media-amazon.com/images/I/61135j8fPJL._SL1500_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('iPhone 16 128 GB: 5G Mobile Phone with Camera Control, A18 Chip and a Big Boost in Battery Life. Works with AirPods; Black', 8790, 'https://m.media-amazon.com/images/I/61135j8fPJL._SL1500_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/71xb2xkN5qL._SL1500_.jpg" alt="Product 38" onclick="openProductDetail('p38', 'Apple iPhone 13 (128GB) - Blue', 43900, 5390, 81.05, 'https://m.media-amazon.com/images/I/71xb2xkN5qL._SL1500_.jpg')" style="cursor: pointer;">
+            <p>Apple iPhone 13 (128GB) - Blue</p>
+            <p><span class="old-price">₹43900</span> <span class="discount">81.05% Off</span></p>
+            <p class="price">Now ₹5390</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p38', 'Apple iPhone 13 (128GB) - Blue', 43900, 5390, 81.05, 'https://m.media-amazon.com/images/I/71xb2xkN5qL._SL1500_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Apple iPhone 13 (128GB) - Blue', 5390, 'https://m.media-amazon.com/images/I/71xb2xkN5qL._SL1500_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+    </div>
+
+    <div class="product-grid">
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/71eRAMvY25L._SL1500_.jpg" alt="Product 39" onclick="openProductDetail('p39', 'ZEBRONICS Zeb-Juke BAR 9500WS PRO Dolby 5.1 soundbar with Wireless Satellites, Dolby Audio, 525 Watts Output Power, 16.5cm subwoofer, HDMI ARC, Optical, BT v5.0, LED Display, Wall Mount and AUX,Black', 9999, 499, 24, 'https://m.media-amazon.com/images/I/71eRAMvY25L._SL1500_.jpg')" style="cursor: pointer;">
+            <p>ZEBRONICS Zeb-Juke BAR 9500WS PRO Dolby 5.1 soundbar with Wireless Satellites, Dolby Audio, 525 Watts Output Power, 16.5cm subwoofer, HDMI ARC, Optical, BT v5.0, LED Display, Wall Mount and AUX,Black</p>
+            <p><span class="old-price">₹9999</span> <span class="discount">24% Off</span></p>
+            <p class="price">Now ₹499</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p39', 'ZEBRONICS Zeb-Juke BAR 9500WS PRO Dolby 5.1 soundbar with Wireless Satellites, Dolby Audio, 525 Watts Output Power, 16.5cm subwoofer, HDMI ARC, Optical, BT v5.0, LED Display, Wall Mount and AUX,Black', 9999, 499, 24, 'https://m.media-amazon.com/images/I/71eRAMvY25L._SL1500_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('ZEBRONICS Zeb-Juke BAR 9500WS PRO Dolby 5.1 soundbar with Wireless Satellites, Dolby Audio, 525 Watts Output Power, 16.5cm subwoofer, HDMI ARC, Optical, BT v5.0, LED Display, Wall Mount and AUX,Black', 499, 'https://m.media-amazon.com/images/I/71eRAMvY25L._SL1500_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+        <div class="product">
+            <div class="sale-icon hot-deal">🔥 HOT</div>
+            <img src="https://m.media-amazon.com/images/I/714dm8t4VcL._SL1500_.jpg" alt="Product 40" onclick="openProductDetail('p40', 'VW 80 cm (32 inches) Frameless Series HD Ready Android Smart LED TV VW32S', 16999, 3999, 81.05, 'https://m.media-amazon.com/images/I/714dm8t4VcL._SL1500_.jpg')" style="cursor: pointer;">
+            <p>VW 80 cm (32 inches) Frameless Series HD Ready Android Smart LED TV VW32S</p>
+            <p><span class="old-price">₹16999</span> <span class="discount">81.05% Off</span></p>
+            <p class="price">Now ₹3999</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p40', 'VW 80 cm (32 inches) Frameless Series HD Ready Android Smart LED TV VW32S', 16999, 3999, 81.05, 'https://m.media-amazon.com/images/I/714dm8t4VcL._SL1500_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('VW 80 cm (32 inches) Frameless Series HD Ready Android Smart LED TV VW32S', 3999, 'https://m.media-amazon.com/images/I/714dm8t4VcL._SL1500_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+    </div>
+
+    <div class="product-grid">
+        <div class="product">
+            <div class="sale-icon mega-sale">💥 MEGA</div>
+            <img src="https://m.media-amazon.com/images/I/71Ffg6EeNZL._SL1500_.jpg" alt="Product 41" onclick="openProductDetail('p41', 'BLACK+DECKER 109 cm (43 inches) A1 Series 4K Ultra HD LED Smart Google TV BXTVGU43UD2875ATIN (Black)', 45000, 2055, 82.22, 'https://m.media-amazon.com/images/I/71Ffg6EeNZL._SL1500_.jpg')" style="cursor: pointer;">
+            <p>BLACK+DECKER 109 cm (43 inches) A1 Series 4K Ultra HD LED Smart Google TV BXTVGU43UD2875ATIN (Black)</p>
+            <p><span class="old-price">₹45000</span> <span class="discount">82.22% Off</span></p>
+            <p class="price">Now ₹2055</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p41', 'BLACK+DECKER 109 cm (43 inches) A1 Series 4K Ultra HD LED Smart Google TV BXTVGU43UD2875ATIN (Black)', 45000, 2055, 82.22, 'https://m.media-amazon.com/images/I/71Ffg6EeNZL._SL1500_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('BLACK+DECKER 109 cm (43 inches) A1 Series 4K Ultra HD LED Smart Google TV BXTVGU43UD2875ATIN (Black)', 2055, 'https://m.media-amazon.com/images/I/71Ffg6EeNZL._SL1500_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/71oXoIMlfTL._SL1500_.jpg" alt="Product 42" onclick="openProductDetail('p42', 'Redmi Xiaomi 108 cm (43 inch) F Series Ultra HD 4K LED Smart Fire TV L43MA-FVIN', 35000, 2800, 80, 'https://m.media-amazon.com/images/I/71oXoIMlfTL._SL1500_.jpg')" style="cursor: pointer;">
+            <p>Redmi Xiaomi 108 cm (43 inch) F Series Ultra HD 4K LED Smart Fire TV L43MA-FVIN</p>
+            <p><span class="old-price">₹35000</span> <span class="discount">80% Off</span></p>
+            <p class="price">Now ₹2800</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p42', 'Redmi Xiaomi 108 cm (43 inch) F Series Ultra HD 4K LED Smart Fire TV L43MA-FVIN', 35000, 2800, 80, 'https://m.media-amazon.com/images/I/71oXoIMlfTL._SL1500_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Redmi Xiaomi 108 cm (43 inch) F Series Ultra HD 4K LED Smart Fire TV L43MA-FVIN', 2800, 'https://m.media-amazon.com/images/I/71oXoIMlfTL._SL1500_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+    </div>
+
+    <div class="product-grid">
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/81tp-5Qa4JL._SL1500_.jpg" alt="Product 43" onclick="openProductDetail('p43', 'LG 80 cms (32 inches) LR570 Series Smart webOS LED TV 32LR570B6LA', 21240, 4200, 73.64, 'https://m.media-amazon.com/images/I/81tp-5Qa4JL._SL1500_.jpg')" style="cursor: pointer;">
+            <p>LG 80 cms (32 inches) LR570 Series Smart webOS LED TV 32LR570B6LA</p>
+            <p><span class="old-price">₹21240</span> <span class="discount">23.64% Off</span></p>
+            <p class="price">Now ₹4200</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p43', 'LG 80 cms (32 inches) LR570 Series Smart webOS LED TV 32LR570B6LA', 21240, 4200, 73.64, 'https://m.media-amazon.com/images/I/81tp-5Qa4JL._SL1500_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('LG 80 cms (32 inches) LR570 Series Smart webOS LED TV 32LR570B6LA', 4200, 'https://m.media-amazon.com/images/I/81tp-5Qa4JL._SL1500_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/81sldAyi9YL._SL1500_.jpg" alt="Product 44" onclick="openProductDetail('p44', 'Mivi Fort Hip-Hop 4000 400 Watts Cinematic Home Theatre [Latest Launch], 5.1 Channel, Multiple EQ & Input Modes, BT v5.3, Remote Accessibility, Made in India Sound bar', 25000, 599, 24, 'https://m.media-amazon.com/images/I/81sldAyi9YL._SL1500_.jpg')" style="cursor: pointer;">
+            <p>Mivi Fort Hip-Hop 4000 400 Watts Cinematic Home Theatre [Latest Launch], 5.1 Channel, Multiple EQ & Input Modes, BT v5.3, Remote Accessibility, Made in India Sound bar</p>
+            <p><span class="old-price">₹25000</span> <span class="discount">24% Off</span></p>
+            <p class="price">Now ₹599</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p44', 'Mivi Fort Hip-Hop 4000 400 Watts Cinematic Home Theatre [Latest Launch], 5.1 Channel, Multiple EQ & Input Modes, BT v5.3, Remote Accessibility, Made in India Sound bar', 25000, 599, 24, 'https://m.media-amazon.com/images/I/81sldAyi9YL._SL1500_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Mivi Fort Hip-Hop 4000 400 Watts Cinematic Home Theatre [Latest Launch], 5.1 Channel, Multiple EQ & Input Modes, BT v5.3, Remote Accessibility, Made in India Sound bar', 599, 'https://m.media-amazon.com/images/I/81sldAyi9YL._SL1500_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+    </div>
+
+    <div class="product-grid">
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/71+grjVahPL._SL1500_.jpg" alt="Product 45" onclick="openProductDetail('p45', 'Mivi Superbars Nova 780 Watts Dolby Audio Home Theatre Speaker [New Launch], 5.1 Channel with Big Woofer, 3 Built-in + 2 Satellite Speakers, Multiple EQ, Home Theatre 5.1, Made in India Sound Bar', 35000, 899, 20, 'https://m.media-amazon.com/images/I/71+grjVahPL._SL1500_.jpg')" style="cursor: pointer;">
+            <p>Mivi Superbars Nova 780 Watts Dolby Audio Home Theatre Speaker [New Launch], 5.1 Channel with Big Woofer, 3 Built-in + 2 Satellite Speakers, Multiple EQ, Home Theatre 5.1, Made in India Sound Bar</p>
+            <p><span class="old-price">₹35000</span> <span class="discount">20% Off</span></p>
+            <p class="price">Now ₹899</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p45', 'Mivi Superbars Nova 780 Watts Dolby Audio Home Theatre Speaker [New Launch], 5.1 Channel with Big Woofer, 3 Built-in + 2 Satellite Speakers, Multiple EQ, Home Theatre 5.1, Made in India Sound Bar', 35000, 899, 20, 'https://m.media-amazon.com/images/I/71+grjVahPL._SL1500_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Mivi Superbars Nova 780 Watts Dolby Audio Home Theatre Speaker [New Launch], 5.1 Channel with Big Woofer, 3 Built-in + 2 Satellite Speakers, Multiple EQ, Home Theatre 5.1, Made in India Sound Bar', 899, 'https://m.media-amazon.com/images/I/71+grjVahPL._SL1500_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+        <div class="product">
+            <img src="https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/f/b/fb98b11704451_1.jpg?rnd=20200526195200&tr=w-256" alt="Product 46" onclick="openProductDetail('p46', 'CULT Men Strix Running Shoes - Black & Blue UK 6, UK 7, UK 8, UK 9, UK 10 (Confirm Your Order then option to select Size)', 5500, 450, 82.22, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/f/b/fb98b11704451_1.jpg?rnd=20200526195200&tr=w-256')" style="cursor: pointer;">
+            <p>CULT Men Strix Running Shoes - Black & Blue UK 6, UK 7, UK 8, UK 9, UK 10 (Confirm Your Order then option to select Size)</p>
+            <p><span class="old-price">₹5500</span> <span class="discount">82.22% Off</span></p>
+            <p class="price">Now ₹450</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p46', 'CULT Men Strix Running Shoes - Black & Blue UK 6, UK 7, UK 8, UK 9, UK 10 (Confirm Your Order then option to select Size)', 5500, 450, 82.22, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/f/b/fb98b11704451_1.jpg?rnd=20200526195200&tr=w-256')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('CULT Men Strix Running Shoes - Black & Blue UK 6, UK 7, UK 8, UK 9, UK 10 (Confirm Your Order then option to select Size)', 450, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/f/b/fb98b11704451_1.jpg?rnd=20200526195200&tr=w-256')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+    </div>
+
+    <div class="product-grid">
+        <div class="product">
+            <div class="sale-icon hot-deal">🔥 HOT</div>
+            <img src="https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/c/4/c40540aRCULTS00014197_1.jpg?rnd=20200526195200&tr=w-256" alt="Product 47" onclick="openProductDetail('p47', 'CULT Mens TurboTrail Trekking Shoes - Grey UK 6, UK 7, UK 8, UK 9, UK 10 (Confirm Your Order then option to select Size)', 6500, 350, 79.17, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/c/4/c40540aRCULTS00014197_1.jpg?rnd=20200526195200&tr=w-256')" style="cursor: pointer;">
+            <p>CULT Mens TurboTrail Trekking Shoes - Grey UK 6, UK 7, UK 8, UK 9, UK 10 (Confirm Your Order then option to select Size)</p>
+            <p><span class="old-price">₹6500</span> <span class="discount">79.17% Off</span></p>
+            <p class="price">Now ₹350</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p47', 'CULT Mens TurboTrail Trekking Shoes - Grey UK 6, UK 7, UK 8, UK 9, UK 10 (Confirm Your Order then option to select Size)', 6500, 350, 79.17, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/c/4/c40540aRCULTS00014197_1.jpg?rnd=20200526195200&tr=w-256')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('CULT Mens TurboTrail Trekking Shoes - Grey UK 6, UK 7, UK 8, UK 9, UK 10 (Confirm Your Order then option to select Size)', 350, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/c/4/c40540aRCULTS00014197_1.jpg?rnd=20200526195200&tr=w-256')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+        <div class="product">
+            <div class="sale-icon flash-sale">⚡ FLASH</div>
+            <img src="https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/0/0/007e669ADIAA00037938_2.jpg?rnd=20200526195200&tr=w-256" alt="Product 48" onclick="openProductDetail('p48', 'ADIDAS Originals Ownthegame 3.0 Men White Basketball Shoes UK 6, UK 7, UK 8, UK 9, UK 10 (Confirm Your Order then option to select Size)', 6599, 499, 76.67, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/0/0/007e669ADIAA00037938_2.jpg?rnd=20200526195200&tr=w-256')" style="cursor: pointer;">
+            <p>ADIDAS Originals Ownthegame 3.0 Men White Basketball Shoes UK 6, UK 7, UK 8, UK 9, UK 10 (Confirm Your Order then option to select Size)</p>
+            <p><span class="old-price">₹6599</span> <span class="discount">76.67% Off</span></p>
+            <p class="price">Now ₹499</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p48', 'ADIDAS Originals Ownthegame 3.0 Men White Basketball Shoes UK 6, UK 7, UK 8, UK 9, UK 10 (Confirm Your Order then option to select Size)', 6599, 499, 76.67, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/0/0/007e669ADIAA00037938_2.jpg?rnd=20200526195200&tr=w-256')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('ADIDAS Originals Ownthegame 3.0 Men White Basketball Shoes UK 6, UK 7, UK 8, UK 9, UK 10 (Confirm Your Order then option to select Size)', 499, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/0/0/007e669ADIAA00037938_2.jpg?rnd=20200526195200&tr=w-256')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+    </div>
+
+    <div class="product-grid">
+        <div class="product">
+            <img src="https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/9/c/9c55557MFTW00100GREY_1.jpg?rnd=20200526195200&tr=w-256" alt="Product 49" onclick="openProductDetail('p49', 'Cantabil Men Grey Solid Casual Running Shoes UK 6, UK 7, UK 8, UK 9, UK 10 (Confirm Your Order then option to select Size)', 3299, 410, 81.76, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/9/c/9c55557MFTW00100GREY_1.jpg?rnd=20200526195200&tr=w-256')" style="cursor: pointer;">
+            <p>Cantabil Men Grey Solid Casual Running Shoes UK 6, UK 7, UK 8, UK 9, UK 10 (Confirm Your Order then option to select Size)</p>
+            <p><span class="old-price">₹3299</span> <span class="discount">81.76% Off</span></p>
+            <p class="price">Now ₹410</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p49', 'Cantabil Men Grey Solid Casual Running Shoes UK 6, UK 7, UK 8, UK 9, UK 10 (Confirm Your Order then option to select Size)', 3299, 410, 81.76, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/9/c/9c55557MFTW00100GREY_1.jpg?rnd=20200526195200&tr=w-256')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Cantabil Men Grey Solid Casual Running Shoes UK 6, UK 7, UK 8, UK 9, UK 10 (Confirm Your Order then option to select Size)', 410, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/9/c/9c55557MFTW00100GREY_1.jpg?rnd=20200526195200&tr=w-256')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+        <div class="product">
+            <img src="https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/6/3/6366a03RMSORA3442_1.jpg?rnd=20200526195200&tr=w-256" alt="Product 50" onclick="openProductDetail('p50', 'Reebok Men Grey Lace-Ups Running Shoes UK 6, UK 7, UK 8, UK 9, UK 10 (Confirm Your Order then option to select Size)', 5599, 280, 82.5, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/6/3/6366a03RMSORA3442_1.jpg?rnd=20200526195200&tr=w-256')" style="cursor: pointer;">
+            <p>Reebok Men Grey Lace-Ups Running Shoes UK 6, UK 7, UK 8, UK 9, UK 10 (Confirm Your Order then option to select Size)</p>
+            <p><span class="old-price">₹5599</span> <span class="discount">82.5% Off</span></p>
+            <p class="price">Now ₹280</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p50', 'Reebok Men Grey Lace-Ups Running Shoes UK 6, UK 7, UK 8, UK 9, UK 10 (Confirm Your Order then option to select Size)', 5599, 280, 82.5, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/6/3/6366a03RMSORA3442_1.jpg?rnd=20200526195200&tr=w-256')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Reebok Men Grey Lace-Ups Running Shoes UK 6, UK 7, UK 8, UK 9, UK 10 (Confirm Your Order then option to select Size)', 280, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/6/3/6366a03RMSORA3442_1.jpg?rnd=20200526195200&tr=w-256')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+    </div>
+
+    <div class="product-grid">
+        <div class="product">
+            <img src="https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/f/4/f40d221NEPTUNE1EWhite_1.jpg?rnd=20200526195200&tr=w-256" alt="Product 51" onclick="openProductDetail('p51', 'LIBERTY Leap7x NEPTUNE-1E White Sports Running Shoes for Men UK 6, UK 7, UK 8, UK 9, UK 10 (Confirm Your Order then option to select Size)', 2899, 305, 76.67, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/f/4/f40d221NEPTUNE1EWhite_1.jpg?rnd=20200526195200&tr=w-256')" style="cursor: pointer;">
+            <p>LIBERTY Leap7x NEPTUNE-1E White Sports Running Shoes for Men UK 6, UK 7, UK 8, UK 9, UK 10 (Confirm Your Order then option to select Size)</p>
+            <p><span class="old-price">₹2899</span> <span class="discount">76.67% Off</span></p>
+            <p class="price">Now ₹305</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p51', 'LIBERTY Leap7x NEPTUNE-1E White Sports Running Shoes for Men UK 6, UK 7, UK 8, UK 9, UK 10 (Confirm Your Order then option to select Size)', 2899, 305, 76.67, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/f/4/f40d221NEPTUNE1EWhite_1.jpg?rnd=20200526195200&tr=w-256')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('LIBERTY Leap7x NEPTUNE-1E White Sports Running Shoes for Men UK 6, UK 7, UK 8, UK 9, UK 10 (Confirm Your Order then option to select Size)', 305, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/f/4/f40d221NEPTUNE1EWhite_1.jpg?rnd=20200526195200&tr=w-256')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+        <div class="product">
+            <img src="https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/d/6/d67fda7SSREDTA00038824_1.jpg?rnd=20200526195200&tr=w-256" alt="Product 52" onclick="openProductDetail('p52', 'Red Tape Men Textured White and Grey Athleisure Sports Shoes UK 6, UK 7, UK 8, UK 9, UK 10 (Confirm Your Order then option to select Size)', 8199, 399, 86.67, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/d/6/d67fda7SSREDTA00038824_1.jpg?rnd=20200526195200&tr=w-256')" style="cursor: pointer;">
+            <p>Red Tape Men Textured White and Grey Athleisure Sports Shoes UK 6, UK 7, UK 8, UK 9, UK 10 (Confirm Your Order then option to select Size)</p>
+            <p><span class="old-price">₹8199</span> <span class="discount">86.67% Off</span></p>
+            <p class="price">Now ₹399</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p52', 'Red Tape Men Textured White and Grey Athleisure Sports Shoes UK 6, UK 7, UK 8, UK 9, UK 10 (Confirm Your Order then option to select Size)', 8199, 399, 86.67, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/d/6/d67fda7SSREDTA00038824_1.jpg?rnd=20200526195200&tr=w-256')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Red Tape Men Textured White and Grey Athleisure Sports Shoes UK 6, UK 7, UK 8, UK 9, UK 10 (Confirm Your Order then option to select Size)', 399, 'https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/d/6/d67fda7SSREDTA00038824_1.jpg?rnd=20200526195200&tr=w-256')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+    </div>
+
+    <div class="product-grid">
+        <div class="product">
+            <div class="sale-icon">🏷️ SALE</div>
+            <img src="https://m.media-amazon.com/images/I/81vocY5Ix0L._SL1500_.jpg" alt="Product 53" onclick="openProductDetail('p53', 'Lenovo Idea Tab Smartchoice |11 inch Display, 2.5K Resolution, 90Hz Refresh|8GB RAM, 256GB ROM| MediaTek Dimensity 6300| 7040mAh|4 Speakers| USB-C |Wi-Fi | Luna Grey', 24000, 1682, 82, 'https://m.media-amazon.com/images/I/81vocY5Ix0L._SL1500_.jpg')" style="cursor: pointer;">
+            <p>Lenovo Idea Tab Smartchoice |11 inch Display, 2.5K Resolution, 90Hz Refresh|8GB RAM, 256GB ROM| MediaTek Dimensity 6300| 7040mAh|4 Speakers| USB-C |Wi-Fi | Luna Grey</p>
+            <p><span class="old-price">₹24000</span> <span class="discount">82% Off</span></p>
+            <p class="price">Now ₹1682</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p53', 'Lenovo Idea Tab Smartchoice |11 inch Display, 2.5K Resolution, 90Hz Refresh|8GB RAM, 256GB ROM| MediaTek Dimensity 6300| 7040mAh|4 Speakers| USB-C |Wi-Fi | Luna Grey', 24000, 1682, 82, 'https://m.media-amazon.com/images/I/81vocY5Ix0L._SL1500_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Lenovo Idea Tab Smartchoice |11 inch Display, 2.5K Resolution, 90Hz Refresh|8GB RAM, 256GB ROM| MediaTek Dimensity 6300| 7040mAh|4 Speakers| USB-C |Wi-Fi | Luna Grey', 1682, 'https://m.media-amazon.com/images/I/81vocY5Ix0L._SL1500_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/51oj5gE7P+L._SL1500_.jpg" alt="Product 54" onclick="openProductDetail('p54', 'OnePlus Pad Go 28.85Cm 2.4K 7:5 Ratio Readfit Eye Care LCD Display, Dolby Atmos Quad Speakers, Wi-Fi Connectivity Tablet, 8GB RAM 128 GB Storage Expandable Up-to 1TB Asin, Green', 19999, 2740, 80.53, 'https://m.media-amazon.com/images/I/51oj5gE7P+L._SL1500_.jpg')" style="cursor: pointer;">
+            <p>OnePlus Pad Go 28.85Cm 2.4K 7:5 Ratio Readfit Eye Care LCD Display, Dolby Atmos Quad Speakers, Wi-Fi Connectivity Tablet, 8GB RAM 128 GB Storage Expandable Up-to 1TB Asin, Green</p>
+            <p><span class="old-price">₹19999</span> <span class="discount">80.53% Off</span></p>
+            <p class="price">Now ₹2740</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p54', 'OnePlus Pad Go 28.85Cm 2.4K 7:5 Ratio Readfit Eye Care LCD Display, Dolby Atmos Quad Speakers, Wi-Fi Connectivity Tablet, 8GB RAM 128 GB Storage Expandable Up-to 1TB Asin, Green', 19999, 2740, 80.53, 'https://m.media-amazon.com/images/I/51oj5gE7P+L._SL1500_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('OnePlus Pad Go 28.85Cm 2.4K 7:5 Ratio Readfit Eye Care LCD Display, Dolby Atmos Quad Speakers, Wi-Fi Connectivity Tablet, 8GB RAM 128 GB Storage Expandable Up-to 1TB Asin, Green', 2740, 'https://m.media-amazon.com/images/I/51oj5gE7P+L._SL1500_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+    </div>
+
+    <div class="product-grid">
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/61ZEkMXevXL._SL1080_.jpg" alt="Product 55" onclick="openProductDetail('p55', 'Lenovo Tab Plus with Octa JBL Hi-Fi Speakers| 8 GB RAM, 128 GB ROM| 11.5 Inch, 2K, 90 Hz Refresh| Wi-Fi Tablet| Android 14| 45 W Fast Charger| Built-in Kickstand| Color: Luna Grey', 32000, 750, 86.67, 'https://m.media-amazon.com/images/I/61ZEkMXevXL._SL1080_.jpg')" style="cursor: pointer;">
+            <p>Lenovo Tab Plus with Octa JBL Hi-Fi Speakers| 8 GB RAM, 128 GB ROM| 11.5 Inch, 2K, 90 Hz Refresh| Wi-Fi Tablet| Android 14| 45 W Fast Charger| Built-in Kickstand| Color: Luna Grey</p>
+            <p><span class="old-price">₹32000</span> <span class="discount">86.67% Off</span></p>
+            <p class="price">Now ₹750</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p55', 'Lenovo Tab Plus with Octa JBL Hi-Fi Speakers| 8 GB RAM, 128 GB ROM| 11.5 Inch, 2K, 90 Hz Refresh| Wi-Fi Tablet| Android 14| 45 W Fast Charger| Built-in Kickstand| Color: Luna Grey', 32000, 750, 86.67, 'https://m.media-amazon.com/images/I/61ZEkMXevXL._SL1080_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Lenovo Tab Plus with Octa JBL Hi-Fi Speakers| 8 GB RAM, 128 GB ROM| 11.5 Inch, 2K, 90 Hz Refresh| Wi-Fi Tablet| Android 14| 45 W Fast Charger| Built-in Kickstand| Color: Luna Grey', 750, 'https://m.media-amazon.com/images/I/61ZEkMXevXL._SL1080_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/71ajrL7sHNL._SL1500_.jpg" alt="Product 56" onclick="openProductDetail('p56', 'Samsung Galaxy Tab S9, S Pen in-Box, 27.81 cm (11 inch) Dynamic AMOLED 2X Display, RAM 8 GB, ROM 128 GB Expandable, Wi-Fi Tablet, Gray', 39999, 1800, 88, 'https://m.media-amazon.com/images/I/71ajrL7sHNL._SL1500_.jpg')" style="cursor: pointer;">
+            <p>Samsung Galaxy Tab S9, S Pen in-Box, 27.81 cm (11 inch) Dynamic AMOLED 2X Display, RAM 8 GB, ROM 128 GB Expandable, Wi-Fi Tablet, Gray</p>
+            <p><span class="old-price">₹39999</span> <span class="discount">88% Off</span></p>
+            <p class="price">Now ₹1800</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p56', 'Samsung Galaxy Tab S9, S Pen in-Box, 27.81 cm (11 inch) Dynamic AMOLED 2X Display, RAM 8 GB, ROM 128 GB Expandable, Wi-Fi Tablet, Gray', 39999, 1800, 88, 'https://m.media-amazon.com/images/I/71ajrL7sHNL._SL1500_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Samsung Galaxy Tab S9, S Pen in-Box, 27.81 cm (11 inch) Dynamic AMOLED 2X Display, RAM 8 GB, ROM 128 GB Expandable, Wi-Fi Tablet, Gray', 1800, 'https://m.media-amazon.com/images/I/71ajrL7sHNL._SL1500_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+    </div>
+
+    <div class="product-grid">
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/71uC-SeFZkL._SL1500_.jpg" alt="Product 57" onclick="openProductDetail('p57', 'Apple iPad Air 11 inch with M3 chip: Built for Apple Intelligence, Liquid Retina Display, 128GB, 12MP Front/Back Camera, Wi-Fi 6E, Touch ID, All-Day Battery Life — Blue', 47999, 2500, 81.25, 'https://m.media-amazon.com/images/I/71uC-SeFZkL._SL1500_.jpg')" style="cursor: pointer;">
+            <p>Apple iPad Air 11 inch with M3 chip: Built for Apple Intelligence, Liquid Retina Display, 128GB, 12MP Front/Back Camera, Wi-Fi 6E, Touch ID, All-Day Battery Life — Blue</p>
+            <p><span class="old-price">₹47999</span> <span class="discount">81.25% Off</span></p>
+            <p class="price">Now ₹2500</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p57', 'Apple iPad Air 11 inch with M3 chip: Built for Apple Intelligence, Liquid Retina Display, 128GB, 12MP Front/Back Camera, Wi-Fi 6E, Touch ID, All-Day Battery Life — Blue', 47999, 2500, 81.25, 'https://m.media-amazon.com/images/I/71uC-SeFZkL._SL1500_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Apple iPad Air 11 inch with M3 chip: Built for Apple Intelligence, Liquid Retina Display, 128GB, 12MP Front/Back Camera, Wi-Fi 6E, Touch ID, All-Day Battery Life — Blue', 2500, 'https://m.media-amazon.com/images/I/71uC-SeFZkL._SL1500_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/71jWCM3KVYL._SL1500_.jpg" alt="Product 58" onclick="openProductDetail('p58', 'Apple iPad Air 11 inch with M3 chip: Built for Apple Intelligence, Liquid Retina Display, 128GB, 12MP Front/Back Camera, Wi-Fi 6E, Touch ID, All-Day Battery Life — Space Gray', 48999, 2950, 79.17, 'https://m.media-amazon.com/images/I/71jWCM3KVYL._SL1500_.jpg')" style="cursor: pointer;">
+            <p>Apple iPad Air 11 inch with M3 chip: Built for Apple Intelligence, Liquid Retina Display, 128GB, 12MP Front/Back Camera, Wi-Fi 6E, Touch ID, All-Day Battery Life — Space Gray</p>
+            <p><span class="old-price">₹48999</span> <span class="discount">79.17% Off</span></p>
+            <p class="price">Now ₹2950</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p58', 'Apple iPad Air 11 inch with M3 chip: Built for Apple Intelligence, Liquid Retina Display, 128GB, 12MP Front/Back Camera, Wi-Fi 6E, Touch ID, All-Day Battery Life — Space Gray', 48999, 2950, 79.17, 'https://m.media-amazon.com/images/I/71jWCM3KVYL._SL1500_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Apple iPad Air 11 inch with M3 chip: Built for Apple Intelligence, Liquid Retina Display, 128GB, 12MP Front/Back Camera, Wi-Fi 6E, Touch ID, All-Day Battery Life — Space Gray', 2950, 'https://m.media-amazon.com/images/I/71jWCM3KVYL._SL1500_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+    </div>
+
+    <div class="product-grid">
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/51BvSDzVMmL._SX679_.jpg" alt="Product 59" onclick="openProductDetail('p59', 'Havells Comforter 2000 Watt Room Heater with Overheat Protection| Easy to Carry for Bedroom and Office| Adjustable Thermostat Control Knob & Adjustable Vent for Air Delivery (White and Black)', 5045, 590, 78.57, 'https://m.media-amazon.com/images/I/51BvSDzVMmL._SX679_.jpg')" style="cursor: pointer;">
+            <p>Havells Comforter 2000 Watt Room Heater with Overheat Protection| Easy to Carry for Bedroom and Office| Adjustable Thermostat Control Knob & Adjustable Vent for Air Delivery (White and Black)</p>
+            <p><span class="old-price">₹5045</span> <span class="discount">78.57% Off</span></p>
+            <p class="price">Now ₹590</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p59', 'Havells Comforter 2000 Watt Room Heater with Overheat Protection| Easy to Carry for Bedroom and Office| Adjustable Thermostat Control Knob & Adjustable Vent for Air Delivery (White and Black)', 5045, 590, 78.57, 'https://m.media-amazon.com/images/I/51BvSDzVMmL._SX679_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Havells Comforter 2000 Watt Room Heater with Overheat Protection| Easy to Carry for Bedroom and Office| Adjustable Thermostat Control Knob & Adjustable Vent for Air Delivery (White and Black)', 590, 'https://m.media-amazon.com/images/I/51BvSDzVMmL._SX679_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/71NVBFMxWrL._SL1500_.jpg" alt="Product 60" onclick="openProductDetail('p60', 'Havells 13 Fin Hestio Straight Fin OFR (Oil Filled Radiator)|Room Heater|2900 W|3 Heat Settings & PTC Fan Heater|Inclined Control Panel|Retractable Wheels| Comfortable Breathing|360° Heating (Black)', 11470, 1099, 77.78, 'https://m.media-amazon.com/images/I/71NVBFMxWrL._SL1500_.jpg')" style="cursor: pointer;">
+            <p>Havells 13 Fin Hestio Straight Fin OFR (Oil Filled Radiator)|Room Heater|2900 W|3 Heat Settings & PTC Fan Heater|Inclined Control Panel|Retractable Wheels| Comfortable Breathing|360° Heating (Black)</p>
+            <p><span class="old-price">₹11470</span> <span class="discount">77.78% Off</span></p>
+            <p class="price">Now ₹1099</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p60', 'Havells 13 Fin Hestio Straight Fin OFR (Oil Filled Radiator)|Room Heater|2900 W|3 Heat Settings & PTC Fan Heater|Inclined Control Panel|Retractable Wheels| Comfortable Breathing|360° Heating (Black)', 11470, 1099, 77.78, 'https://m.media-amazon.com/images/I/71NVBFMxWrL._SL1500_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Havells 13 Fin Hestio Straight Fin OFR (Oil Filled Radiator)|Room Heater|2900 W|3 Heat Settings & PTC Fan Heater|Inclined Control Panel|Retractable Wheels| Comfortable Breathing|360° Heating (Black)', 1099, 'https://m.media-amazon.com/images/I/71NVBFMxWrL._SL1500_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+    </div>
+
+    <div class="product-grid">
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/51aTNvcPutL._SL1200_.jpg" alt="Product 61" onclick="openProductDetail('p61', 'Havells Cista Room Heater, White, 2000 Watts', 3745, 499, 88, 'https://m.media-amazon.com/images/I/51aTNvcPutL._SL1200_.jpg')" style="cursor: pointer;">
+            <p>Havells Cista Room Heater, White, 2000 Watts</p>
+            <p><span class="old-price">₹3745</span> <span class="discount">88% Off</span></p>
+            <p class="price">Now ₹499</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p61', 'Havells Cista Room Heater, White, 2000 Watts', 3745, 499, 88, 'https://m.media-amazon.com/images/I/51aTNvcPutL._SL1200_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Havells Cista Room Heater, White, 2000 Watts', 499, 'https://m.media-amazon.com/images/I/51aTNvcPutL._SL1200_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/610kWkbDPVL._SL1500_.jpg" alt="Product 62" onclick="openProductDetail('p62', 'Lifelong 2000 Watt Room Heater for Home with 3 Air Setting & ISI Certified, Portable Electric Blower Heater, Room Heater for Bedroom & Office - 1 Year Manufacturer', 2000, 399, 76.67, 'https://m.media-amazon.com/images/I/610kWkbDPVL._SL1500_.jpg')" style="cursor: pointer;">
+            <p>Lifelong 2000 Watt Room Heater for Home with 3 Air Setting & ISI Certified, Portable Electric Blower Heater, Room Heater for Bedroom & Office - 1 Year Manufacturer's Warranty (LLFH921, White)</p>
+            <p><span class="old-price">₹2000</span> <span class="discount">76.67% Off</span></p>
+            <p class="price">Now ₹399</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p62', 'Lifelong 2000 Watt Room Heater for Home with 3 Air Setting & ISI Certified, Portable Electric Blower Heater, Room Heater for Bedroom & Office - 1 Year Manufacturer', 2000, 399, 76.67, 'https://m.media-amazon.com/images/I/610kWkbDPVL._SL1500_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Lifelong 2000 Watt Room Heater for Home with 3 Air Setting & ISI Certified, Portable Electric Blower Heater, Room Heater for Bedroom & Office - 1 Year Manufacturer', 399, 'https://m.media-amazon.com/images/I/610kWkbDPVL._SL1500_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+    </div>
+
+    <div class="product-grid">
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/7150goXR18L._SL1500_.jpg" alt="Product 63" onclick="openProductDetail('p63', 'Vinod Kitchen in The Box 25-Piece Stainless Steel Cookware Combo Set | Induction & Gas Stove Friendly | Dishwasher Safe, Stackable, Durable | Essential for Indian Cooking | 2-Year Warranty', 13800, 550, 81.25, 'https://m.media-amazon.com/images/I/7150goXR18L._SL1500_.jpg')" style="cursor: pointer;">
+            <p>Vinod Kitchen in The Box 25-Piece Stainless Steel Cookware Combo Set | Induction & Gas Stove Friendly | Dishwasher Safe, Stackable, Durable | Essential for Indian Cooking | 2-Year Warranty</p>
+            <p><span class="old-price">₹13800</span> <span class="discount">81.25% Off</span></p>
+            <p class="price">Now ₹550</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p63', 'Vinod Kitchen in The Box 25-Piece Stainless Steel Cookware Combo Set | Induction & Gas Stove Friendly | Dishwasher Safe, Stackable, Durable | Essential for Indian Cooking | 2-Year Warranty', 13800, 550, 81.25, 'https://m.media-amazon.com/images/I/7150goXR18L._SL1500_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Vinod Kitchen in The Box 25-Piece Stainless Steel Cookware Combo Set | Induction & Gas Stove Friendly | Dishwasher Safe, Stackable, Durable | Essential for Indian Cooking | 2-Year Warranty', 550, 'https://m.media-amazon.com/images/I/7150goXR18L._SL1500_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/617HY1XHWZL._SL1500_.jpg" alt="Product 64" onclick="openProductDetail('p64', 'Vinod Classique Deluxe 7-Piece Stainless Steel Cookware Set | 1.8 L Kadai, 2.1 L Saucepan, 3.8 L Saucepot, 20 cm Frypan with 3 Lid | Heavy Bottom Induction Combo, Healthy Cooking Pans for Kitchen', 4465, 499, 77.27, 'https://m.media-amazon.com/images/I/617HY1XHWZL._SL1500_.jpg')" style="cursor: pointer;">
+            <p>Vinod Classique Deluxe 7-Piece Stainless Steel Cookware Set | 1.8 L Kadai, 2.1 L Saucepan, 3.8 L Saucepot, 20 cm Frypan with 3 Lid | Heavy Bottom Induction Combo, Healthy Cooking Pans for Kitchen</p>
+            <p><span class="old-price">₹4465</span> <span class="discount">77.27% Off</span></p>
+            <p class="price">Now ₹499</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p64', 'Vinod Classique Deluxe 7-Piece Stainless Steel Cookware Set | 1.8 L Kadai, 2.1 L Saucepan, 3.8 L Saucepot, 20 cm Frypan with 3 Lid | Heavy Bottom Induction Combo, Healthy Cooking Pans for Kitchen', 4465, 499, 77.27, 'https://m.media-amazon.com/images/I/617HY1XHWZL._SL1500_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Vinod Classique Deluxe 7-Piece Stainless Steel Cookware Set | 1.8 L Kadai, 2.1 L Saucepan, 3.8 L Saucepot, 20 cm Frypan with 3 Lid | Heavy Bottom Induction Combo, Healthy Cooking Pans for Kitchen', 499, 'https://m.media-amazon.com/images/I/617HY1XHWZL._SL1500_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+    </div>
+
+    <div class="product-grid">
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/71oZ1-QYomL._SL1500_.jpg" alt="Product 65" onclick="openProductDetail('p65', 'Aluminum Non-Stick 15 Piece Cookware Set | 2-Way 3 Layer Non-Stick Coating | PFOA Free | High Temperature Resistant Exterior Coating, Black', 6299, 6299, 77.78, 'https://m.media-amazon.com/images/I/71oZ1-QYomL._SL1500_.jpg')" style="cursor: pointer;">
+            <p>Aluminum Non-Stick 15 Piece Cookware Set | 2-Way 3 Layer Non-Stick Coating | PFOA Free | High Temperature Resistant Exterior Coating, Black</p>
+            <p><span class="old-price">₹6299</span> <span class="discount">77.78% Off</span></p>
+            <p class="price">Now ₹6299</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p65', 'Aluminum Non-Stick 15 Piece Cookware Set | 2-Way 3 Layer Non-Stick Coating | PFOA Free | High Temperature Resistant Exterior Coating, Black', 6299, 6299, 77.78, 'https://m.media-amazon.com/images/I/71oZ1-QYomL._SL1500_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Aluminum Non-Stick 15 Piece Cookware Set | 2-Way 3 Layer Non-Stick Coating | PFOA Free | High Temperature Resistant Exterior Coating, Black', 6299, 'https://m.media-amazon.com/images/I/71oZ1-QYomL._SL1500_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/715L3WOq4JL._SL1500_.jpg" alt="Product 66" onclick="openProductDetail('p66', 'Philips Viva Collection HD4928/01 2100-Watt Induction Cooktop, Soft Touch Button with Crystal Glass (Black)', 5995, 499, 78.57, 'https://m.media-amazon.com/images/I/715L3WOq4JL._SL1500_.jpg')" style="cursor: pointer;">
+            <p>Philips Viva Collection HD4928/01 2100-Watt Induction Cooktop, Soft Touch Button with Crystal Glass (Black)</p>
+            <p><span class="old-price">₹5995</span> <span class="discount">78.57% Off</span></p>
+            <p class="price">Now ₹499</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p66', 'Philips Viva Collection HD4928/01 2100-Watt Induction Cooktop, Soft Touch Button with Crystal Glass (Black)', 5995, 499, 78.57, 'https://m.media-amazon.com/images/I/715L3WOq4JL._SL1500_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Philips Viva Collection HD4928/01 2100-Watt Induction Cooktop, Soft Touch Button with Crystal Glass (Black)', 499, 'https://m.media-amazon.com/images/I/715L3WOq4JL._SL1500_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+    </div>
+
+    <div class="product-grid">
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/51WziON4PZL._SL1500_.jpg" alt="Product 67" onclick="openProductDetail('p67', 'V-Guard VIC 2.0 BRE Induction Cooktop| 2000-Watt Electric Induction with up to 5 kV Surge Protection | 3-Year Coil Coverage by V-Guard | Push Button Control | Auto-Cut off | A-Grade Crystalline Glass', 4999, 458, 76.67, 'https://m.media-amazon.com/images/I/51WziON4PZL._SL1500_.jpg')" style="cursor: pointer;">
+            <p>V-Guard VIC 2.0 BRE Induction Cooktop| 2000-Watt Electric Induction with up to 5 kV Surge Protection | 3-Year Coil Coverage by V-Guard | Push Button Control | Auto-Cut off | A-Grade Crystalline Glass</p>
+            <p><span class="old-price">₹4999</span> <span class="discount">76.67% Off</span></p>
+            <p class="price">Now ₹458</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p67', 'V-Guard VIC 2.0 BRE Induction Cooktop| 2000-Watt Electric Induction with up to 5 kV Surge Protection | 3-Year Coil Coverage by V-Guard | Push Button Control | Auto-Cut off | A-Grade Crystalline Glass', 4999, 458, 76.67, 'https://m.media-amazon.com/images/I/51WziON4PZL._SL1500_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('V-Guard VIC 2.0 BRE Induction Cooktop| 2000-Watt Electric Induction with up to 5 kV Surge Protection | 3-Year Coil Coverage by V-Guard | Push Button Control | Auto-Cut off | A-Grade Crystalline Glass', 458, 'https://m.media-amazon.com/images/I/51WziON4PZL._SL1500_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+        <div class="product">
+            <div class="sale-icon flash-sale">⚡ FLASH</div>
+            <img src="https://m.media-amazon.com/images/I/813A7QKDBRL._SL1500_.jpg" alt="Product 68" onclick="openProductDetail('p68', 'Noise Pro 6 Max Smart Watch:Intelligent with Noise AI, Endless AI Watch Faces, AI Companion, 1.96 inch AMOLED, Stainless Steel Build, Built-in GPS, 5 ATM, EN2 Processor, for iOS & Android(Chrome Black)', 10999, 343, 28, 'https://m.media-amazon.com/images/I/813A7QKDBRL._SL1500_.jpg')" style="cursor: pointer;">
+            <p>Noise Pro 6 Max Smart Watch:Intelligent with Noise AI, Endless AI Watch Faces, AI Companion, 1.96 inch AMOLED, Stainless Steel Build, Built-in GPS, 5 ATM, EN2 Processor, for iOS & Android(Chrome Black)</p>
+            <p><span class="old-price">₹10999</span> <span class="discount">28% Off</span></p>
+            <p class="price">Now ₹343</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p68', 'Noise Pro 6 Max Smart Watch:Intelligent with Noise AI, Endless AI Watch Faces, AI Companion, 1.96 inch AMOLED, Stainless Steel Build, Built-in GPS, 5 ATM, EN2 Processor, for iOS & Android(Chrome Black)', 10999, 343, 28, 'https://m.media-amazon.com/images/I/813A7QKDBRL._SL1500_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Noise Pro 6 Max Smart Watch:Intelligent with Noise AI, Endless AI Watch Faces, AI Companion, 1.96 inch AMOLED, Stainless Steel Build, Built-in GPS, 5 ATM, EN2 Processor, for iOS & Android(Chrome Black)', 343, 'https://m.media-amazon.com/images/I/813A7QKDBRL._SL1500_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+    </div>
+
+    <div class="product-grid">
+        <div class="product">
+            <div class="sale-icon hot-deal">🔥 HOT</div>
+            <img src="https://m.media-amazon.com/images/I/71d7quY-KxL._SL1500_.jpg" alt="Product 69" onclick="openProductDetail('p69', 'Samsung Galaxy Watch 7 (44mm, Silver, BT+LTE) with 3nm Processor | Dual GPS | Sapphire Glass & Armour Aluminum | 5ATM & IP68 | HR, SpO2, BP & ECG Monitor', 39999, 499, 81.75, 'https://m.media-amazon.com/images/I/71d7quY-KxL._SL1500_.jpg')" style="cursor: pointer;">
+            <p>Samsung Galaxy Watch 7 (44mm, Silver, BT+LTE) with 3nm Processor | Dual GPS | Sapphire Glass & Armour Aluminum | 5ATM & IP68 | HR, SpO2, BP & ECG Monitor</p>
+            <p><span class="old-price">₹39999</span> <span class="discount">81.78% Off</span></p>
+            <p class="price">Now ₹499</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p69', 'Samsung Galaxy Watch 7 (44mm, Silver, BT+LTE) with 3nm Processor | Dual GPS | Sapphire Glass & Armour Aluminum | 5ATM & IP68 | HR, SpO2, BP & ECG Monitor', 39999, 499, 81.75, 'https://m.media-amazon.com/images/I/71d7quY-KxL._SL1500_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('Samsung Galaxy Watch 7 (44mm, Silver, BT+LTE) with 3nm Processor | Dual GPS | Sapphire Glass & Armour Aluminum | 5ATM & IP68 | HR, SpO2, BP & ECG Monitor', 499, 'https://m.media-amazon.com/images/I/71d7quY-KxL._SL1500_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/51LxiMjx3XL._SL1500_.jpg" alt="Product 70" onclick="openProductDetail('p70', 'OnePlus Buds 3 TWS in Ear Earbuds with Upto 49dB Smart Adaptive Noise Cancellation,Hi-Res Sound Quality,Sliding Volume Control,10mins for 7Hours Fast Charging with Upto 44Hrs Playback (Splendid Blue)', 5499, 359, 79.17, 'https://m.media-amazon.com/images/I/51LxiMjx3XL._SL1500_.jpg')" style="cursor: pointer;">
+            <p>OnePlus Buds 3 TWS in Ear Earbuds with Upto 49dB Smart Adaptive Noise Cancellation,Hi-Res Sound Quality,Sliding Volume Control,10mins for 7Hours Fast Charging with Upto 44Hrs Playback (Splendid Blue)</p>
+            <p><span class="old-price">₹5499</span> <span class="discount">79.17% Off</span></p>
+            <p class="price">Now ₹359</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p70', 'OnePlus Buds 3 TWS in Ear Earbuds with Upto 49dB Smart Adaptive Noise Cancellation,Hi-Res Sound Quality,Sliding Volume Control,10mins for 7Hours Fast Charging with Upto 44Hrs Playback (Splendid Blue)', 5499, 359, 79.17, 'https://m.media-amazon.com/images/I/51LxiMjx3XL._SL1500_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('OnePlus Buds 3 TWS in Ear Earbuds with Upto 49dB Smart Adaptive Noise Cancellation,Hi-Res Sound Quality,Sliding Volume Control,10mins for 7Hours Fast Charging with Upto 44Hrs Playback (Splendid Blue)', 359, 'https://m.media-amazon.com/images/I/51LxiMjx3XL._SL1500_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+    </div>
+
+    <div class="product-grid">
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/61j7TE3NsuL._SL1500_.jpg" alt="Product 71" onclick="openProductDetail('p71', 'OnePlus Buds 4 TWS Earbuds with Upto 55dB Real-time ANC, Adaptive Mode, Dual Drivers with DACs, 3D Audio, Upto 45hrs Music Playback, ,Dual-Device connectivity, 47ms Low Latency, Zen Green', 6499, 567, 80, 'https://m.media-amazon.com/images/I/61j7TE3NsuL._SL1500_.jpg')" style="cursor: pointer;">
+            <p>OnePlus Buds 4 TWS Earbuds with Upto 55dB Real-time ANC, Adaptive Mode, Dual Drivers with DACs, 3D Audio, Upto 45hrs Music Playback, ,Dual-Device connectivity, 47ms Low Latency, Zen Green</p>
+            <p><span class="old-price">₹6499</span> <span class="discount">80% Off</span></p>
+            <p class="price">Now ₹567</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p71', 'OnePlus Buds 4 TWS Earbuds with Upto 55dB Real-time ANC, Adaptive Mode, Dual Drivers with DACs, 3D Audio, Upto 45hrs Music Playback, ,Dual-Device connectivity, 47ms Low Latency, Zen Green', 6499, 567, 80, 'https://m.media-amazon.com/images/I/61j7TE3NsuL._SL1500_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('OnePlus Buds 4 TWS Earbuds with Upto 55dB Real-time ANC, Adaptive Mode, Dual Drivers with DACs, 3D Audio, Upto 45hrs Music Playback, ,Dual-Device connectivity, 47ms Low Latency, Zen Green', 567, 'https://m.media-amazon.com/images/I/61j7TE3NsuL._SL1500_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/514m1VhSUUL._SL1500_.jpg" alt="Product 72" onclick="openProductDetail('p72', 'OnePlus Bullets Bluetooth Wireless in Ear Z2 Earphones with Mic, Bombastic Bass, 12.4 mm Drivers, 10 Mins Charge, 20 Hrs Music, 30 Hrs Battery Life, IP55 Dust & Water Resistant (Beam Blue)', 2299, 410, 80, 'https://m.media-amazon.com/images/I/514m1VhSUUL._SL1500_.jpg')" style="cursor: pointer;">
+            <p>OnePlus Bullets Bluetooth Wireless in Ear Z2 Earphones with Mic, Bombastic Bass, 12.4 mm Drivers, 10 Mins Charge, 20 Hrs Music, 30 Hrs Battery Life, IP55 Dust & Water Resistant (Beam Blue)</p>
+            <p><span class="old-price">₹2299</span> <span class="discount">80% Off</span></p>
+            <p class="price">Now ₹410</p>
+            <p class="deal">Limited time deal</p>
+            <div class="product-buttons">
+                <button class="buy-now" onclick="openProductDetail('p72', 'OnePlus Bullets Bluetooth Wireless in Ear Z2 Earphones with Mic, Bombastic Bass, 12.4 mm Drivers, 10 Mins Charge, 20 Hrs Music, 30 Hrs Battery Life, IP55 Dust & Water Resistant (Beam Blue)', 2299, 410, 80, 'https://m.media-amazon.com/images/I/514m1VhSUUL._SL1500_.jpg')">Buy Now</button>
+                <button class="cart-btn" onclick="addToCart('OnePlus Bullets Bluetooth Wireless in Ear Z2 Earphones with Mic, Bombastic Bass, 12.4 mm Drivers, 10 Mins Charge, 20 Hrs Music, 30 Hrs Battery Life, IP55 Dust & Water Resistant (Beam Blue)', 410, 'https://m.media-amazon.com/images/I/514m1VhSUUL._SL1500_.jpg')">
+                    <span class="cart-icon">🛒</span> Add to Cart
+                </button>
+            </div>
+            <p class="deal">Free Delivery in Two Days</p>
+        </div>
+    </div>
+
+    <!-- Loading Indicator -->
+    <div id="loadingIndicator" class="loading-indicator" style="display: none;">
+        <div class="loading-spinner"></div>
+        Loading more products...
+    </div>
+
+
+    <div class="second-image">
+        <img src="image/termcondition.png" alt="Second Image">
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top">
+        ↑
+    </button>
+
+</div>
+
+<!-- Cart Sidebar -->
+<div id="cartSidebar" class="cart-sidebar">
+    <div class="cart-header">
+        <h3>🛒 Shopping Cart</h3>
+        <button class="close-cart" onclick="closeCart()">×</button>
+    </div>
+    
+    <div class="cart-content">
+        <div id="cartItems" class="cart-items">
+            <!-- Cart items will be populated here -->
+        </div>
+        
+        <div class="empty-cart" id="emptyCart">
+            <div class="empty-cart-icon">🛒</div>
+            <p>Your cart is empty</p>
+            <p>Add some products to get started!</p>
+        </div>
+    </div>
+    
+    <div class="cart-footer" id="cartFooter">
+        <div class="cart-summary">
+            <div class="cart-total">
+                <span>Total Items: <span id="totalItems">0</span></span>
+                <span>Total Price: ₹<span id="totalPrice">0</span></span>
+            </div>
+            <button class="checkout-btn" onclick="proceedToCheckout()">
+                Proceed to Checkout
+            </button>
+            <button class="clear-cart-btn" onclick="clearCart()">
+                Clear Cart
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Cart Overlay -->
+<div id="cartOverlay" class="cart-overlay" onclick="closeCart()"></div>
+
+<script>
+// Auto-sliding Banner Functionality
+let currentSlideIndex = 0;
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+const totalSlides = slides.length;
+
+// Function to show specific slide
+function showSlide(index) {
+    // Hide all slides
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+    
+    // Show current slide
+    if (index >= totalSlides) {
+        currentSlideIndex = 0;
+    } else if (index < 0) {
+        currentSlideIndex = totalSlides - 1;
+    } else {
+        currentSlideIndex = index;
+    }
+    
+    slides[currentSlideIndex].classList.add('active');
+    dots[currentSlideIndex].classList.add('active');
+    
+    // Move slider
+    const slider = document.querySelector('.banner-slider');
+    const translateX = -currentSlideIndex * 20; // 20% per slide
+    slider.style.transform = `translateX(${translateX}%)`;
+}
+
+// Function to go to next slide
+function nextSlide() {
+    showSlide(currentSlideIndex + 1);
+}
+
+// Function to go to previous slide
+function prevSlide() {
+    showSlide(currentSlideIndex - 1);
+}
+
+// Function to go to specific slide (for dots)
+function currentSlide(index) {
+    showSlide(index - 1); // index is 1-based, but array is 0-based
+}
+
+// Auto-slide functionality
+let autoSlideInterval;
+
+function startAutoSlide() {
+    autoSlideInterval = setInterval(nextSlide, 8000); // Change slide every 8 seconds
+}
+
+function stopAutoSlide() {
+    clearInterval(autoSlideInterval);
+}
+
+// Start auto-slide when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    startAutoSlide();
+    
+    // Pause auto-slide on hover
+    const bannerContainer = document.querySelector('.banner-container');
+    bannerContainer.addEventListener('mouseenter', stopAutoSlide);
+    bannerContainer.addEventListener('mouseleave', startAutoSlide);
+    
+    // Add keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowLeft') {
+            prevSlide();
+        } else if (e.key === 'ArrowRight') {
+            nextSlide();
+        }
+    });
+    
+    // Add intersection observer for performance
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                startAutoSlide();
+            } else {
+                stopAutoSlide();
+            }
+        });
+    });
+    
+    observer.observe(bannerContainer);
+    
+    // Add smooth loading animation
+    slides.forEach((slide, index) => {
+        slide.style.opacity = '0';
+        slide.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            slide.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            slide.style.opacity = '1';
+            slide.style.transform = 'translateY(0)';
+        }, index * 100);
+    });
+});
+
+// Enhanced Touch/Swipe support for mobile
+let startX = 0;
+let startY = 0;
+let endX = 0;
+let endY = 0;
+let isScrolling = false;
+let touchStartTime = 0;
+
+document.querySelector('.banner-container').addEventListener('touchstart', function(e) {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    touchStartTime = Date.now();
+    isScrolling = false;
+    
+    // Stop auto-slide during touch
+    stopAutoSlide();
+}, { passive: true });
+
+document.querySelector('.banner-container').addEventListener('touchmove', function(e) {
+    if (!startX || !startY) return;
+    
+    const currentX = e.touches[0].clientX;
+    const currentY = e.touches[0].clientY;
+    const diffX = Math.abs(currentX - startX);
+    const diffY = Math.abs(currentY - startY);
+    
+    // Determine if user is scrolling vertically or swiping horizontally
+    if (diffY > diffX) {
+        isScrolling = true;
+    }
+}, { passive: true });
+
+document.querySelector('.banner-container').addEventListener('touchend', function(e) {
+    if (isScrolling) return;
+    
+    endX = e.changedTouches[0].clientX;
+    endY = e.changedTouches[0].clientY;
+    handleSwipe();
+    
+    // Resume auto-slide after touch
+    setTimeout(() => {
+        startAutoSlide();
+    }, 2000);
+}, { passive: true });
+
+function handleSwipe() {
+    const swipeThreshold = 50;
+    const diffX = startX - endX;
+    const diffY = Math.abs(startY - endY);
+    const touchDuration = Date.now() - touchStartTime;
+    
+    // Only process horizontal swipes that are quick enough
+    if (Math.abs(diffX) > swipeThreshold && diffY < 100 && touchDuration < 500) {
+        if (diffX > 0) {
+            // Swipe left - next slide
+            nextSlide();
+        } else {
+            // Swipe right - previous slide
+            prevSlide();
+        }
+    }
+    
+    // Reset values
+    startX = 0;
+    startY = 0;
+    endX = 0;
+    endY = 0;
+    isScrolling = false;
+}
+
+// Mobile-specific optimizations
+function isMobileDevice() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+           (window.innerWidth <= 768);
+}
+
+// Optimize banner for mobile performance
+function optimizeForMobile() {
+    if (isMobileDevice()) {
+        // Reduce animation duration for better mobile performance
+        const slider = document.querySelector('.banner-slider');
+        if (slider) {
+            slider.style.transition = 'transform 0.4s ease-out';
+        }
+        
+        // Auto-slide interval on mobile matches desktop
+        if (window.autoSlideInterval) {
+            clearInterval(window.autoSlideInterval);
+            window.autoSlideInterval = setInterval(nextSlide, 8000);
+        }
+    }
+}
+
+// Initialize mobile optimizations
+document.addEventListener('DOMContentLoaded', function() {
+    optimizeForMobile();
+    
+    // Re-optimize on resize
+    window.addEventListener('resize', function() {
+        setTimeout(optimizeForMobile, 100);
+    });
+});
+
+// Cart Functionality
+let cartItems = [];
+let cartCount = 0;
+
+// Function to add item to cart
+function addToCart(productName, price, image) {
+    // Check if item already exists in cart
+    const existingItem = cartItems.find(item => item.name === productName);
+    
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cartItems.push({
+            name: productName,
+            price: price,
+            image: image,
+            quantity: 1
+        });
+    }
+    
+    cartCount += 1;
+    updateCartBadge();
+    
+    // Find the button that was clicked and add visual feedback
+    const buttons = document.querySelectorAll('.cart-btn');
+    buttons.forEach(btn => {
+        if (btn.onclick && btn.onclick.toString().includes(productName)) {
+            btn.classList.add('added');
+            btn.innerHTML = '<span class="cart-icon">✅</span> Added!';
+            
+            // Reset button after 2 seconds
+            setTimeout(() => {
+                btn.classList.remove('added');
+                btn.innerHTML = '<span class="cart-icon">🛒</span> Add to Cart';
+            }, 2000);
+        }
+    });
+    
+    // Show notification
+    showCartNotification(productName);
+    
+    // Save to localStorage
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    localStorage.setItem('cartCount', cartCount.toString());
+}
+
+// Function to update cart badge
+function updateCartBadge() {
+    const badge = document.querySelector('.cart-badge');
+    if (badge) {
+        badge.textContent = cartCount;
+        badge.style.animation = 'successPulse 0.6s ease';
+    }
+}
+
+// Function to show cart notification
+function showCartNotification(productName) {
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = 'cart-notification';
+    notification.innerHTML = `
+        <div class="notification-content">
+            <span class="notification-icon">✅</span>
+            <span class="notification-text">${productName} added to cart!</span>
+        </div>
+    `;
+    
+    // Add notification styles
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        color: white;
+        padding: 15px 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        max-width: 300px;
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Animate in
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+    }, 100);
+    
+    // Remove after 3 seconds
+    setTimeout(() => {
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }, 3000);
+}
+
+// Function to get cart items (for future use)
+function getCartItems() {
+    return cartItems;
+}
+
+// Function to clear cart
+function clearCart() {
+    cartItems = [];
+    cartCount = 0;
+    updateCartBadge();
+    updateCartDisplay();
+    localStorage.removeItem('cartItems');
+    localStorage.removeItem('cartCount');
+    
+    // Show confirmation
+    showCartNotification('Cart cleared successfully!');
+}
+
+// Cart Sidebar Functions
+function openCart() {
+    const sidebar = document.getElementById('cartSidebar');
+    const overlay = document.getElementById('cartOverlay');
+    
+    sidebar.classList.add('open');
+    overlay.classList.add('show');
+    document.body.style.overflow = 'hidden';
+    
+    updateCartDisplay();
+}
+
+function closeCart() {
+    const sidebar = document.getElementById('cartSidebar');
+    const overlay = document.getElementById('cartOverlay');
+    
+    sidebar.classList.remove('open');
+    overlay.classList.remove('show');
+    document.body.style.overflow = 'auto';
+}
+
+function updateCartDisplay() {
+    const cartItemsContainer = document.getElementById('cartItems');
+    const emptyCart = document.getElementById('emptyCart');
+    const cartFooter = document.getElementById('cartFooter');
+    const totalItems = document.getElementById('totalItems');
+    const totalPrice = document.getElementById('totalPrice');
+    
+    if (cartItems.length === 0) {
+        emptyCart.style.display = 'block';
+        cartFooter.style.display = 'none';
+        cartItemsContainer.innerHTML = '';
+    } else {
+        emptyCart.style.display = 'none';
+        cartFooter.style.display = 'block';
+        
+        // Calculate totals
+        let totalItemsCount = 0;
+        let totalPriceAmount = 0;
+        
+        cartItems.forEach(item => {
+            totalItemsCount += item.quantity;
+            totalPriceAmount += item.price * item.quantity;
+        });
+        
+        totalItems.textContent = totalItemsCount;
+        totalPrice.textContent = totalPriceAmount.toLocaleString();
+        
+        // Render cart items
+        cartItemsContainer.innerHTML = cartItems.map((item, index) => `
+            <div class="cart-item">
+                <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                <div class="cart-item-details">
+                    <div class="cart-item-name">${item.name}</div>
+                    <div class="cart-item-price">₹${item.price}</div>
+                </div>
+                <div class="cart-item-controls">
+                    <div class="quantity-controls">
+                        <button class="quantity-btn" onclick="updateQuantity(${index}, ${item.quantity - 1})">-</button>
+                        <span class="quantity-display">${item.quantity}</span>
+                        <button class="quantity-btn" onclick="updateQuantity(${index}, ${item.quantity + 1})">+</button>
+                    </div>
+                    <button class="remove-item" onclick="removeFromCart(${index})" title="Remove item">×</button>
+                </div>
+            </div>
+        `).join('');
+    }
+}
+
+function updateQuantity(index, newQuantity) {
+    if (newQuantity <= 0) {
+        removeFromCart(index);
+        return;
+    }
+    
+    const oldQuantity = cartItems[index].quantity;
+    cartItems[index].quantity = newQuantity;
+    
+    // Update cart count
+    cartCount = cartCount - oldQuantity + newQuantity;
+    updateCartBadge();
+    updateCartDisplay();
+    
+    // Save to localStorage
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    localStorage.setItem('cartCount', cartCount.toString());
+}
+
+function removeFromCart(index) {
+    const removedItem = cartItems[index];
+    cartItems.splice(index, 1);
+    
+    cartCount -= removedItem.quantity;
+    updateCartBadge();
+    updateCartDisplay();
+    
+    // Save to localStorage
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    localStorage.setItem('cartCount', cartCount.toString());
+    
+    showCartNotification(`${removedItem.name} removed from cart`);
+}
+
+function proceedToCheckout() {
+    if (cartItems.length === 0) {
+        showCartNotification('Your cart is empty!');
+        return;
+    }
+    
+    // Calculate totals
+    const totalPrice = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+    
+    // Prepare cart data for OrderBilling.html
+    const cartData = {
+        items: cartItems,
+        totalItems: totalItems,
+        totalPrice: totalPrice,
+        timestamp: new Date().toISOString()
+    };
+    
+    // Store cart data in localStorage for OrderBilling.html to access
+    localStorage.setItem('checkoutData', JSON.stringify(cartData));
+    
+    // Close cart first
+    closeCart();
+    
+    // Show loading notification
+    showCartNotification('Redirecting to checkout...');
+    
+    // Redirect to OrderBilling.html after a short delay
+    setTimeout(() => {
+        window.location.href = 'OrderBilling.html';
+    }, 1000);
+}
+
+// Close cart with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeCart();
+    }
+});
+
+// Product Detail Page Functions
+function openProductDetail(productId, productName, oldPrice, currentPrice, discountPercent, imageSrc) {
+    // Generate dynamic product data based on product name
+    const productCategories = {
+        'Atta': { brand: 'Aashirvaad', weight: '1kg', category: 'Food' },
+        'Fan': { brand: 'Atomberg', weight: '1200g', category: 'Electronics' },
+        'Cooler': { brand: 'Voltas', weight: '3.5kg', category: 'Appliances' },
+        'Fridge': { brand: 'Whirlpool', weight: '45kg', category: 'Appliances' },
+        'Microwave': { brand: 'Panasonic', weight: '12kg', category: 'Appliances' },
+        'Tea': { brand: 'Tata Tea', weight: '500g', category: 'Beverages' },
+        'Ghee': { brand: 'Patanjali', weight: '1kg', category: 'Food' },
+        'Gym': { brand: 'Core', weight: '2kg', category: 'Fitness' },
+        'Handbag': { brand: 'Fargo', weight: '800g', category: 'Fashion' },
+        'Saree': { brand: 'Biegenet', weight: '400g', category: 'Fashion' },
+        'Umbrella': { brand: 'Isabella', weight: '600g', category: 'Accessories' },
+        'Speaker': { brand: 'JBL', weight: '1.2kg', category: 'Electronics' },
+        'Water Bottle': { brand: 'Milton', weight: '200g', category: 'Kitchen' },
+        'Protein': { brand: 'MuscleBlaze', weight: '1kg', category: 'Health' },
+        'Cooler': { brand: 'Nova', weight: '3kg', category: 'Appliances' },
+        'Polo': { brand: 'Red Tape', weight: '300g', category: 'Fashion' },
+        'Bag': { brand: 'Safari', weight: '500g', category: 'Fashion' },
+        'Hair Dryer': { brand: 'Philips', weight: '800g', category: 'Personal Care' }
+    };
+
+    // Find matching category or use default
+    let productInfo = { brand: 'Premium Brand', weight: '500g', category: 'General' };
+    for (const [key, value] of Object.entries(productCategories)) {
+        if (productName.toLowerCase().includes(key.toLowerCase())) {
+            productInfo = value;
+            break;
+        }
+    }
+
+    // Prepare enhanced product data
+    const productData = {
+        id: productId,
+        name: productName,
+        oldPrice: oldPrice,
+        currentPrice: currentPrice,
+        discountPercent: discountPercent,
+        image: imageSrc,
+        rating: (4.0 + Math.random() * 0.8).toFixed(1), // Random rating between 4.0-4.8
+        reviewCount: Math.floor(Math.random() * 2000) + 1000, // Random reviews > 1000
+        brand: productInfo.brand,
+        model: `${productInfo.brand} ${productInfo.category} 2024`,
+        weight: productInfo.weight,
+        dimensions: "25cm x 15cm x 8cm",
+        material: "High Quality Materials",
+        warranty: "1 Year Manufacturer Warranty",
+        origin: "Made in India",
+        category: productInfo.category
+    };
+    
+    // Store product data in localStorage for the detail page
+    localStorage.setItem('currentProduct', JSON.stringify(productData));
+    
+    // Open product detail page in same tab
+    window.location.href = `product-detail.html?id=${productId}`;
+}
+
+// Load cart from localStorage on page load
+document.addEventListener('DOMContentLoaded', function() {
+    const savedCartItems = localStorage.getItem('cartItems');
+    const savedCartCount = localStorage.getItem('cartCount');
+    
+    if (savedCartItems) {
+        cartItems = JSON.parse(savedCartItems);
+    }
+    
+    if (savedCartCount) {
+        cartCount = parseInt(savedCartCount);
+        updateCartBadge();
+    }
+    
+    // Add click event to cart icon to open cart sidebar
+    const cartIcon = document.querySelector('.cart-icon');
+    if (cartIcon) {
+        cartIcon.addEventListener('click', function() {
+            openCart();
+        });
+    }
+    
+    // Initialize cart display
+    updateCartDisplay();
+});
+
+// Add CSS for notification
+const notificationCSS = `
+    .notification-content {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .notification-icon {
+        font-size: 18px;
+    }
+    
+    .notification-text {
+        font-weight: bold;
+        font-size: 14px;
+    }
+`;
+
+// Inject notification CSS
+const style = document.createElement('style');
+style.textContent = notificationCSS;
+document.head.appendChild(style);
+
+// All product images now have consistent sizing via CSS
+
+// Infinite Scroll Loading Functionality
+let currentProductsShown = 10;
+const productsPerLoad = 10;
+let isLoading = false;
+let allProducts = [];
+
+// Initialize infinite scroll on page load
+document.addEventListener('DOMContentLoaded', function() {
+    initializeInfiniteScroll();
+});
+
+function initializeInfiniteScroll() {
+    // Get all product elements
+    allProducts = Array.from(document.querySelectorAll('.product'));
+    const totalProducts = allProducts.length;
+    
+    // Hide all products except first 10
+    allProducts.forEach((product, index) => {
+        if (index >= currentProductsShown) {
+            product.classList.add('hidden');
+        }
+    });
+    
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+    
+    // Add scroll-to-top button functionality
+    window.addEventListener('scroll', toggleScrollToTop);
+    
+    console.log(`Initialized infinite scroll: ${currentProductsShown} of ${totalProducts} products shown`);
+}
+
+function handleScroll() {
+    if (isLoading) return;
+    
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    
+    // Load more products when user is 200px from bottom
+    if (scrollTop + windowHeight >= documentHeight - 200) {
+        loadMoreProducts();
+    }
+}
+
+function loadMoreProducts() {
+    if (isLoading || currentProductsShown >= allProducts.length) return;
+    
+    isLoading = true;
+    showLoadingIndicator();
+    
+    // Simulate loading delay for better UX
+    setTimeout(() => {
+        const nextProducts = allProducts.slice(currentProductsShown, currentProductsShown + productsPerLoad);
+        
+        nextProducts.forEach((product, index) => {
+            setTimeout(() => {
+                product.classList.remove('hidden');
+                product.classList.add('fade-in');
+                
+                // Remove fade-in class after animation
+                setTimeout(() => {
+                    product.classList.remove('fade-in');
+                }, 600);
+            }, index * 100); // Stagger the appearance
+        });
+        
+        currentProductsShown += nextProducts.length;
+        isLoading = false;
+        hideLoadingIndicator();
+        
+        // Check if all products are loaded
+        if (currentProductsShown >= allProducts.length) {
+            console.log('All products loaded');
+        }
+    }, 800);
+}
+
+function showLoadingIndicator() {
+    const indicator = document.getElementById('loadingIndicator');
+    if (indicator) {
+        indicator.style.display = 'block';
+        indicator.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+}
+
+function hideLoadingIndicator() {
+    const indicator = document.getElementById('loadingIndicator');
+    if (indicator) {
+        indicator.style.display = 'none';
+    }
+}
+
+
+function toggleScrollToTop() {
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+    if (scrollToTopBtn) {
+        if (window.pageYOffset > 300) {
+            scrollToTopBtn.classList.add('show');
+        } else {
+            scrollToTopBtn.classList.remove('show');
+        }
+    }
+}
+
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+// Reset infinite scroll when page is refreshed
+function resetInfiniteScroll() {
+    currentProductsShown = 10;
+    isLoading = false;
+    allProducts = [];
+    initializeInfiniteScroll();
+}
+
+// Handle window resize
+window.addEventListener('resize', function() {
+    // Recalculate if needed on resize
+    setTimeout(() => {
+        if (allProducts.length === 0) {
+            initializeInfiniteScroll();
+        }
+    }, 100);
+});
+
+// Search functionality
+function initializeSearch() {
+    const searchBox = document.querySelector('.search-box');
+    const allProducts = document.querySelectorAll('.product');
+    
+    if (searchBox) {
+        searchBox.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase().trim();
+            
+            allProducts.forEach(product => {
+                const productName = product.querySelector('p').textContent.toLowerCase();
+                const productGrid = product.parentElement;
+                
+                if (searchTerm === '' || productName.includes(searchTerm)) {
+                    product.style.display = 'block';
+                    // Show the product grid if it has visible products
+                    checkGridVisibility(productGrid);
+                } else {
+                    product.style.display = 'none';
+                    // Hide the product grid if no products are visible
+                    checkGridVisibility(productGrid);
+                }
+            });
+            
+            // Show "No results found" message if no products are visible
+            showNoResultsMessage(searchTerm);
+        });
+        
+        // Clear search on escape key
+        searchBox.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                searchBox.value = '';
+                searchBox.dispatchEvent(new Event('input'));
+            }
+        });
+    }
+}
+
+function checkGridVisibility(productGrid) {
+    const visibleProducts = Array.from(productGrid.querySelectorAll('.product')).filter(product => 
+        product.style.display !== 'none'
+    );
+    
+    if (visibleProducts.length === 0) {
+        productGrid.style.display = 'none';
+    } else {
+        productGrid.style.display = 'grid';
+    }
+}
+
+function showNoResultsMessage(searchTerm) {
+    // Remove existing no results message
+    const existingMessage = document.getElementById('noResultsMessage');
+    if (existingMessage) {
+        existingMessage.remove();
+    }
+    
+    // Check if any products are visible
+    const visibleProducts = Array.from(document.querySelectorAll('.product')).filter(product => 
+        product.style.display !== 'none'
+    );
+    
+    if (searchTerm && visibleProducts.length === 0) {
+        const message = document.createElement('div');
+        message.id = 'noResultsMessage';
+        message.style.cssText = `
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 18px;
+            color: #666;
+            background: #f9f9f9;
+            border-radius: 10px;
+            margin: 20px;
+            border: 2px dashed #ddd;
+        `;
+        message.innerHTML = `
+            <h3 style="margin: 0 0 10px 0; color: #333;">No products found</h3>
+            <p style="margin: 0;">Try searching for something else or check your spelling.</p>
+        `;
+        
+        // Insert after the search box
+        const searchBox = document.querySelector('.search-box');
+        searchBox.parentNode.insertBefore(message, searchBox.nextSibling);
+    }
+}
+
+// Initialize search when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    initializeSearch();
+});
+
+// Also initialize if DOM is already loaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeSearch);
+} else {
+    initializeSearch();
+}
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,2051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - D-Mart</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        
+        /* Header Styles */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .left-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .back-btn {
+            background: #266D37;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .back-btn:hover {
+            background: #1e5a2e;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            width: 100px;
+            height: 40px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #266D37;
+        }
+        
+        .cart-icon {
+            position: relative;
+            font-size: 24px;
+            cursor: pointer;
+            color: #266D37;
+        }
+        
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background: red;
+            color: white;
+            font-size: 12px;
+            border-radius: 50%;
+            padding: 2px 6px;
+        }
+        
+         /* Main Container */
+         .container {
+             max-width: 1200px;
+             margin: 0 auto;
+             padding: 20px;
+             padding-bottom: 100px; /* Add space for fixed buttons */
+         }
+        
+        .product-detail {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .product-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            padding: 30px;
+        }
+        
+        /* Product Image Section */
+        .product-image-section {
+            text-align: center;
+        }
+        
+        .product-image {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            min-height: 300px;
+            max-height: 500px;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Aspect ratio specific styling for product detail */
+        .product-image-section.wide-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .product-image-section.tall-image {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        
+        .product-image-section.square-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* Product Info Section */
+        .product-info h1 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+        
+        .rating-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+        
+        .rating-badge {
+            background: #28a745;
+            color: white;
+            padding: 3px 6px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .rating-score {
+            font-size: 12px;
+        }
+        
+        .rating-star {
+            font-size: 12px;
+        }
+        
+        .rating-text {
+            color: #666;
+            font-size: 13px;
+        }
+        
+        .price-section {
+            margin-bottom: 20px;
+        }
+        
+        .price-main {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .current-price {
+            font-size: 28px;
+            color: #333;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        
+        .old-price {
+            font-size: 16px;
+            color: #999;
+            text-decoration: line-through;
+        }
+        
+        .discount {
+            color: #28a745;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .price-info {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .per-unit {
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .delivery-info {
+            background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%);
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #266D37;
+            box-shadow: 0 2px 8px rgba(38, 109, 55, 0.1);
+        }
+        
+        .delivery-info h3 {
+            color: #266D37;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .delivery-info p {
+            color: #555;
+            margin-bottom: 4px;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+        
+        .bank-offers {
+            background: transparent;
+            border: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+        
+        .bank-offers h3 {
+            color: #333;
+            margin-bottom: 12px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .bank-offers ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .bank-offers li {
+            color: #333;
+            margin-bottom: 10px;
+            padding: 0;
+            font-size: 12px;
+            line-height: 1.4;
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+        }
+        
+        .offer-icon {
+            color: #28a745;
+            font-size: 14px;
+            margin-top: 1px;
+            flex-shrink: 0;
+        }
+        
+        .bank-offers li strong {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .tc-link {
+            color: #007bff;
+            text-decoration: underline;
+            font-weight: normal;
+            margin-left: 4px;
+        }
+        
+        .tc-link:hover {
+            color: #0056b3;
+        }
+        
+        /* Hidden offers */
+        .hidden-offer {
+            display: none;
+        }
+        
+        .read-more-btn {
+            background: none;
+            border: none;
+            color: #007bff;
+            cursor: pointer;
+            font-size: 12px;
+            padding: 8px 0;
+            margin-top: 8px;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+        
+        .read-more-btn:hover {
+            color: #0056b3;
+        }
+        
+        
+        /* Coupons Section */
+        .coupons-section {
+            margin-bottom: 20px;
+            background: transparent;
+            padding: 0;
+        }
+        
+        .coupons-section h3 {
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .coupon-note {
+            color: #666;
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+        
+        .coupon-offer {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        
+        .coupon-icon {
+            color: #28a745;
+            font-size: 16px;
+            margin-top: 2px;
+        }
+        
+        .coupon-content strong {
+            color: #333;
+            font-size: 14px;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 4px;
+        }
+        
+        .coupon-content p {
+            color: #666;
+            font-size: 12px;
+            margin-bottom: 6px;
+        }
+        
+        .coupon-links {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .coupon-link {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 12px;
+        }
+        
+        .coupon-link:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+        
+        .view-more-coupons {
+            margin-top: 8px;
+        }
+        
+        .more-coupons-link {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 12px;
+        }
+        
+        .more-coupons-link:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+        
+        /* Product Specifications */
+        .specifications {
+            margin-bottom: 25px;
+            background: transparent;
+            padding: 0;
+        }
+        
+        .specifications h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .spec-section {
+            margin-bottom: 20px;
+        }
+        
+        .spec-section h4 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .spec-item {
+            display: flex;
+            margin-bottom: 6px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        .spec-key {
+            color: #666;
+            font-weight: normal;
+            width: 40%;
+            min-width: 140px;
+            padding-right: 15px;
+        }
+        
+        .spec-value {
+            color: #333;
+            font-weight: normal;
+            flex: 1;
+        }
+        
+        /* Mobile Responsive Specifications */
+        @media (max-width: 768px) {
+            .spec-item {
+                flex-direction: column;
+                margin-bottom: 8px;
+                padding-bottom: 6px;
+                border-bottom: 1px solid #f0f0f0;
+            }
+            
+            .spec-key {
+                width: 100%;
+                min-width: auto;
+                padding-right: 0;
+                margin-bottom: 2px;
+                font-weight: 600;
+            }
+            
+            .spec-value {
+                flex: none;
+                width: 100%;
+            }
+            
+            .specifications h3 {
+                font-size: 16px;
+            }
+            
+            .spec-section h4 {
+                font-size: 14px;
+            }
+        }
+        
+         /* Action Buttons */
+         .action-buttons {
+             position: fixed;
+             bottom: 0;
+             left: 0;
+             right: 0;
+             display: flex;
+             gap: 15px;
+             padding: 15px 20px;
+             background: white;
+             box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+             z-index: 1000;
+             border-top: 1px solid #eee;
+         }
+        
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+        
+         .btn-cart {
+             background: #266D37;
+             color: white;
+         }
+         
+         .btn-cart:hover {
+             background: #1e5a2e;
+             transform: translateY(-2px);
+             box-shadow: 0 5px 15px rgba(38, 109, 55, 0.4);
+         }
+         
+         .btn-buy {
+             background: #266D37;
+             color: white;
+         }
+         
+         .btn-buy:hover {
+             background: #1e5a2e;
+             transform: translateY(-2px);
+             box-shadow: 0 5px 15px rgba(38, 109, 55, 0.4);
+         }
+        
+        /* Customer Reviews Section */
+        .reviews-section {
+            margin-top: 40px;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .reviews-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .reviews-header h2 {
+            color: #333;
+            font-size: 24px;
+        }
+        
+        .review-summary {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .review-stars {
+            color: #ffc107;
+            font-size: 24px;
+        }
+        
+        .review-count {
+            color: #666;
+            font-size: 16px;
+        }
+        
+        /* Rating Summary */
+        .rating-summary {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 12px;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .rating-overview {
+            text-align: left;
+            min-width: 160px;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .average-rating {
+            font-size: 42px;
+            font-weight: 700;
+            color: #2c3e50;
+            line-height: 1;
+            display: inline-block;
+            margin-right: 8px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .rating-star-large {
+            font-size: 28px;
+            color: #ffc107;
+            display: inline-block;
+            margin-right: 12px;
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+        }
+        
+        .rating-details {
+            color: #6c757d;
+            font-size: 13px;
+            display: inline-block;
+            vertical-align: bottom;
+            margin-bottom: 8px;
+            margin-left: 8px;
+            font-weight: 500;
+        }
+        
+        .rating-line {
+            line-height: 1.3;
+            margin-bottom: 3px;
+            letter-spacing: 0.3px;
+        }
+        
+        .rating-line:first-child {
+            color: #495057;
+            font-weight: 600;
+        }
+        
+        .rating-line:nth-child(2) {
+            text-align: center;
+            font-weight: bold;
+            color: #6c757d;
+        }
+        
+        .rating-line:last-child {
+            color: #495057;
+            font-weight: 600;
+        }
+        
+        .rating-breakdown {
+            flex: 1;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .rating-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+            padding: 2px 0;
+        }
+        
+        .star-label {
+            min-width: 35px;
+            font-size: 13px;
+            color: #495057;
+            font-weight: 600;
+        }
+        
+        .bar-container {
+            flex: 1;
+            height: 10px;
+            background: #e9ecef;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .rating-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #28a745 0%, #20c997 100%);
+            transition: width 0.4s ease;
+            border-radius: 5px;
+        }
+        
+        .rating-count {
+            min-width: 55px;
+            font-size: 13px;
+            color: #495057;
+            text-align: right;
+            font-weight: 600;
+        }
+        
+        .customer-reviews {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .review-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f0;
+            background: transparent;
+            border-radius: 0;
+            border-left: none;
+        }
+        
+        .review-item:last-child {
+            border-bottom: none;
+        }
+        
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        
+        .review-rating-badge {
+            background: #28a745;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+        
+        .review-headline {
+            font-weight: bold;
+            color: #333;
+            font-size: 14px;
+            margin: 0;
+        }
+        
+        .review-text {
+            color: #555;
+            font-size: 12px;
+            line-height: 1.4;
+            margin: 6px 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-height: 2.8em;
+        }
+        
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        
+        .reviewer-name {
+            font-weight: 600;
+            color: #333;
+            font-size: 12px;
+        }
+        
+        .certified-badge {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: #666;
+            font-size: 11px;
+        }
+        
+        .review-date {
+            color: #666;
+            font-size: 11px;
+        }
+        
+        .review-engagement {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-left: auto;
+            font-size: 11px;
+        }
+        
+        .engagement-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: #666;
+        }
+        
+        .engagement-icon {
+            font-size: 12px;
+        }
+        
+         /* Mobile Responsive */
+         @media (max-width: 768px) {
+             .product-content {
+                 grid-template-columns: 1fr;
+                 gap: 20px;
+                 padding: 20px;
+             }
+             
+             .product-image {
+                 height: 300px;
+             }
+             
+             .action-buttons {
+                 flex-direction: row;
+                 padding: 12px 15px;
+                 gap: 10px;
+             }
+             
+             .btn {
+                 padding: 12px 20px;
+                 font-size: 14px;
+             }
+             
+             .container {
+                 padding-bottom: 80px; /* Adjust for mobile buttons */
+             }
+             
+             .reviews-header {
+                 flex-direction: column;
+                 gap: 15px;
+                 text-align: center;
+             }
+             
+             .rating-summary {
+                 flex-direction: column;
+                 gap: 20px;
+                 padding: 20px;
+             }
+             
+             .rating-overview {
+                 text-align: center;
+                 min-width: auto;
+             }
+             
+             .average-rating {
+                 font-size: 36px;
+             }
+             
+             .rating-star-large {
+                 font-size: 24px;
+             }
+             
+             .rating-breakdown {
+                 padding: 12px;
+             }
+             
+             .rating-bar {
+                 gap: 8px;
+                 margin-bottom: 8px;
+             }
+             
+             .star-label {
+                 min-width: 30px;
+                 font-size: 12px;
+             }
+             
+             .rating-count {
+                 min-width: 45px;
+                 font-size: 12px;
+             }
+         }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="left-section">
+            <button class="back-btn" onclick="goBack()">←</button>
+            <div class="logo">
+                <img src="image/threeicon.png" alt="D-Mart Logo">
+                <div class="logo-text"></div>
+            </div>
+        </div>
+        <div class="cart-icon" onclick="openCart()">
+            🛒<span class="cart-badge" id="cartBadge">0</span>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <div class="product-detail">
+            <div class="product-content">
+                <!-- Product Image -->
+                <div class="product-image-section">
+                    <img id="productImage" src="" alt="Product Image" class="product-image">
+                </div>
+
+                <!-- Product Information -->
+                <div class="product-info">
+                    <h1 id="productName">Product Name</h1>
+                    
+                    <div class="rating-section">
+                        <div class="rating-badge">
+                            <span class="rating-score" id="productRating">4.3</span>
+                            <span class="rating-star">★</span>
+                        </div>
+                        <span class="rating-text" id="ratingText">4,565 Ratings & 673 Reviews</span>
+                    </div>
+
+                    <div class="price-section">
+                        <div class="price-main">
+                            <span class="current-price" id="currentPrice">₹399</span>
+                            <span class="old-price" id="oldPrice">₹1,999</span>
+                            <span class="discount" id="discountPercent">80% off</span>
+                            <span class="price-info">ℹ️</span>
+                        </div>
+                    </div>
+                    
+                    <div class="coupons-section">
+                        <h3>Coupons for you</h3>
+                        <p class="coupon-note">Will be applied in the next step</p>
+                        
+                        <div class="coupon-offer">
+                            <span class="coupon-icon">🎫</span>
+                            <div class="coupon-content">
+                                <strong>Buy More, Save More</strong>
+                                <p>Buy worth ₹499 save 5% (Minimum 2 items)</p>
+                                <div class="coupon-links">
+                                    <a href="#" class="coupon-link">See all products</a>
+                                    <a href="#" class="coupon-link">T&C</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="view-more-coupons">
+                            <a href="#" class="more-coupons-link">View 2 more coupons</a>
+                        </div>
+                    </div>
+
+                    <div class="delivery-info">
+                        <h3>🚚 Delivery Information</h3>
+                        <p><strong>Standard Delivery:</strong> 2-3 business days</p>
+                        <p><strong>Express Delivery:</strong> Today delivery (₹99 extra)</p>
+                        <p><strong>Free Delivery:</strong> On orders above ₹299</p>
+                        <p><strong>Cash on Delivery:</strong> Available</p>
+                    </div>
+
+                    <div class="bank-offers">
+                        <h3>Available offers</h3>
+                        <ul id="offersList">
+                            <li><span class="offer-icon">🏷️</span><strong>Bank Offer</strong> 10% off up to ₹250 on HDFC Bank Credit Card Txn, on orders of ₹2499 and above <a href="#" class="tc-link">T&C</a></li>
+                            <li><span class="offer-icon">🏷️</span><strong>Bank Offer</strong> 10% off up to ₹250 on ICICI Bank Credit Card Txn, on orders of ₹2499 and above <a href="#" class="tc-link">T&C</a></li>
+                            <li class="hidden-offer"><span class="offer-icon">🏷️</span><strong>Bank Offer</strong> Flat ₹30 Cashback on CRED UPI Trxns. Min Order Value ₹300. Valid once per user <a href="#" class="tc-link">T&C</a></li>
+                            <li class="hidden-offer"><span class="offer-icon">🏷️</span><strong>Bank Offer</strong> 5% cashback on SBI Credit Card upto ₹4,000 per calendar quarter <a href="#" class="tc-link">T&C</a></li>
+                            <li class="hidden-offer"><span class="offer-icon">🏷️</span><strong>Bank Offer</strong> Flat ₹30 Instant Discount on BHIM App Txns. Min Order Value ₹300. Valid once per user <a href="#" class="tc-link">T&C</a></li>
+                            <li class="hidden-offer"><span class="offer-icon">🏷️</span><strong>Bank Offer</strong> Flat ₹30 Cashback on Paytm UPI Txns. Min Order Value ₹300. Valid once per user <a href="#" class="tc-link">T&C</a></li>
+                            <li class="hidden-offer"><span class="offer-icon">🏷️</span><strong>Bank Offer</strong> No Cost EMI available on orders above ₹2,000 <a href="#" class="tc-link">T&C</a></li>
+                        </ul>
+                        <button class="read-more-btn" onclick="toggleOffers()">Read more</button>
+                    </div>
+
+                    <div class="specifications">
+                        <h3>Specifications</h3>
+                        
+                        <div class="spec-section">
+                            <h4>In The Box</h4>
+                            <div class="spec-item">
+                                <span class="spec-key">Pack of</span>
+                                <span class="spec-value">1</span>
+                            </div>
+                        </div>
+                        
+                        <div class="spec-section">
+                            <h4>General</h4>
+                            <div class="spec-item">
+                                <span class="spec-key">Brand</span>
+                                <span class="spec-value" id="brand">Premium Brand</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-key">Type</span>
+                                <span class="spec-value" id="model">Premium Product</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-key">Maximum Shelf Life</span>
+                                <span class="spec-value">365 Days</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-key">Is Perishable</span>
+                                <span class="spec-value">No</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-key">Organic</span>
+                                <span class="spec-value">No</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-key">Model Name</span>
+                                <span class="spec-value" id="model">Premium Product 2025</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-cart" onclick="addToCart()">
+                            🛒 Add to Cart
+                        </button>
+                        <button class="btn btn-buy" onclick="buyNow()">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Customer Reviews Section -->
+        <div class="reviews-section">
+            <div class="reviews-header">
+                <h2>Customer Reviews</h2>
+            </div>
+
+            <!-- Rating Summary -->
+            <div class="rating-summary">
+                <div class="rating-overview">
+                    <div class="average-rating">4.2</div>
+                    <div class="rating-star-large">★</div>
+                    <div class="rating-details">
+                        <div class="rating-line">4,565 rating</div>
+                        <div class="rating-line">&</div>
+                        <div class="rating-line">673 Review</div>
+                    </div>
+                </div>
+                
+                <div class="rating-breakdown">
+                    <div class="rating-bar">
+                        <span class="star-label">5★</span>
+                        <div class="bar-container">
+                            <div class="rating-bar-fill" style="width: 61%;"></div>
+                        </div>
+                        <span class="rating-count">2,782</span>
+                    </div>
+                    <div class="rating-bar">
+                        <span class="star-label">4★</span>
+                        <div class="bar-container">
+                            <div class="rating-bar-fill" style="width: 21%;"></div>
+                        </div>
+                        <span class="rating-count">955</span>
+                    </div>
+                    <div class="rating-bar">
+                        <span class="star-label">3★</span>
+                        <div class="bar-container">
+                            <div class="rating-bar-fill" style="width: 7%;"></div>
+                        </div>
+                        <span class="rating-count">318</span>
+                    </div>
+                    <div class="rating-bar">
+                        <span class="star-label">2★</span>
+                        <div class="bar-container">
+                            <div class="rating-bar-fill" style="width: 3%;"></div>
+                        </div>
+                        <span class="rating-count">144</span>
+                    </div>
+                    <div class="rating-bar">
+                        <span class="star-label">1★</span>
+                        <div class="bar-container">
+                            <div class="rating-bar-fill" style="width: 8%;"></div>
+                        </div>
+                        <span class="rating-count">366</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="customer-reviews" id="customerReviews">
+                <!-- Reviews will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Product data (this would normally come from a database or API)
+        const productData = {
+            name: "Premium Product Name",
+            image: "image/p1.webp",
+            oldPrice: 1899,
+            currentPrice: 399,
+            discountPercent: 79,
+            rating: 4.3,
+            reviewCount: 1247,
+            brand: "Premium Brand",
+            model: "2024 Edition",
+            weight: "500g",
+            dimensions: "25cm x 15cm x 8cm",
+            material: "High Quality Materials",
+            warranty: "1 Year Manufacturer Warranty",
+            origin: "Made in India"
+        };
+
+        // Sample customer reviews with complete structure
+        const customerReviews = [
+            {
+                name: "Madan Kumar Kushwaha",
+                date: "Boisar Mar, 2024",
+                rating: 5,
+                headline: "Just wow!",
+                text: "Good quality product with excellent packaging. Highly recommended for daily use.",
+                likes: 10,
+                dislikes: 1
+            },
+            {
+                name: "Adrisha Mukhopadhyay", 
+                date: "Purba Bardhaman District May, 2024",
+                rating: 4,
+                headline: "Value-for-money",
+                text: "Good quality product at reasonable price. Satisfied with the purchase.",
+                likes: 5,
+                dislikes: 0
+            },
+            {
+                name: "SATYABRATA SAHOO",
+                date: "Dhenkanal May, 2024", 
+                rating: 5,
+                headline: "Terrific purchase",
+                text: "Best quality product with fast delivery. Will definitely order again.",
+                likes: 37,
+                dislikes: 14
+            },
+            {
+                name: "Govind Singh Choudhary",
+                date: "Kolar Oct, 2024",
+                rating: 4, 
+                headline: "Brilliant",
+                text: "This product is too good, they are packing without any mix. I think if anyone gives pure and genuine product they will get more business.",
+                likes: 25,
+                dislikes: 8
+            },
+            {
+                name: "Priya Sharma",
+                date: "Mumbai Dec, 2024",
+                rating: 5,
+                headline: "Excellent quality",
+                text: "Very satisfied with the purchase. Good quality and reasonable price. Recommended!",
+                likes: 18,
+                dislikes: 2
+            }
+        ];
+
+        // Random rating and review generation functions
+        function generateRandomRating() {
+            // Generate ratings between 3.5 and 4.8 with one decimal place
+            const minRating = 3.5;
+            const maxRating = 4.8;
+            const rating = Math.random() * (maxRating - minRating) + minRating;
+            return Math.round(rating * 10) / 10; // Round to 1 decimal place
+        }
+        
+        function generateRandomReviewCount() {
+            // Generate review counts in realistic ranges
+            const ranges = [
+                { min: 50, max: 200, weight: 0.3 },      // Small products
+                { min: 200, max: 800, weight: 0.4 },     // Medium popularity
+                { min: 800, max: 2500, weight: 0.2 },    // Popular products
+                { min: 2500, max: 8000, weight: 0.1 }    // Very popular products
+            ];
+            
+            const random = Math.random();
+            let cumulativeWeight = 0;
+            
+            for (const range of ranges) {
+                cumulativeWeight += range.weight;
+                if (random <= cumulativeWeight) {
+                    return Math.floor(Math.random() * (range.max - range.min + 1)) + range.min;
+                }
+            }
+            
+            // Fallback
+            return Math.floor(Math.random() * 1000) + 100;
+        }
+        
+        function generateRatingDistribution(averageRating, totalRatings) {
+            // Generate realistic rating distribution based on average rating
+            const distribution = { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 };
+            
+            // Higher average ratings have more 5 and 4 star reviews
+            if (averageRating >= 4.5) {
+                distribution[5] = Math.floor(totalRatings * (0.65 + Math.random() * 0.15)); // 65-80%
+                distribution[4] = Math.floor(totalRatings * (0.15 + Math.random() * 0.10)); // 15-25%
+                distribution[3] = Math.floor(totalRatings * (0.03 + Math.random() * 0.05)); // 3-8%
+                distribution[2] = Math.floor(totalRatings * (0.01 + Math.random() * 0.03)); // 1-4%
+            } else if (averageRating >= 4.0) {
+                distribution[5] = Math.floor(totalRatings * (0.45 + Math.random() * 0.20)); // 45-65%
+                distribution[4] = Math.floor(totalRatings * (0.20 + Math.random() * 0.15)); // 20-35%
+                distribution[3] = Math.floor(totalRatings * (0.05 + Math.random() * 0.10)); // 5-15%
+                distribution[2] = Math.floor(totalRatings * (0.02 + Math.random() * 0.05)); // 2-7%
+            } else {
+                distribution[5] = Math.floor(totalRatings * (0.30 + Math.random() * 0.20)); // 30-50%
+                distribution[4] = Math.floor(totalRatings * (0.25 + Math.random() * 0.15)); // 25-40%
+                distribution[3] = Math.floor(totalRatings * (0.10 + Math.random() * 0.15)); // 10-25%
+                distribution[2] = Math.floor(totalRatings * (0.05 + Math.random() * 0.10)); // 5-15%
+            }
+            
+            // Calculate remaining for 1-star
+            const assigned = distribution[5] + distribution[4] + distribution[3] + distribution[2];
+            distribution[1] = Math.max(0, totalRatings - assigned);
+            
+            return distribution;
+        }
+        
+        function updateRatingBars(averageRating, totalRatings) {
+            const distribution = generateRatingDistribution(averageRating, totalRatings);
+            
+            // Update each rating bar
+            for (let star = 5; star >= 1; star--) {
+                const percentage = totalRatings > 0 ? (distribution[star] / totalRatings) * 100 : 0;
+                const barElement = document.querySelector(`.rating-bar:nth-child(${6 - star}) .rating-bar-fill`);
+                const countElement = document.querySelector(`.rating-bar:nth-child(${6 - star}) .rating-count`);
+                
+                if (barElement) {
+                    barElement.style.width = `${Math.round(percentage)}%`;
+                }
+                if (countElement) {
+                    countElement.textContent = distribution[star].toLocaleString();
+                }
+            }
+        }
+        
+        function updateRatingDetails(ratingCount, reviewCount) {
+            // Update the rating details in the overview section
+            const ratingLines = document.querySelectorAll('.rating-line');
+            if (ratingLines.length >= 3) {
+                ratingLines[0].textContent = `${ratingCount.toLocaleString()} rating`;
+                ratingLines[2].textContent = `${reviewCount.toLocaleString()} Review`;
+            }
+        }
+
+        // Load product data when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProductData();
+            loadCustomerReviews();
+            loadCartCount();
+            adjustProductImageSize();
+        });
+
+        // Responsive product image functionality
+        function adjustProductImageSize() {
+            const productImage = document.getElementById('productImage');
+            
+            if (productImage.complete) {
+                adjustMainImageContainer(productImage);
+            } else {
+                productImage.addEventListener('load', () => adjustMainImageContainer(productImage));
+            }
+        }
+
+        function adjustMainImageContainer(img) {
+            const aspectRatio = img.naturalWidth / img.naturalHeight;
+            const container = img.parentElement;
+            
+            // Add aspect ratio class for styling
+            if (aspectRatio > 1.2) {
+                container.classList.add('wide-image');
+            } else if (aspectRatio < 0.8) {
+                container.classList.add('tall-image');
+            } else {
+                container.classList.add('square-image');
+            }
+            
+            // Adjust image size based on aspect ratio
+            if (aspectRatio > 1.5) {
+                // Very wide images
+                img.style.maxWidth = '450px';
+                img.style.maxHeight = '300px';
+            } else if (aspectRatio < 0.7) {
+                // Very tall images
+                img.style.maxWidth = '350px';
+                img.style.maxHeight = '500px';
+            } else {
+                // Standard images
+                img.style.maxWidth = '400px';
+                img.style.maxHeight = '400px';
+            }
+        }
+
+        function loadProductData() {
+            // Get product data from localStorage
+            const savedProductData = localStorage.getItem('currentProduct');
+            
+            if (savedProductData) {
+                const currentProduct = JSON.parse(savedProductData);
+                
+                // Update page title
+                document.title = `${currentProduct.name} - D-Mart`;
+                
+                // Update product information
+                document.getElementById('productImage').src = currentProduct.image;
+                document.getElementById('productImage').alt = currentProduct.name;
+                document.getElementById('productName').textContent = currentProduct.name;
+                document.getElementById('oldPrice').textContent = `₹${currentProduct.oldPrice}`;
+                document.getElementById('currentPrice').textContent = `₹${currentProduct.currentPrice}`;
+                document.getElementById('discountPercent').textContent = `${currentProduct.discountPercent}% OFF`;
+                // Generate random rating and review counts
+                const randomRating = generateRandomRating();
+                const randomReviewCount = generateRandomReviewCount();
+                const randomRatingCount = Math.floor(randomReviewCount * (Math.random() * 4 + 3)); // 3-7x more ratings than reviews
+                
+                document.getElementById('productRating').textContent = randomRating;
+                document.getElementById('ratingText').textContent = `${randomRatingCount.toLocaleString()} Ratings & ${randomReviewCount.toLocaleString()} Reviews`;
+                
+                // Update specifications
+                document.getElementById('brand').textContent = currentProduct.brand;
+                document.getElementById('model').textContent = currentProduct.model;
+                document.getElementById('weight').textContent = currentProduct.weight;
+                
+                // Update rating summary section
+                document.querySelector('.average-rating').textContent = randomRating;
+                
+                // Update rating breakdown bars
+                updateRatingBars(randomRating, randomRatingCount);
+                
+                // Update rating details section
+                updateRatingDetails(randomRatingCount, randomReviewCount);
+                
+                // Generate dynamic reviews based on product
+                generateDynamicReviews(currentProduct);
+                
+                // Adjust image size for new product
+                setTimeout(() => adjustProductImageSize(), 100);
+                
+                // Update the productData object for cart functionality
+                Object.assign(productData, currentProduct);
+            } else {
+                // Fallback to default data if no saved data
+                document.getElementById('productImage').src = productData.image;
+                document.getElementById('productImage').alt = productData.name;
+                document.getElementById('productName').textContent = productData.name;
+                document.getElementById('oldPrice').textContent = `₹${productData.oldPrice}`;
+                document.getElementById('currentPrice').textContent = `₹${productData.currentPrice}`;
+                document.getElementById('discountPercent').textContent = `${productData.discountPercent}% OFF`;
+                // Generate random rating and review counts for fallback
+                const fallbackRating = generateRandomRating();
+                const fallbackReviewCount = generateRandomReviewCount();
+                const fallbackRatingCount = Math.floor(fallbackReviewCount * (Math.random() * 4 + 3));
+                
+                document.getElementById('productRating').textContent = fallbackRating;
+                document.getElementById('ratingText').textContent = `${fallbackRatingCount.toLocaleString()} Ratings & ${fallbackReviewCount.toLocaleString()} Reviews`;
+                
+                // Update specifications
+                document.getElementById('brand').textContent = productData.brand;
+                document.getElementById('model').textContent = productData.model;
+                document.getElementById('weight').textContent = productData.weight;
+                
+                // Update rating summary section
+                document.querySelector('.average-rating').textContent = fallbackRating;
+                
+                // Update rating breakdown bars
+                updateRatingBars(fallbackRating, fallbackRatingCount);
+                
+                // Update rating details section
+                updateRatingDetails(fallbackRatingCount, fallbackReviewCount);
+                
+                // Generate dynamic reviews based on product
+                generateDynamicReviews(productData);
+            }
+        }
+
+        function loadCustomerReviews() {
+            const reviewsContainer = document.getElementById('customerReviews');
+            
+            reviewsContainer.innerHTML = customerReviews.map(review => `
+                <div class="review-item">
+                    <div class="review-header">
+                        <div class="review-rating-badge">
+                            <span>${review.rating}★</span>
+                        </div>
+                        <h4 class="review-headline">${review.headline}</h4>
+                    </div>
+                    <div class="review-text">${review.text}</div>
+                    <div class="reviewer-info">
+                        <span class="reviewer-name">${review.name}</span>
+                        <div class="certified-badge">
+                            <span>✓</span>
+                            <span>Certified Buyer</span>
+                        </div>
+                        <span class="review-date">${review.date}</span>
+                        <div class="review-engagement">
+                            <div class="engagement-item">
+                                <span class="engagement-icon">👍</span>
+                                <span>${review.likes}</span>
+                            </div>
+                            <div class="engagement-item">
+                                <span class="engagement-icon">👎</span>
+                                <span>${review.dislikes}</span>
+                            </div>
+                            <span class="engagement-icon">⌄</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function generateDynamicReviews(product) {
+            // Generate product-specific reviews with headlines
+            const productSpecificReviews = [
+                {
+                    name: "Madan Kumar Kushwaha",
+                    date: "Boisar Mar, 2024",
+                    rating: 5,
+                    headline: "Just wow!",
+                    text: "Good quality product with excellent packaging. Highly recommended for daily use.",
+                    likes: 10,
+                    dislikes: 1
+                },
+                {
+                    name: "Adrisha Mukhopadhyay", 
+                    date: "Purba Bardhaman District May, 2024",
+                    rating: 4,
+                    headline: "Value-for-money",
+                    text: "Good quality product at reasonable price. Satisfied with the purchase.",
+                    likes: 5,
+                    dislikes: 0
+                },
+                {
+                    name: "SATYABRATA SAHOO",
+                    date: "Dhenkanal May, 2024", 
+                    rating: 5,
+                    headline: "Terrific purchase",
+                    text: "Best quality product with fast delivery. Will definitely order again.",
+                    likes: 37,
+                    dislikes: 14
+                },
+                {
+                    name: "Govind Singh Choudhary",
+                    date: "Kolar Oct, 2024",
+                    rating: 4, 
+                    headline: "Brilliant",
+                    text: "This product is too good, they are packing without any mix. I think if anyone gives pure and genuine product they will get more business.",
+                    likes: 25,
+                    dislikes: 8
+                },
+                {
+                    name: "Priya Sharma",
+                    date: "Mumbai Dec, 2024",
+                    rating: 5,
+                    headline: "Excellent quality",
+                    text: "Very satisfied with the purchase. Good quality and reasonable price. Recommended!",
+                    likes: 18,
+                    dislikes: 2
+                }
+            ];
+
+            // Update global customerReviews for this product
+            window.customerReviews = productSpecificReviews;
+            
+            // Reload reviews with new data
+            loadCustomerReviews();
+        }
+
+        function loadCartCount() {
+            const savedCartCount = localStorage.getItem('cartCount');
+            if (savedCartCount) {
+                document.getElementById('cartBadge').textContent = savedCartCount;
+            }
+        }
+
+        function addToCart() {
+            // Get current product data from the page elements
+            const productName = document.getElementById('productName').textContent;
+            const productPrice = parseInt(document.getElementById('currentPrice').textContent.replace('₹', ''));
+            const productImage = document.getElementById('productImage').src;
+            
+            const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+            const cartCount = parseInt(localStorage.getItem('cartCount') || '0');
+            
+            const existingItem = cartItems.find(item => item.name === productName);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cartItems.push({
+                    name: productName,
+                    price: productPrice,
+                    image: productImage,
+                    quantity: 1
+                });
+            }
+            
+            const newCartCount = cartCount + 1;
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            localStorage.setItem('cartCount', newCartCount.toString());
+            
+            // Update cart badge
+            document.getElementById('cartBadge').textContent = newCartCount;
+            
+            // Show enhanced success message with animation
+            showCartNotification(`${productName} added to cart!`, 'success');
+            
+            // Update button text temporarily
+            const cartBtn = document.querySelector('.btn-cart');
+            const originalText = cartBtn.innerHTML;
+            cartBtn.innerHTML = '✅ Added!';
+            cartBtn.style.background = '#28a745';
+            
+            // Reset button after 2 seconds
+            setTimeout(() => {
+                cartBtn.innerHTML = originalText;
+                cartBtn.style.background = '#266D37';
+            }, 2000);
+        }
+
+        function buyNow() {
+            // Get current product data from the page elements
+            const productName = document.getElementById('productName').textContent;
+            const productPrice = parseInt(document.getElementById('currentPrice').textContent.replace('₹', ''));
+            const productImage = document.getElementById('productImage').src;
+            
+            // Get existing cart items
+            const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+            const cartCount = parseInt(localStorage.getItem('cartCount') || '0');
+            
+            // Check if product is already in cart
+            const existingItem = cartItems.find(item => item.name === productName);
+            
+            if (existingItem) {
+                // If product exists, increase quantity by 1 for buy now
+                existingItem.quantity += 1;
+            } else {
+                // If product doesn't exist, add it to cart
+                cartItems.push({
+                    name: productName,
+                    price: productPrice,
+                    image: productImage,
+                    quantity: 1
+                });
+            }
+            
+            // Calculate total price and items
+            const totalPrice = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+            
+            // Prepare checkout data
+            const checkoutData = {
+                items: cartItems,
+                totalPrice: totalPrice,
+                totalItems: totalItems,
+                singleProduct: {
+                    name: productName,
+                    price: productPrice,
+                    image: productImage,
+                    quantity: 1
+                }
+            };
+            
+            // Store checkout data for OrderBilling.html
+            localStorage.setItem('checkoutData', JSON.stringify(checkoutData));
+            
+            // Update cart count
+            const newCartCount = cartCount + 1;
+            localStorage.setItem('cartCount', newCartCount.toString());
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            
+            // Update cart badge
+            document.getElementById('cartBadge').textContent = newCartCount;
+            
+            // Show notification
+            showCartNotification(`${productName} added for checkout!`, 'success');
+            
+            // Redirect to checkout page
+            setTimeout(() => {
+                window.location.href = 'OrderBilling.html';
+            }, 500);
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+
+         function openCart() {
+             // Open cart sidebar instead of redirecting
+             const cartSidebar = document.getElementById('cartSidebar');
+             cartSidebar.classList.add('open');
+             
+             // Load cart items
+             loadCartItems();
+         }
+
+         function closeCart() {
+             const cartSidebar = document.getElementById('cartSidebar');
+             cartSidebar.classList.remove('open');
+         }
+
+         // Enhanced notification system
+         function showCartNotification(message, type = 'success') {
+             // Create notification element
+             const notification = document.createElement('div');
+             notification.className = 'cart-notification';
+             notification.innerHTML = `
+                 <div class="notification-content">
+                     <span class="notification-icon">${type === 'success' ? '✅' : 'ℹ️'}</span>
+                     <span class="notification-text">${message}</span>
+                 </div>
+             `;
+             
+             // Add notification styles
+             notification.style.cssText = `
+                 position: fixed;
+                 top: 20px;
+                 right: 20px;
+                 background: ${type === 'success' ? 'linear-gradient(135deg, #28a745 0%, #20c997 100%)' : 'linear-gradient(135deg, #266D37 0%, #2d7a3d 100%)'};
+                 color: white;
+                 padding: 15px 20px;
+                 border-radius: 10px;
+                 box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+                 z-index: 1001;
+                 transform: translateX(100%);
+                 transition: transform 0.3s ease;
+                 max-width: 300px;
+                 font-weight: bold;
+             `;
+             
+             document.body.appendChild(notification);
+             
+             // Animate in
+             setTimeout(() => {
+                 notification.style.transform = 'translateX(0)';
+             }, 100);
+             
+             // Remove after 3 seconds
+             setTimeout(() => {
+                 notification.style.transform = 'translateX(100%)';
+                 setTimeout(() => {
+                     if (notification.parentNode) {
+                         notification.parentNode.removeChild(notification);
+                     }
+                 }, 300);
+             }, 3000);
+         }
+
+         // Add CSS for notification
+         const notificationCSS = `
+             .notification-content {
+                 display: flex;
+                 align-items: center;
+                 gap: 10px;
+             }
+             
+             .notification-icon {
+                 font-size: 18px;
+             }
+             
+             .notification-text {
+                 font-size: 14px;
+             }
+         `;
+
+         // Inject notification CSS
+         const style = document.createElement('style');
+         style.textContent = notificationCSS;
+         document.head.appendChild(style);
+
+         // Cart sidebar functionality
+         function loadCartItems() {
+             const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+             const cartItemsContainer = document.getElementById('cartItems');
+             const cartTotal = document.getElementById('cartTotal');
+             const cartCount = document.getElementById('cartCount');
+             
+             if (cartItems.length === 0) {
+                 cartItemsContainer.innerHTML = `
+                     <div class="empty-cart">
+                         <div class="empty-cart-icon">🛒</div>
+                         <p>Your cart is empty</p>
+                         <p>Add some products to get started!</p>
+                     </div>
+                 `;
+                 cartTotal.textContent = '₹0';
+                 cartCount.textContent = '0';
+                 return;
+             }
+             
+             let totalPrice = 0;
+             let totalItems = 0;
+             
+             cartItemsContainer.innerHTML = cartItems.map(item => {
+                 const itemTotal = item.price * item.quantity;
+                 totalPrice += itemTotal;
+                 totalItems += item.quantity;
+                 
+                 return `
+                     <div class="cart-item">
+                         <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                         <div class="cart-item-details">
+                             <h4 class="cart-item-name">${item.name}</h4>
+                             <p class="cart-item-price">₹${item.price}</p>
+                             <div class="cart-item-controls">
+                                 <button onclick="updateQuantity('${item.name}', ${item.quantity - 1})" class="quantity-btn">-</button>
+                                 <span class="quantity">${item.quantity}</span>
+                                 <button onclick="updateQuantity('${item.name}', ${item.quantity + 1})" class="quantity-btn">+</button>
+                                 <button onclick="removeFromCart('${item.name}')" class="remove-btn">🗑️</button>
+                             </div>
+                         </div>
+                     </div>
+                 `;
+             }).join('');
+             
+             cartTotal.textContent = `₹${totalPrice}`;
+             cartCount.textContent = totalItems;
+         }
+
+         function updateQuantity(itemName, newQuantity) {
+             const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+             const item = cartItems.find(item => item.name === itemName);
+             
+             if (item) {
+                 if (newQuantity <= 0) {
+                     removeFromCart(itemName);
+                     return;
+                 }
+                 
+                 item.quantity = newQuantity;
+                 localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                 
+                 // Update cart count
+                 const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+                 localStorage.setItem('cartCount', totalItems.toString());
+                 
+                 // Update UI
+                 loadCartItems();
+                 document.getElementById('cartBadge').textContent = totalItems;
+             }
+         }
+
+         function removeFromCart(itemName) {
+             const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+             const updatedItems = cartItems.filter(item => item.name !== itemName);
+             
+             localStorage.setItem('cartItems', JSON.stringify(updatedItems));
+             
+             // Update cart count
+             const totalItems = updatedItems.reduce((sum, item) => sum + item.quantity, 0);
+             localStorage.setItem('cartCount', totalItems.toString());
+             
+             // Update UI
+             loadCartItems();
+             document.getElementById('cartBadge').textContent = totalItems;
+             
+             // Show notification
+             showCartNotification(`${itemName} removed from cart!`, 'info');
+         }
+
+        function proceedToCheckout() {
+            const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+            
+            if (cartItems.length === 0) {
+                showCartNotification('Your cart is empty!', 'info');
+                return;
+            }
+            
+            // Calculate total
+            const totalPrice = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+            
+            // Prepare checkout data
+            const checkoutData = {
+                items: cartItems,
+                totalPrice: totalPrice,
+                totalItems: totalItems,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Store checkout data
+            localStorage.setItem('checkoutData', JSON.stringify(checkoutData));
+            
+            // Close cart and redirect
+            closeCart();
+            
+            // Show loading notification
+            showCartNotification('Redirecting to checkout...', 'success');
+            
+            // Redirect after a short delay
+            setTimeout(() => {
+                window.location.href = 'OrderBilling.html';
+            }, 1000);
+        }
+
+        // Close cart when clicking outside
+        document.addEventListener('click', function(event) {
+            const cartSidebar = document.getElementById('cartSidebar');
+            const cartIcon = document.querySelector('.cart-icon');
+            
+            if (cartSidebar.classList.contains('open') && 
+                !cartSidebar.contains(event.target) && 
+                !cartIcon.contains(event.target)) {
+                closeCart();
+            }
+        });
+
+        // Toggle offers visibility
+        function toggleOffers() {
+            const hiddenOffers = document.querySelectorAll('.hidden-offer');
+            const readMoreBtn = document.querySelector('.read-more-btn');
+            let isExpanded = false;
+            
+            // Check if any hidden offers are visible
+            hiddenOffers.forEach(offer => {
+                if (offer.style.display !== 'none') {
+                    isExpanded = true;
+                }
+            });
+            
+            if (isExpanded) {
+                // Hide offers
+                hiddenOffers.forEach(offer => {
+                    offer.style.display = 'none';
+                });
+                readMoreBtn.textContent = 'Read more';
+            } else {
+                // Show offers
+                hiddenOffers.forEach(offer => {
+                    offer.style.display = 'flex';
+                });
+                readMoreBtn.textContent = 'Read less';
+            }
+        }
+
+    </script>
+
+    <!-- Cart Sidebar -->
+    <div id="cartSidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button onclick="closeCart()" class="close-cart">×</button>
+        </div>
+        
+        <div class="cart-content">
+            <div id="cartItems" class="cart-items">
+                <!-- Cart items will be loaded here -->
+            </div>
+            
+            <div class="cart-footer">
+                <div class="cart-summary">
+                    <div class="cart-total-row">
+                        <span>Items: <span id="cartCount">0</span></span>
+                        <span>Total: <span id="cartTotal">₹0</span></span>
+                    </div>
+                </div>
+                
+                <button onclick="proceedToCheckout()" class="checkout-btn">
+                    Proceed to Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Sidebar CSS -->
+    <style>
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-sidebar.open {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #266D37;
+            color: white;
+        }
+
+        .cart-header h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+
+        .close-cart:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .cart-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+        }
+
+        .empty-cart-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .empty-cart p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            margin: 0 0 5px 0;
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-height: 2.6em; /* 2 lines * 1.3 line-height */
+        }
+
+        .cart-item-price {
+            margin: 0 0 10px 0;
+            font-size: 16px;
+            font-weight: bold;
+            color: #266D37;
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-btn {
+            width: 25px;
+            height: 25px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .quantity-btn:hover {
+            background: #266D37;
+            color: white;
+            border-color: #266D37;
+        }
+
+        .quantity {
+            min-width: 30px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .remove-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 2px;
+            margin-left: auto;
+            transition: transform 0.2s ease;
+        }
+
+        .remove-btn:hover {
+            transform: scale(1.2);
+        }
+
+        .cart-footer {
+            padding: 20px;
+            border-top: 1px solid #eee;
+            background: #f8f9fa;
+        }
+
+        .cart-summary {
+            margin-bottom: 15px;
+        }
+
+        .cart-total-row {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #266D37 0%, #2d7a3d 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(38, 109, 55, 0.3);
+        }
+
+        .checkout-btn:hover {
+            background: linear-gradient(135deg, #1e5a2e 0%, #266D37 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(38, 109, 55, 0.4);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+        }
+    </style>
+</body>
+</html>

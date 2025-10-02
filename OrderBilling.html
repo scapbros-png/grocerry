@@ -1,0 +1,2440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Options</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: white;
+            color: #333;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .back-btn {
+            background: #f8f9fa;
+            color: #333;
+            border: 1px solid #e0e0e0;
+            padding: 6px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s ease;
+            min-width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .back-btn:hover {
+            background: #e9ecef;
+            border-color: #266d37;
+            color: #266d37;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            width: 60px;
+            height: 24px;
+            object-fit: contain;
+        }
+        
+        .logo-text {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        
+        
+        .content {
+            padding: 20px 30px;
+            margin-top: 70px; /* Add space for fixed header */
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .section:first-child {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .billing-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        /* Address Section Styles */
+        .address-section {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .location-btn {
+            background: #266d37;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .location-btn:hover {
+            background: #1e5a2e;
+            transform: translateY(-1px);
+        }
+        
+        .location-icon {
+            font-size: 16px;
+        }
+        
+        .address-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .address-grid.full-width {
+            grid-template-columns: 1fr;
+        }
+        
+        .address-form-group {
+            margin-bottom: 15px;
+        }
+        
+        .address-form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            color: #555;
+            font-size: 14px;
+        }
+        
+        .address-form-control {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .address-form-control:focus {
+            border-color: #266d37;
+            box-shadow: 0 0 0 2px rgba(38, 109, 55, 0.1);
+            outline: none;
+        }
+        
+        .address-form-control::placeholder {
+            color: #999;
+        }
+        
+        .address-type-section {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .address-type-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+        }
+        
+        .address-type-options {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .address-type-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        
+        .address-type-option input[type="radio"] {
+            width: 16px;
+            height: 16px;
+            accent-color: #266d37;
+        }
+        
+        .address-type-option label {
+            font-size: 14px;
+            color: #555;
+            cursor: pointer;
+            margin: 0;
+        }
+        
+        .address-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .save-address-btn {
+            background: #ff6b35;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+        
+        .save-address-btn:hover {
+            background: #e55a2b;
+            transform: translateY(-1px);
+        }
+        
+        .cancel-address-btn {
+            background: none;
+            color: #266d37;
+            border: none;
+            padding: 12px 24px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .cancel-address-btn:hover {
+            color: #1e5a2e;
+        }
+        
+        /* Hide address section after saving */
+        .address-section.hidden {
+            display: none;
+        }
+        
+        /* Address saved indicator */
+        .address-saved-indicator {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .address-saved-indicator.show {
+            display: flex;
+        }
+        
+        .address-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            border-bottom: 1px solid #f0f0f0;
+            background: #fafafa;
+        }
+        
+        .address-title-section {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .address-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .address-check-icon {
+            color: #266d37;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .change-address-btn {
+            background: white;
+            border: 1px solid #d0d0d0;
+            color: #266d37;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+        
+        .change-address-btn:hover {
+            background: #f8f9fa;
+            border-color: #266d37;
+            color: #1e5a2e;
+        }
+        
+        .address-details {
+            padding: 16px 20px;
+            background: white;
+        }
+        
+        .address-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 4px;
+        }
+        
+        .address-mobile {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        
+        .address-text {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.4;
+            margin: 0;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #555;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: #266d37;
+            box-shadow: 0 0 0 2px rgba(38, 109, 55, 0.2);
+            outline: none;
+        }
+        
+        /* Payment Method Groups */
+        .payment-method-group {
+            margin-bottom: 30px;
+        }
+        
+        .payment-group-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            padding-left: 5px;
+        }
+        
+        .payment-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .payment-option {
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .payment-option:hover {
+            border-color: #266d37;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .payment-option.active {
+            border-color: #266d37;
+            background-color: rgba(38, 109, 55, 0.05);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(38, 109, 55, 0.2);
+        }
+        
+        .payment-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+        
+        .payment-logo {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            margin-bottom: 8px;
+            border-radius: 4px;
+        }
+        
+        .gpay { color: #4285F4; }
+        .paytm { color: #20336b; }
+        .phonepe { color: #673AB7; }
+        .credit-card { color: #1a73e8; }
+        .debit-card { color: #34a853; }
+        .netbanking { color: #ea4335; }
+        .cod { color: #ff6b35; }
+        .wallet { color: #9c27b0; }
+        
+        .payment-name {
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+        }
+        
+        
+        .payment-proceed-btn {
+            background: #ff6b35;
+            margin-bottom: 15px;
+        }
+        
+        .payment-proceed-btn:hover {
+            background: #e55a2b;
+        }
+        
+        .back-to-address-btn {
+            background: #6c757d;
+            margin-bottom: 0;
+        }
+        
+        .back-to-address-btn:hover {
+            background: #5a6268;
+        }
+        
+        /* COD Unavailable Styles */
+        .payment-option.cod-unavailable {
+            opacity: 0.6;
+            cursor: not-allowed;
+            position: relative;
+            border-color: #ccc !important;
+            background-color: #f8f9fa !important;
+        }
+        
+        .payment-option.cod-unavailable:hover {
+            transform: none !important;
+            box-shadow: none !important;
+            border-color: #ccc !important;
+        }
+        
+        .payment-option.cod-unavailable .payment-icon {
+            color: #999 !important;
+        }
+        
+        .payment-option.cod-unavailable .payment-name {
+            color: #999 !important;
+        }
+        
+        .unavailable-text {
+            font-size: 12px;
+            color: #dc3545;
+            font-weight: 600;
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Card Payment Form Styles */
+        .card-form {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid #e9ecef;
+        }
+
+        .card-icons {
+            display: flex;
+            gap: 10px;
+            margin-top: 8px;
+            font-size: 24px;
+        }
+
+        .card-icons i {
+            color: #666;
+            transition: color 0.3s ease;
+        }
+
+        .card-icons .fab.fa-cc-visa { color: #1a1f71; }
+        .card-icons .fab.fa-cc-mastercard { color: #eb001b; }
+        .card-icons .fab.fa-cc-amex { color: #006fcf; }
+
+        .card-payment-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .back-to-payment-btn {
+            background: #6c757d !important;
+        }
+
+        .back-to-payment-btn:hover {
+            background: #5a6268 !important;
+        }
+
+        /* Card number formatting */
+        #cardNumber {
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        #expiryDate, #cvv {
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+        }
+
+        /* Card validation styles */
+        .form-control.valid {
+            border-color: #28a745;
+            box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.2);
+        }
+
+        .form-control.invalid {
+            border-color: #dc3545;
+            box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.2);
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        /* Net Banking Styles */
+        .netbanking-form {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid #e9ecef;
+        }
+
+        .bank-selection-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .bank-group-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .popular-banks {
+            margin-bottom: 30px;
+        }
+
+        .bank-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .bank-option {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .bank-option:hover {
+            border-color: #266d37;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .bank-option.selected {
+            border-color: #266d37;
+            background: rgba(38, 109, 55, 0.05);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(38, 109, 55, 0.2);
+        }
+
+        .bank-logo {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #266d37, #1e5a2e);
+            color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .bank-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .bank-dropdown-container {
+            margin-bottom: 20px;
+        }
+
+        .bank-dropdown {
+            width: 100%;
+            padding: 12px 15px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+            background: white;
+            transition: border-color 0.3s ease;
+        }
+
+        .bank-dropdown:focus {
+            border-color: #266d37;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(38, 109, 55, 0.1);
+        }
+
+        .selected-bank-info {
+            margin: 30px 0;
+            padding: 20px 0;
+            border-top: 2px solid #e9ecef;
+        }
+
+        .selected-bank-card {
+            background: white;
+            border: 2px solid #266d37;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .selected-bank-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .selected-bank-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #266d37;
+        }
+
+        .change-bank-btn {
+            background: none;
+            border: 1px solid #266d37;
+            color: #266d37;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .change-bank-btn:hover {
+            background: #266d37;
+            color: white;
+        }
+
+        .selected-bank-details {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .selected-bank-logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #266d37, #1e5a2e);
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        .selected-bank-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .payment-amount-display {
+            background: #f0fff4;
+            border: 2px solid #266d37;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .amount-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .amount-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #266d37;
+        }
+
+        .netbanking-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        #proceedToNetBanking {
+            background: #266d37 !important;
+        }
+
+        #proceedToNetBanking:hover {
+            background: #1e5a2e !important;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .bank-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            .bank-option {
+                padding: 15px 10px;
+            }
+            
+            .bank-logo {
+                width: 40px;
+                height: 40px;
+                font-size: 10px;
+            }
+            
+            .bank-name {
+                font-size: 12px;
+            }
+            
+            .selected-bank-details {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: #266d37;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #1e5a2e;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            font-size: 14px;
+            background: #f9f9f9;
+        }
+        
+        /* Order Summary Styles */
+        .order-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 10px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            border-left: 4px solid #266d37;
+        }
+        
+        .order-item-image {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-right: 15px;
+        }
+        
+        .order-item-details {
+            flex: 1;
+        }
+        
+        .order-item-name {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .order-item-info {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .order-total {
+            background: #f0fff4;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            border: 2px solid #266d37;
+        }
+        
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .total-row:last-child {
+            font-weight: 700;
+            font-size: 18px;
+            color: #266d37;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .billing-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .payment-options {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            /* Mobile Address Section */
+            .address-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .address-type-options {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .address-actions {
+                flex-direction: column;
+            }
+            
+            .save-address-btn,
+            .cancel-address-btn {
+                flex: none;
+            }
+            
+            /* Mobile Address Saved Indicator */
+            .address-header {
+                padding: 12px 16px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            
+            .address-title-section {
+                align-self: stretch;
+                justify-content: space-between;
+            }
+            
+            .change-address-btn {
+                align-self: flex-end;
+                padding: 6px 12px;
+                font-size: 11px;
+            }
+            
+            .address-details {
+                padding: 12px 16px;
+            }
+            
+            /* Mobile Header */
+            .header {
+                padding: 12px 15px;
+            }
+            
+            .content {
+                margin-top: 60px; /* Adjust for mobile header */
+                padding: 15px 20px;
+            }
+            
+            .header-left {
+                gap: 8px;
+            }
+            
+            .logo img {
+                width: 50px;
+                height: 20px;
+            }
+            
+            .logo-text {
+                font-size: 14px;
+            }
+            
+            .back-btn {
+                padding: 5px 8px;
+                font-size: 11px;
+                min-width: 28px;
+                height: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-left">
+                <button class="back-btn" onclick="goBack()">←</button>
+                <div class="logo">
+                    <img src="image/threeicon.png" alt="D-Mart Logo">
+                    <div class="logo-text"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <!-- Order Summary Section -->
+            <div class="section" id="orderSummary">
+                <h2 class="section-title">Order Summary</h2>
+                <div id="orderItems"></div>
+                <div class="order-total">
+                    <div class="total-row">
+                        <span>Total Items:</span>
+                        <span id="totalItems">0</span>
+                    </div>
+                    <div class="total-row">
+                        <span>Total Amount:</span>
+                        <span id="totalAmount">₹0</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Payment Options Section -->
+            <div class="section" id="paymentSection" style="display: none;">
+                <h2 class="section-title">Payment Options</h2>
+                
+                <!-- UPI Payment Options -->
+                <div class="payment-method-group">
+                    <h3 class="payment-group-title">UPI Payment</h3>
+                    <div class="payment-options">
+                        <div class="payment-option" onclick="selectAndOpenPayment('gpay')">
+                            <img src="image/gpay logo.png" alt="Google Pay" class="payment-logo gpay-logo">
+                            <div class="payment-name">Google Pay</div>
+                        </div>
+                        <div class="payment-option" onclick="selectAndOpenPayment('paytm')">
+                            <img src="image/paytm logo.jpg" alt="Paytm" class="payment-logo paytm-logo">
+                            <div class="payment-name">Paytm</div>
+                        </div>
+                        <div class="payment-option" onclick="selectAndOpenPayment('phonepe')">
+                            <img src="image/phonepe logo.png" alt="PhonePe" class="payment-logo phonepe-logo">
+                            <div class="payment-name">PhonePe</div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <!-- Card Payment Options -->
+                <div class="payment-method-group">
+                    <h3 class="payment-group-title">Card Payment</h3>
+                    <div class="payment-options">
+                        <div class="payment-option" onclick="selectPayment('credit-card')">
+                            <i class="far fa-credit-card payment-icon credit-card"></i>
+                            <div class="payment-name">Credit Card</div>
+                        </div>
+                        <div class="payment-option" onclick="selectPayment('debit-card')">
+                            <i class="far fa-credit-card payment-icon debit-card"></i>
+                            <div class="payment-name">Debit Card</div>
+                        </div>
+                        <div class="payment-option" onclick="selectPayment('netbanking')">
+                            <i class="fas fa-university payment-icon netbanking"></i>
+                            <div class="payment-name">Net Banking</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Other Payment Options -->
+                <div class="payment-method-group">
+                    <h3 class="payment-group-title">Other Options</h3>
+                    <div class="payment-options">
+                        <div class="payment-option cod-unavailable" onclick="showCodUnavailable()">
+                            <i class="fas fa-money-bill-wave payment-icon cod"></i>
+                            <div class="payment-name">Cash on Delivery</div>
+                            <div class="unavailable-text">Not Available</div>
+                        </div>
+                        <div class="payment-option" onclick="selectPayment('wallet')">
+                            <i class="fas fa-wallet payment-icon wallet"></i>
+                            <div class="payment-name">Wallet</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn payment-proceed-btn" onclick="processSelectedPayment()" style="display: none;">
+                    Complete Payment
+                </button>
+                
+                <button class="btn back-to-address-btn" onclick="goBackToAddress()">
+                    ← Back to Address
+                </button>
+            </div>
+
+            <!-- Card Payment Form Section -->
+            <div class="section" id="cardPaymentSection" style="display: none;">
+                <h2 class="section-title">Card Payment Details</h2>
+                
+                <div class="card-form">
+                    <div class="form-group">
+                        <label for="cardNumber">Card Number</label>
+                        <input type="text" id="cardNumber" class="form-control" placeholder="1234 5678 9012 3456" maxlength="19">
+                        <div class="card-icons">
+                            <i class="fab fa-cc-visa"></i>
+                            <i class="fab fa-cc-mastercard"></i>
+                            <i class="fab fa-cc-amex"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="billing-details">
+                        <div class="form-group">
+                            <label for="expiryDate">Expiry Date</label>
+                            <input type="text" id="expiryDate" class="form-control" placeholder="MM/YY" maxlength="5">
+                        </div>
+                        <div class="form-group">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" class="form-control" placeholder="123" maxlength="4">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cardHolderName">Cardholder Name</label>
+                        <input type="text" id="cardHolderName" class="form-control" placeholder="Enter name as on card">
+                    </div>
+                    
+                    <div class="card-payment-actions">
+                        <button class="btn" onclick="processCardPayment()">
+                            Pay ₹<span id="cardPaymentAmount">0</span>
+                        </button>
+                        <button class="btn back-to-payment-btn" onclick="goBackToPaymentOptions()">
+                            ← Back to Payment Options
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Net Banking Section -->
+            <div class="section" id="netBankingSection" style="display: none;">
+                <h2 class="section-title">Net Banking</h2>
+                
+                <div class="netbanking-form">
+                    <div class="bank-selection">
+                        <h3 class="bank-selection-title">Select Your Bank</h3>
+                        <div class="popular-banks">
+                            <h4 class="bank-group-title">Popular Banks</h4>
+                            <div class="bank-grid">
+                                <div class="bank-option" onclick="selectBank('sbi')">
+                                    <div class="bank-logo">SBI</div>
+                                    <div class="bank-name">State Bank of India</div>
+                                </div>
+                                <div class="bank-option" onclick="selectBank('hdfc')">
+                                    <div class="bank-logo">HDFC</div>
+                                    <div class="bank-name">HDFC Bank</div>
+                                </div>
+                                <div class="bank-option" onclick="selectBank('icici')">
+                                    <div class="bank-logo">ICICI</div>
+                                    <div class="bank-name">ICICI Bank</div>
+                                </div>
+                                <div class="bank-option" onclick="selectBank('axis')">
+                                    <div class="bank-logo">AXIS</div>
+                                    <div class="bank-name">Axis Bank</div>
+                                </div>
+                                <div class="bank-option" onclick="selectBank('kotak')">
+                                    <div class="bank-logo">KOTAK</div>
+                                    <div class="bank-name">Kotak Mahindra</div>
+                                </div>
+                                <div class="bank-option" onclick="selectBank('pnb')">
+                                    <div class="bank-logo">PNB</div>
+                                    <div class="bank-name">Punjab National Bank</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="other-banks">
+                            <h4 class="bank-group-title">Other Banks</h4>
+                            <div class="bank-dropdown-container">
+                                <select id="otherBankSelect" class="form-control bank-dropdown" onchange="selectBankFromDropdown()">
+                                    <option value="">Select Other Bank</option>
+                                    <option value="canara">Canara Bank</option>
+                                    <option value="bob">Bank of Baroda</option>
+                                    <option value="union">Union Bank of India</option>
+                                    <option value="indian">Indian Bank</option>
+                                    <option value="central">Central Bank of India</option>
+                                    <option value="boi">Bank of India</option>
+                                    <option value="yes">Yes Bank</option>
+                                    <option value="indusind">IndusInd Bank</option>
+                                    <option value="federal">Federal Bank</option>
+                                    <option value="south">South Indian Bank</option>
+                                    <option value="karur">Karur Vysya Bank</option>
+                                    <option value="tamilnad">Tamilnad Mercantile Bank</option>
+                                    <option value="rbl">RBL Bank</option>
+                                    <option value="idbi">IDBI Bank</option>
+                                    <option value="uco">UCO Bank</option>
+                                    <option value="idfc">IDFC First Bank</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="selected-bank-info" id="selectedBankInfo" style="display: none;">
+                        <div class="selected-bank-card">
+                            <div class="selected-bank-header">
+                                <span class="selected-bank-title">Selected Bank</span>
+                                <button class="change-bank-btn" onclick="changeBankSelection()">Change</button>
+                            </div>
+                            <div class="selected-bank-details">
+                                <div class="selected-bank-logo" id="selectedBankLogo"></div>
+                                <div class="selected-bank-name" id="selectedBankName"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-amount-display">
+                            <div class="amount-label">Amount to Pay</div>
+                            <div class="amount-value">₹<span id="netBankingPaymentAmount">0</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="netbanking-actions">
+                        <button class="btn" id="proceedToNetBanking" onclick="proceedToNetBanking()" style="display: none;">
+                            Proceed to <span id="selectedBankNameBtn">Bank</span> Net Banking
+                        </button>
+                        <button class="btn back-to-payment-btn" onclick="goBackToPaymentOptions()">
+                            ← Back to Payment Options
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Address Section -->
+            <div class="section" id="addressSectionMain">
+                <h2 class="section-title">Delivery Address</h2>
+                
+                <!-- Address Saved Indicator -->
+                <div class="address-saved-indicator" id="addressSavedIndicator">
+                    <div class="address-header">
+                        <div class="address-title-section">
+                            <span class="address-title">Delivery Address</span>
+                            <span class="address-check-icon">✓</span>
+                        </div>
+                        <button class="change-address-btn" onclick="editAddress()">Change</button>
+                    </div>
+                    <div class="address-details">
+                        <div class="address-name" id="savedAddressName">CHANDAN KUMAR</div>
+                        <div class="address-mobile" id="savedAddressMobile">7888315940</div>
+                        <p class="address-text" id="savedAddressText">St no 4, harpal nagar, mahadev nagar, sua road, Giaspura ludhiana, Near Gyan vidyalaya school, Ludhiana, Punjab - 141014</p>
+                    </div>
+                </div>
+                
+                <div class="address-section" id="addressSection">
+                    <button class="location-btn" onclick="useCurrentLocation()">
+                        <span class="location-icon">📍</span>
+                        Use my current location
+                    </button>
+                    
+                    <div class="address-grid">
+                        <div class="address-form-group">
+                            <label for="addressName">Name</label>
+                            <input type="text" id="addressName" class="address-form-control" value="">
+                        </div>
+                        <div class="address-form-group">
+                            <label for="addressMobile">10-digit mobile number</label>
+                            <input type="tel" id="addressMobile" class="address-form-control" value="" maxlength="10">
+                        </div>
+                    </div>
+                    
+                    <div class="address-grid">
+                        <div class="address-form-group">
+                            <label for="addressPincode">Pincode</label>
+                            <input type="text" id="addressPincode" class="address-form-control" value="" maxlength="6">
+                        </div>
+                        <div class="address-form-group">
+                            <label for="addressLocality">Locality</label>
+                            <input type="text" id="addressLocality" class="address-form-control" value="">
+                        </div>
+                    </div>
+                    
+                    <div class="address-form-group">
+                        <label for="addressStreet">Address (Area and Street)</label>
+                        <textarea id="addressStreet" class="address-form-control" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="address-grid">
+                        <div class="address-form-group">
+                            <label for="addressCity">City/District/Town</label>
+                            <input type="text" id="addressCity" class="address-form-control" value="">
+                        </div>
+                        <div class="address-form-group">
+                            <label for="addressState">State</label>
+                            <select id="addressState" class="address-form-control">
+                                <option value="Punjab" selected>Punjab</option>
+                                <option value="Delhi">Delhi</option>
+                                <option value="Haryana">Haryana</option>
+                                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                <option value="Uttarakhand">Uttarakhand</option>
+                                <option value="Rajasthan">Rajasthan</option>
+                                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                <option value="Maharashtra">Maharashtra</option>
+                                <option value="Gujarat">Gujarat</option>
+                                <option value="Karnataka">Karnataka</option>
+                                <option value="Tamil Nadu">Tamil Nadu</option>
+                                <option value="Kerala">Kerala</option>
+                                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                <option value="Telangana">Telangana</option>
+                                <option value="West Bengal">West Bengal</option>
+                                <option value="Bihar">Bihar</option>
+                                <option value="Jharkhand">Jharkhand</option>
+                                <option value="Odisha">Odisha</option>
+                                <option value="Chhattisgarh">Chhattisgarh</option>
+                                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                <option value="Assam">Assam</option>
+                                <option value="Manipur">Manipur</option>
+                                <option value="Meghalaya">Meghalaya</option>
+                                <option value="Mizoram">Mizoram</option>
+                                <option value="Nagaland">Nagaland</option>
+                                <option value="Tripura">Tripura</option>
+                                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                <option value="Sikkim">Sikkim</option>
+                                <option value="Goa">Goa</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="address-grid">
+                        <div class="address-form-group">
+                            <label for="addressLandmark">Landmark (Optional)</label>
+                            <input type="text" id="addressLandmark" class="address-form-control" placeholder="Enter landmark">
+                        </div>
+                        <div class="address-form-group">
+                            <label for="addressAltPhone">Alternate Phone (Optional)</label>
+                            <input type="tel" id="addressAltPhone" class="address-form-control" placeholder="Enter alternate phone" maxlength="10">
+                        </div>
+                    </div>
+                    
+                    <div class="address-type-section">
+                        <div class="address-type-title">Address Type</div>
+                        <div class="address-type-options">
+                            <div class="address-type-option">
+                                <input type="radio" id="homeAddress" name="addressType" value="home" checked>
+                                <label for="homeAddress">Home (All day delivery)</label>
+                            </div>
+                            <div class="address-type-option">
+                                <input type="radio" id="workAddress" name="addressType" value="work">
+                                <label for="workAddress">Work (Delivery between 10 AM - 5 PM)</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="address-actions">
+                        <button class="save-address-btn" onclick="saveAddress()">SAVE
+                        </button>
+                        <button class="cancel-address-btn" onclick="cancelAddress()">CANCEL</button>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            <button class="btn" onclick="processPayment()">Proceed to Payment</button>
+        </div>
+        
+        <div class="footer">
+            <p>© 2023 Your Company Name. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        let selectedPayment = '';
+        let cartData = null;
+        
+        // Function to clear all cart data
+        function clearCartData() {
+            // Clear all cart-related localStorage items
+            localStorage.removeItem('cartItems');
+            localStorage.removeItem('cartCount');
+            localStorage.removeItem('checkoutData');
+            // Note: Keeping deliveryAddress for future orders unless user specifically wants it cleared
+            
+            // Log for debugging
+            console.log('Cart data cleared successfully');
+            
+            // Optional: Show notification that cart has been cleared
+            showNotification('Cart cleared successfully', 'success');
+            
+            // If there's a cart counter on the page, update it to 0
+            updateCartDisplay();
+        }
+        
+        // Function to update cart display elements
+        function updateCartDisplay() {
+            // Update cart counter if it exists on the page
+            const cartCounter = document.querySelector('.cart-count');
+            if (cartCounter) {
+                cartCounter.textContent = '0';
+                cartCounter.style.display = 'none'; // Hide counter when cart is empty
+            }
+            
+            // Update any other cart-related UI elements
+            const cartIcon = document.querySelector('.cart-icon');
+            if (cartIcon) {
+                cartIcon.classList.remove('has-items');
+            }
+        }
+        
+        // Load cart data when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCartData();
+            loadSavedAddress();
+        });
+
+        // Header functionality
+        function goBack() {
+            window.history.back();
+        }
+        
+        function loadCartData() {
+            // Get cart data from localStorage
+            const savedCartData = localStorage.getItem('checkoutData');
+            
+            if (savedCartData) {
+                cartData = JSON.parse(savedCartData);
+                displayOrderSummary();
+            } else {
+                // If no cart data, redirect back to main page
+                alert('No cart data found. Redirecting to main page...');
+                window.location.href = 'index.html';
+            }
+        }
+        
+        function displayOrderSummary() {
+            if (!cartData || !cartData.items || cartData.items.length === 0) {
+                return;
+            }
+            
+            const orderSummary = document.getElementById('orderSummary');
+            const orderItems = document.getElementById('orderItems');
+            const totalItems = document.getElementById('totalItems');
+            const totalAmount = document.getElementById('totalAmount');
+            
+            // Display order items
+            orderItems.innerHTML = cartData.items.map(item => `
+                <div class="order-item">
+                    <img src="${item.image}" alt="${item.name}" class="order-item-image">
+                    <div class="order-item-details">
+                        <div class="order-item-name">${item.name}</div>
+                        <div class="order-item-info">
+                            Quantity: ${item.quantity} × ₹${item.price} = ₹${(item.price * item.quantity).toLocaleString()}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Display totals
+            totalItems.textContent = cartData.totalItems;
+            totalAmount.textContent = `₹${cartData.totalPrice.toLocaleString()}`;
+            
+            // Show order summary
+            orderSummary.style.display = 'block';
+        }
+        
+        function selectPayment(method) {
+            selectedPayment = method;
+            
+            // Remove active class from all options
+            document.querySelectorAll('.payment-option').forEach(option => {
+                option.classList.remove('active');
+            });
+            
+            // Add active class to selected option
+            event.currentTarget.classList.add('active');
+            
+            // Show the proceed payment button
+            const proceedBtn = document.querySelector('.payment-proceed-btn');
+            if (proceedBtn) {
+                proceedBtn.style.display = 'block';
+            }
+            
+            showNotification(`${method.replace('-', ' ').toUpperCase()} selected`, 'success');
+        }
+        
+        function selectAndOpenPayment(method) {
+            // First select the payment method
+            selectedPayment = method;
+            
+            // Remove active class from all options
+            document.querySelectorAll('.payment-option').forEach(option => {
+                option.classList.remove('active');
+            });
+            
+            // Add active class to selected option
+            event.currentTarget.classList.add('active');
+            
+            // Show the proceed payment button
+            const proceedBtn = document.querySelector('.payment-proceed-btn');
+            if (proceedBtn) {
+                proceedBtn.style.display = 'block';
+            }
+            
+            // Immediately open the payment app
+            openPaymentApp(method);
+        }
+        
+        function processSelectedPayment() {
+            if (!selectedPayment) {
+                alert('Please select a payment method');
+                return;
+            }
+            
+            // Handle different payment methods
+            switch(selectedPayment) {
+                case 'gpay':
+                case 'paytm':
+                case 'phonepe':
+                    // For UPI payments, open the respective payment app
+                    showNotification('Opening ' + selectedPayment.toUpperCase() + '...', 'info');
+                    openPaymentApp(selectedPayment);
+                    break;
+                    
+                case 'credit-card':
+                case 'debit-card':
+                    showCardPaymentForm();
+                    break;
+                    
+                case 'netbanking':
+                    showNetBankingForm();
+                    break;
+                    
+                    
+                case 'wallet':
+                    showNotification('Wallet payment options would appear here', 'info');
+                    break;
+                    
+                default:
+                    showNotification('Payment method not supported', 'error');
+            }
+        }
+        
+        
+        function goBackToAddress() {
+            // Hide payment section and show address section
+            const paymentSection = document.getElementById('paymentSection');
+            const addressSection = document.getElementById('addressSectionMain');
+            
+            paymentSection.style.display = 'none';
+            addressSection.style.display = 'block';
+            
+            // Reset selected payment
+            selectedPayment = '';
+            document.querySelectorAll('.payment-option').forEach(option => {
+                option.classList.remove('active');
+            });
+            
+            // Hide proceed button
+            const proceedBtn = document.querySelector('.payment-proceed-btn');
+            if (proceedBtn) {
+                proceedBtn.style.display = 'none';
+            }
+            
+            // Scroll to address section
+            setTimeout(() => {
+                addressSection.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+            }, 100);
+        }
+        
+        function showCodUnavailable() {
+            showNotification('Cash on Delivery is not available for this order. Please select another payment method.', 'error');
+        }
+        
+        function processPayment() {
+            // Get address data for payment
+            const savedAddress = localStorage.getItem('deliveryAddress');
+            if (!savedAddress) {
+                alert('Please save your delivery address first');
+                return;
+            }
+            
+            // Hide address section and show payment section
+            const addressSection = document.getElementById('addressSectionMain');
+            const paymentSection = document.getElementById('paymentSection');
+            
+            addressSection.style.display = 'none';
+            paymentSection.style.display = 'block';
+            
+            // Scroll to top of payment section
+            setTimeout(() => {
+                paymentSection.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+            }, 100);
+        }
+        
+        // Function to generate UPI deep links for payment apps
+        function getPaymentAppDeepLink(app) {
+            const upiId = 'chandandivansusingh-2@okhdfcbank';
+            const amount = cartData ? cartData.totalPrice.toFixed(2) : '0.00';
+            
+            // Get name from saved address
+            let name = 'D-Mart Customer';
+            const savedAddress = localStorage.getItem('deliveryAddress');
+            if (savedAddress) {
+                try {
+                    const addressData = JSON.parse(savedAddress);
+                    name = addressData.name || 'D-Mart Customer';
+                } catch (error) {
+                    console.error('Error parsing address data:', error);
+                }
+            }
+            
+            // Generate unique transaction reference
+            const transactionRef = `DMART${Date.now()}`;
+            
+            // Ensure amount is properly formatted
+            const formattedAmount = parseFloat(amount).toFixed(2);
+            
+            switch(app) {
+                case 'gpay':
+                    // Google Pay supports multiple URL formats
+                    return `tez://upi/pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${formattedAmount}&cu=INR&tr=${transactionRef}&mc=0000&tid=${transactionRef}`;
+                case 'paytm':
+                    // Paytm deep link format
+                    return `paytmmp://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${formattedAmount}&cu=INR&tr=${transactionRef}`;
+                case 'phonepe':
+                    // PhonePe deep link format
+                    return `phonepe://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${formattedAmount}&cu=INR&tr=${transactionRef}`;
+                default:
+                    return '#';
+            }
+        }
+        
+        // Function to open payment app with fallback
+        function openPaymentApp(app) {
+            const deepLink = getPaymentAppDeepLink(app);
+            
+            if (deepLink === '#') {
+                showNotification('Payment app not supported', 'error');
+                return;
+            }
+            
+            // Show loading notification
+            showNotification('Opening ' + app.toUpperCase() + ' app...', 'info');
+            
+            // Add a mechanism to simulate payment completion after UPI app interaction
+            simulateUPIPaymentReturn(app);
+            
+            // Try to open the app using multiple methods for better compatibility
+            try {
+                // Method 1: Direct window.location (works on some browsers)
+                window.location.href = deepLink;
+                
+                // Method 2: Create invisible link and click (backup method)
+                setTimeout(() => {
+                    const link = document.createElement('a');
+                    link.href = deepLink;
+                    link.style.display = 'none';
+                    link.target = '_blank';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                }, 100);
+                
+                // Method 3: Try using window.open as final fallback
+                setTimeout(() => {
+                    try {
+                        const newWindow = window.open(deepLink, '_blank');
+                        if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
+                            // If all methods fail, show manual payment details
+                            showUPIFallback(app);
+                        }
+                    } catch (error) {
+                        showUPIFallback(app);
+                    }
+                }, 1500);
+                
+            } catch (error) {
+                console.error('Error opening payment app:', error);
+                showUPIFallback(app);
+            }
+        }
+        
+        // Function to simulate UPI payment return and completion
+        function simulateUPIPaymentReturn(app) {
+            // Simulate user returning from UPI app after some time
+            setTimeout(() => {
+                const returned = confirm(
+                    `Have you completed the payment in ${app.toUpperCase()}?\n\n` +
+                    `Click OK if payment was successful, or Cancel if you cancelled/failed the payment.`
+                );
+                
+                if (returned) {
+                    // Simulate payment success
+                    showNotification(`Payment successful via ${app.toUpperCase()}! Order confirmed.`, 'success');
+                    
+                    // Clear all cart data
+                    clearCartData();
+                    
+                    // Redirect after delay
+                    setTimeout(() => {
+                        alert(`Payment successful via ${app.toUpperCase()}! Your order has been confirmed. You will be redirected to the main page.`);
+                        window.location.href = 'index.html';
+                    }, 2000);
+                } else {
+                    showNotification('Payment cancelled or failed. You can try again.', 'error');
+                }
+            }, 5000); // Wait 5 seconds to simulate app interaction time
+        }
+        
+        // Fallback function to show UPI details if app doesn't open
+        function showUPIFallback(app) {
+            const amount = cartData ? cartData.totalPrice.toFixed(2) : '0.00';
+            const upiId = 'chandandivansusingh-2@okhdfcbank';
+            
+            let message = `Payment Amount: ₹${amount}\n\n`;
+            message += `UPI ID: ${upiId}\n\n`;
+            
+            switch(app) {
+                case 'gpay':
+                    message += 'Please open Google Pay manually and scan this QR or use the UPI ID above.';
+                    break;
+                case 'paytm':
+                    message += 'Please open Paytm manually and scan this QR or use the UPI ID above.';
+                    break;
+                case 'phonepe':
+                    message += 'Please open PhonePe manually and scan this QR or use the UPI ID above.';
+                    break;
+            }
+            
+            alert(message);
+        }
+
+        // Card Payment Functions
+        function showCardPaymentForm() {
+            // Hide payment section and show card payment form
+            const paymentSection = document.getElementById('paymentSection');
+            const cardPaymentSection = document.getElementById('cardPaymentSection');
+            
+            paymentSection.style.display = 'none';
+            cardPaymentSection.style.display = 'block';
+            
+            // Update payment amount
+            const amount = cartData ? cartData.totalPrice.toLocaleString() : '0';
+            document.getElementById('cardPaymentAmount').textContent = amount;
+            
+            // Scroll to card payment section
+            setTimeout(() => {
+                cardPaymentSection.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+            }, 100);
+            
+            showNotification('Enter your card details to complete payment', 'info');
+        }
+
+        function goBackToPaymentOptions() {
+            // Hide card payment section and show payment options
+            const paymentSection = document.getElementById('paymentSection');
+            const cardPaymentSection = document.getElementById('cardPaymentSection');
+            
+            cardPaymentSection.style.display = 'none';
+            paymentSection.style.display = 'block';
+            
+            // Clear card form
+            clearCardForm();
+            
+            // Scroll to payment section
+            setTimeout(() => {
+                paymentSection.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+            }, 100);
+        }
+
+        function clearCardForm() {
+            document.getElementById('cardNumber').value = '';
+            document.getElementById('expiryDate').value = '';
+            document.getElementById('cvv').value = '';
+            document.getElementById('cardHolderName').value = '';
+            
+            // Remove validation classes
+            document.querySelectorAll('.form-control').forEach(input => {
+                input.classList.remove('valid', 'invalid');
+            });
+        }
+
+        function processCardPayment() {
+            // Validate card details
+            const cardNumber = document.getElementById('cardNumber').value.replace(/\s/g, '');
+            const expiryDate = document.getElementById('expiryDate').value;
+            const cvv = document.getElementById('cvv').value;
+            const cardHolderName = document.getElementById('cardHolderName').value.trim();
+            
+            // Validation
+            if (!validateCardNumber(cardNumber)) {
+                showNotification('Please enter a valid card number', 'error');
+                return;
+            }
+            
+            if (!validateExpiryDate(expiryDate)) {
+                showNotification('Please enter a valid expiry date (MM/YY)', 'error');
+                return;
+            }
+            
+            if (!validateCVV(cvv)) {
+                showNotification('Please enter a valid CVV', 'error');
+                return;
+            }
+            
+            if (!cardHolderName) {
+                showNotification('Please enter cardholder name', 'error');
+                return;
+            }
+            
+            // Simulate payment processing
+            showNotification('Processing payment...', 'info');
+            
+            // Simulate API call delay
+            setTimeout(() => {
+                // Simulate successful payment
+                const success = Math.random() > 0.1; // 90% success rate for demo
+                
+                if (success) {
+                    showNotification('Payment successful! Order confirmed.', 'success');
+                    
+                    // Clear all cart data
+                    clearCartData();
+                    
+                    // Redirect to success page or main page after delay
+                    setTimeout(() => {
+                        alert('Payment successful! Your order has been confirmed. You will be redirected to the main page.');
+                        window.location.href = 'index.html';
+                    }, 2000);
+                } else {
+                    showNotification('Payment failed. Please try again or use a different payment method.', 'error');
+                }
+            }, 2000);
+        }
+
+        // Card validation functions
+        function validateCardNumber(cardNumber) {
+            // Remove spaces and check if it's all digits
+            const cleanNumber = cardNumber.replace(/\s/g, '');
+            
+            // Check if it's 13-19 digits (standard card length)
+            if (!/^\d{13,19}$/.test(cleanNumber)) {
+                return false;
+            }
+            
+            // Luhn algorithm for card validation
+            let sum = 0;
+            let isEven = false;
+            
+            for (let i = cleanNumber.length - 1; i >= 0; i--) {
+                let digit = parseInt(cleanNumber.charAt(i));
+                
+                if (isEven) {
+                    digit *= 2;
+                    if (digit > 9) {
+                        digit -= 9;
+                    }
+                }
+                
+                sum += digit;
+                isEven = !isEven;
+            }
+            
+            return sum % 10 === 0;
+        }
+
+        function validateExpiryDate(expiryDate) {
+            if (!/^\d{2}\/\d{2}$/.test(expiryDate)) {
+                return false;
+            }
+            
+            const [month, year] = expiryDate.split('/').map(num => parseInt(num));
+            const currentDate = new Date();
+            const currentYear = currentDate.getFullYear() % 100;
+            const currentMonth = currentDate.getMonth() + 1;
+            
+            if (month < 1 || month > 12) {
+                return false;
+            }
+            
+            if (year < currentYear || (year === currentYear && month < currentMonth)) {
+                return false;
+            }
+            
+            return true;
+        }
+
+        function validateCVV(cvv) {
+            return /^\d{3,4}$/.test(cvv);
+        }
+
+        // Net Banking Functions
+        let selectedBankCode = '';
+        let selectedBankName = '';
+
+        const bankDetails = {
+            'sbi': 'State Bank of India',
+            'hdfc': 'HDFC Bank',
+            'icici': 'ICICI Bank',
+            'axis': 'Axis Bank',
+            'kotak': 'Kotak Mahindra Bank',
+            'pnb': 'Punjab National Bank',
+            'canara': 'Canara Bank',
+            'bob': 'Bank of Baroda',
+            'union': 'Union Bank of India',
+            'indian': 'Indian Bank',
+            'central': 'Central Bank of India',
+            'boi': 'Bank of India',
+            'yes': 'Yes Bank',
+            'indusind': 'IndusInd Bank',
+            'federal': 'Federal Bank',
+            'south': 'South Indian Bank',
+            'karur': 'Karur Vysya Bank',
+            'tamilnad': 'Tamilnad Mercantile Bank',
+            'rbl': 'RBL Bank',
+            'idbi': 'IDBI Bank',
+            'uco': 'UCO Bank',
+            'idfc': 'IDFC First Bank'
+        };
+
+        function showNetBankingForm() {
+            // Hide payment section and show net banking form
+            const paymentSection = document.getElementById('paymentSection');
+            const netBankingSection = document.getElementById('netBankingSection');
+            
+            paymentSection.style.display = 'none';
+            netBankingSection.style.display = 'block';
+            
+            // Update payment amount
+            const amount = cartData ? cartData.totalPrice.toLocaleString() : '0';
+            document.getElementById('netBankingPaymentAmount').textContent = amount;
+            
+            // Reset bank selection
+            resetBankSelection();
+            
+            // Scroll to net banking section
+            setTimeout(() => {
+                netBankingSection.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+            }, 100);
+            
+            showNotification('Select your bank to proceed with Net Banking', 'info');
+        }
+
+        function selectBank(bankCode) {
+            selectedBankCode = bankCode;
+            selectedBankName = bankDetails[bankCode];
+            
+            // Remove selected class from all bank options
+            document.querySelectorAll('.bank-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked bank
+            event.currentTarget.classList.add('selected');
+            
+            // Clear dropdown selection
+            document.getElementById('otherBankSelect').value = '';
+            
+            // Show selected bank info
+            showSelectedBankInfo();
+            
+            showNotification(`${selectedBankName} selected`, 'success');
+        }
+
+        function selectBankFromDropdown() {
+            const dropdown = document.getElementById('otherBankSelect');
+            const bankCode = dropdown.value;
+            
+            if (bankCode) {
+                selectedBankCode = bankCode;
+                selectedBankName = bankDetails[bankCode];
+                
+                // Remove selected class from all bank options
+                document.querySelectorAll('.bank-option').forEach(option => {
+                    option.classList.remove('selected');
+                });
+                
+                // Show selected bank info
+                showSelectedBankInfo();
+                
+                showNotification(`${selectedBankName} selected`, 'success');
+            }
+        }
+
+        function showSelectedBankInfo() {
+            const selectedBankInfo = document.getElementById('selectedBankInfo');
+            const selectedBankLogo = document.getElementById('selectedBankLogo');
+            const selectedBankNameElement = document.getElementById('selectedBankName');
+            const selectedBankNameBtn = document.getElementById('selectedBankNameBtn');
+            const proceedBtn = document.getElementById('proceedToNetBanking');
+            const bankSelection = document.querySelector('.bank-selection');
+            
+            // Update selected bank display
+            selectedBankLogo.textContent = selectedBankCode.toUpperCase();
+            selectedBankNameElement.textContent = selectedBankName;
+            selectedBankNameBtn.textContent = selectedBankName;
+            
+            // Hide bank selection and show selected bank info
+            bankSelection.style.display = 'none';
+            selectedBankInfo.style.display = 'block';
+            proceedBtn.style.display = 'block';
+            
+            // Scroll to selected bank info
+            setTimeout(() => {
+                selectedBankInfo.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center' 
+                });
+            }, 300);
+        }
+
+        function changeBankSelection() {
+            const selectedBankInfo = document.getElementById('selectedBankInfo');
+            const proceedBtn = document.getElementById('proceedToNetBanking');
+            const bankSelection = document.querySelector('.bank-selection');
+            
+            // Reset selection
+            resetBankSelection();
+            
+            // Show bank selection and hide selected bank info
+            bankSelection.style.display = 'block';
+            selectedBankInfo.style.display = 'none';
+            proceedBtn.style.display = 'none';
+            
+            // Scroll to bank selection
+            setTimeout(() => {
+                bankSelection.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+            }, 100);
+            
+            showNotification('Please select your bank again', 'info');
+        }
+
+        function resetBankSelection() {
+            selectedBankCode = '';
+            selectedBankName = '';
+            
+            // Remove selected class from all bank options
+            document.querySelectorAll('.bank-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // Clear dropdown
+            document.getElementById('otherBankSelect').value = '';
+            
+            // Hide selected bank info
+            document.getElementById('selectedBankInfo').style.display = 'none';
+            document.getElementById('proceedToNetBanking').style.display = 'none';
+            
+            // Show bank selection
+            document.querySelector('.bank-selection').style.display = 'block';
+        }
+
+        function proceedToNetBanking() {
+            if (!selectedBankCode || !selectedBankName) {
+                showNotification('Please select a bank first', 'error');
+                return;
+            }
+            
+            // Show processing notification
+            showNotification(`Redirecting to ${selectedBankName} Net Banking...`, 'info');
+            
+            // Simulate redirect to bank's net banking portal
+            setTimeout(() => {
+                // In a real implementation, you would redirect to the bank's actual net banking URL
+                // For demo purposes, we'll simulate the process
+                
+                const confirmation = confirm(
+                    `You will be redirected to ${selectedBankName} Net Banking portal to complete the payment of ₹${cartData ? cartData.totalPrice.toLocaleString() : '0'}.\n\n` +
+                    `After successful payment, you will be redirected back to our website.\n\n` +
+                    `Click OK to proceed or Cancel to go back.`
+                );
+                
+                if (confirmation) {
+                    // Simulate successful payment after a delay
+                    showNotification('Redirecting to bank portal...', 'info');
+                    
+                    setTimeout(() => {
+                        // Simulate return from bank with success
+                        const paymentSuccess = Math.random() > 0.15; // 85% success rate for demo
+                        
+                        if (paymentSuccess) {
+                            showNotification('Payment successful! Order confirmed.', 'success');
+                            
+                            // Clear all cart data
+                            clearCartData();
+                            
+                            // Show success message and redirect
+                            setTimeout(() => {
+                                alert(`Payment successful via ${selectedBankName}! Your order has been confirmed. You will be redirected to the main page.`);
+                                window.location.href = 'index.html';
+                            }, 2000);
+                        } else {
+                            showNotification('Payment failed or cancelled. Please try again.', 'error');
+                        }
+                    }, 3000);
+                } else {
+                    showNotification('Payment cancelled', 'info');
+                }
+            }, 1000);
+        }
+        
+        // Address functionality
+        function useCurrentLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        // Simulate address population based on coordinates
+                        populateAddressFromLocation(position.coords.latitude, position.coords.longitude);
+                    },
+                    function(error) {
+                        alert('Unable to get your current location. Please enter address manually.');
+                    }
+                );
+            } else {
+                alert('Geolocation is not supported by this browser. Please enter address manually.');
+            }
+        }
+        
+        function populateAddressFromLocation(lat, lng) {
+            // Simulate address lookup (in real implementation, you would call a geocoding API)
+            const mockAddress = {
+                locality: 'Near Current Location',
+                city: 'Ludhiana',
+                state: 'Punjab',
+                pincode: '141014'
+            };
+            
+            document.getElementById('addressLocality').value = mockAddress.locality;
+            document.getElementById('addressCity').value = mockAddress.city;
+            document.getElementById('addressState').value = mockAddress.state;
+            document.getElementById('addressPincode').value = mockAddress.pincode;
+            
+            showNotification('Location detected! Please verify the address details.', 'success');
+        }
+        
+        function saveAddress() {
+            // Get form data
+            const addressData = {
+                name: document.getElementById('addressName').value.trim(),
+                mobile: document.getElementById('addressMobile').value.trim(),
+                pincode: document.getElementById('addressPincode').value.trim(),
+                locality: document.getElementById('addressLocality').value.trim(),
+                street: document.getElementById('addressStreet').value.trim(),
+                city: document.getElementById('addressCity').value.trim(),
+                state: document.getElementById('addressState').value,
+                landmark: document.getElementById('addressLandmark').value.trim(),
+                altPhone: document.getElementById('addressAltPhone').value.trim(),
+                type: document.querySelector('input[name="addressType"]:checked').value
+            };
+            
+            // Validate required fields
+            if (!addressData.name || !addressData.mobile || !addressData.pincode || 
+                !addressData.locality || !addressData.street || !addressData.city) {
+                alert('Please fill all required address fields');
+                return;
+            }
+            
+            // Validate mobile number
+            if (!/^\d{10}$/.test(addressData.mobile)) {
+                alert('Please enter a valid 10-digit mobile number');
+                return;
+            }
+            
+            // Validate pincode
+            if (!/^\d{6}$/.test(addressData.pincode)) {
+                alert('Please enter a valid 6-digit pincode');
+                return;
+            }
+            
+            // Save address to localStorage
+            localStorage.setItem('deliveryAddress', JSON.stringify(addressData));
+            
+            // Hide address section and show saved indicator
+            const addressSection = document.getElementById('addressSection');
+            const addressSavedIndicator = document.getElementById('addressSavedIndicator');
+            
+            // Update the saved address display
+            document.getElementById('savedAddressName').textContent = addressData.name;
+            document.getElementById('savedAddressMobile').textContent = addressData.mobile;
+            document.getElementById('savedAddressText').textContent = 
+                `${addressData.street}, ${addressData.locality}, ${addressData.city}, ${addressData.state} - ${addressData.pincode}`;
+            
+            addressSection.classList.add('hidden');
+            addressSavedIndicator.classList.add('show');
+            
+            // Scroll to payment section
+            setTimeout(() => {
+                const paymentSection = document.querySelector('.section:last-child');
+                if (paymentSection) {
+                    paymentSection.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start' 
+                    });
+                }
+            }, 500);
+            
+            showNotification('Address saved successfully!', 'success');
+        }
+        
+        function cancelAddress() {
+            // Reset form to empty values
+            document.getElementById('addressName').value = '';
+            document.getElementById('addressMobile').value = '';
+            document.getElementById('addressPincode').value = '';
+            document.getElementById('addressLocality').value = '';
+            document.getElementById('addressStreet').value = '';
+            document.getElementById('addressCity').value = '';
+            document.getElementById('addressState').value = 'Punjab';
+            document.getElementById('addressLandmark').value = '';
+            document.getElementById('addressAltPhone').value = '';
+            document.getElementById('homeAddress').checked = true;
+            
+            showNotification('Address form reset', 'info');
+        }
+        
+        function editAddress() {
+            // Show address section and hide saved indicator
+            const addressSection = document.getElementById('addressSection');
+            const addressSavedIndicator = document.getElementById('addressSavedIndicator');
+            
+            addressSection.classList.remove('hidden');
+            addressSavedIndicator.classList.remove('show');
+            
+            // Scroll to address section
+            setTimeout(() => {
+                addressSection.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+            }, 100);
+            
+            showNotification('You can now edit your address', 'info');
+        }
+        
+        function loadSavedAddress() {
+            const savedAddress = localStorage.getItem('deliveryAddress');
+            if (savedAddress) {
+                try {
+                    const addressData = JSON.parse(savedAddress);
+                    
+                    // Check if address is complete (has required fields)
+                    if (addressData.name && addressData.mobile && addressData.pincode && 
+                        addressData.locality && addressData.street && addressData.city) {
+                        
+                        // Update the saved address display
+                        document.getElementById('savedAddressName').textContent = addressData.name;
+                        document.getElementById('savedAddressMobile').textContent = addressData.mobile;
+                        document.getElementById('savedAddressText').textContent = 
+                            `${addressData.street}, ${addressData.locality}, ${addressData.city}, ${addressData.state} - ${addressData.pincode}`;
+                        
+                        // Hide address section and show saved indicator
+                        const addressSection = document.getElementById('addressSection');
+                        const addressSavedIndicator = document.getElementById('addressSavedIndicator');
+                        
+                        addressSection.classList.add('hidden');
+                        addressSavedIndicator.classList.add('show');
+                    } else {
+                        // Load partial data if incomplete
+                        document.getElementById('addressName').value = addressData.name || '';
+                        document.getElementById('addressMobile').value = addressData.mobile || '';
+                        document.getElementById('addressPincode').value = addressData.pincode || '';
+                        document.getElementById('addressLocality').value = addressData.locality || '';
+                        document.getElementById('addressStreet').value = addressData.street || '';
+                        document.getElementById('addressCity').value = addressData.city || '';
+                        document.getElementById('addressState').value = addressData.state || 'Punjab';
+                        document.getElementById('addressLandmark').value = addressData.landmark || '';
+                        document.getElementById('addressAltPhone').value = addressData.altPhone || '';
+                        
+                        if (addressData.type) {
+                            document.querySelector(`input[name="addressType"][value="${addressData.type}"]`).checked = true;
+                        }
+                    }
+                } catch (error) {
+                    console.error('Error loading saved address:', error);
+                }
+            }
+        }
+        
+        function showNotification(message, type = 'info') {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 80px;
+                right: 20px;
+                background: ${type === 'success' ? '#28a745' : type === 'error' ? '#dc3545' : '#17a2b8'};
+                color: white;
+                padding: 12px 20px;
+                border-radius: 6px;
+                font-size: 14px;
+                font-weight: 500;
+                z-index: 10000;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+        
+        // Auto-format mobile number input
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileInput = document.getElementById('addressMobile');
+            const altPhoneInput = document.getElementById('addressAltPhone');
+            
+            if (mobileInput) {
+                mobileInput.addEventListener('input', function(e) {
+                    e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
+                });
+            }
+            
+            if (altPhoneInput) {
+                altPhoneInput.addEventListener('input', function(e) {
+                    e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
+                });
+            }
+            
+            // Auto-format pincode input
+            const pincodeInput = document.getElementById('addressPincode');
+            if (pincodeInput) {
+                pincodeInput.addEventListener('input', function(e) {
+                    e.target.value = e.target.value.replace(/\D/g, '').slice(0, 6);
+                });
+            }
+
+            // Card input formatting
+            const cardNumberInput = document.getElementById('cardNumber');
+            if (cardNumberInput) {
+                cardNumberInput.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
+                    e.target.value = value;
+                    
+                    // Real-time validation
+                    if (value.replace(/\s/g, '').length >= 13) {
+                        if (validateCardNumber(value.replace(/\s/g, ''))) {
+                            e.target.classList.add('valid');
+                            e.target.classList.remove('invalid');
+                        } else {
+                            e.target.classList.add('invalid');
+                            e.target.classList.remove('valid');
+                        }
+                    } else {
+                        e.target.classList.remove('valid', 'invalid');
+                    }
+                });
+            }
+
+            const expiryInput = document.getElementById('expiryDate');
+            if (expiryInput) {
+                expiryInput.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length >= 2) {
+                        value = value.substring(0, 2) + '/' + value.substring(2, 4);
+                    }
+                    e.target.value = value;
+                    
+                    // Real-time validation
+                    if (value.length === 5) {
+                        if (validateExpiryDate(value)) {
+                            e.target.classList.add('valid');
+                            e.target.classList.remove('invalid');
+                        } else {
+                            e.target.classList.add('invalid');
+                            e.target.classList.remove('valid');
+                        }
+                    } else {
+                        e.target.classList.remove('valid', 'invalid');
+                    }
+                });
+            }
+
+            const cvvInput = document.getElementById('cvv');
+            if (cvvInput) {
+                cvvInput.addEventListener('input', function(e) {
+                    e.target.value = e.target.value.replace(/\D/g, '').slice(0, 4);
+                    
+                    // Real-time validation
+                    if (e.target.value.length >= 3) {
+                        if (validateCVV(e.target.value)) {
+                            e.target.classList.add('valid');
+                            e.target.classList.remove('invalid');
+                        } else {
+                            e.target.classList.add('invalid');
+                            e.target.classList.remove('valid');
+                        }
+                    } else {
+                        e.target.classList.remove('valid', 'invalid');
+                    }
+                });
+            }
+
+            const cardHolderInput = document.getElementById('cardHolderName');
+            if (cardHolderInput) {
+                cardHolderInput.addEventListener('input', function(e) {
+                    // Allow only letters and spaces
+                    e.target.value = e.target.value.replace(/[^a-zA-Z\s]/g, '').toUpperCase();
+                    
+                    // Real-time validation
+                    if (e.target.value.trim().length >= 2) {
+                        e.target.classList.add('valid');
+                        e.target.classList.remove('invalid');
+                    } else {
+                        e.target.classList.remove('valid', 'invalid');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
