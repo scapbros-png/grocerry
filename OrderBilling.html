@@ -23,7 +23,6 @@
         }
         
         .container {
-        
             max-width: 800px;
             width: 100%;
             background: white;
@@ -1598,7 +1597,7 @@
         
         // Function to generate UPI deep links for payment apps
         function getPaymentAppDeepLink(app) {
-            const upiId = 'arjunyadav216386.rzp@icici';
+            const upiId = 'chandandivansusingh-2@okhdfcbank';
             const amount = cartData ? cartData.totalPrice.toFixed(2) : '0.00';
             
             // Get name from saved address
@@ -1700,10 +1699,22 @@
                     // Clear all cart data
                     clearCartData();
                     
-                    // Redirect after delay
+                    // Redirect to success page after delay
                     setTimeout(() => {
-                        alert(`Payment successful via ${app.toUpperCase()}! Your order has been confirmed. You will be redirected to the main page.`);
-                        window.location.href = 'index.html';
+                        // Generate order details
+                        const orderId = 'DMR-' + new Date().getFullYear() + '-' + Math.floor(Math.random() * 900000 + 100000);
+                        const trackingId = 'TRK-' + Math.floor(Math.random() * 900000000 + 100000000);
+                        const deliveryTime = new Date(Date.now() + 3 * 24 * 60 * 60 * 1000);
+                        const deliveryDate = deliveryTime.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
+                        
+                        // Get cart data for order details
+                        const cartData = JSON.parse(localStorage.getItem('cartData')) || { totalPrice: 0, totalItems: 0 };
+                        const deliveryCharges = 25;
+                        const discount = cartData.totalPrice > 500 ? 50 : 0;
+                        const itemsAmount = cartData.totalPrice - deliveryCharges + discount;
+                        
+                        // Redirect to success page with order details
+                        window.location.href = `payment-success.html?orderId=${orderId}&trackingId=${trackingId}&deliveryDate=${encodeURIComponent(deliveryDate)}&paymentMethod=${app.toUpperCase()}&amount=${cartData.totalPrice}&items=${itemsAmount}&deliveryCharges=${deliveryCharges}&discount=${discount}`;
                     }, 2000);
                 } else {
                     showNotification('Payment cancelled or failed. You can try again.', 'error');
@@ -1714,7 +1725,7 @@
         // Fallback function to show UPI details if app doesn't open
         function showUPIFallback(app) {
             const amount = cartData ? cartData.totalPrice.toFixed(2) : '0.00';
-            const upiId = 'arjunyadav216386.rzp@icici';
+            const upiId = 'chandandivansusingh-2@okhdfcbank';
             
             let message = `Payment Amount: ₹${amount}\n\n`;
             message += `UPI ID: ${upiId}\n\n`;
@@ -1832,10 +1843,22 @@
                     // Clear all cart data
                     clearCartData();
                     
-                    // Redirect to success page or main page after delay
+                    // Redirect to success page after delay
                     setTimeout(() => {
-                        alert('Payment successful! Your order has been confirmed. You will be redirected to the main page.');
-                        window.location.href = 'index.html';
+                        // Generate order details
+                        const orderId = 'DMR-' + new Date().getFullYear() + '-' + Math.floor(Math.random() * 900000 + 100000);
+                        const trackingId = 'TRK-' + Math.floor(Math.random() * 900000000 + 100000000);
+                        const deliveryTime = new Date(Date.now() + 3 * 24 * 60 * 60 * 1000);
+                        const deliveryDate = deliveryTime.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
+                        
+                        // Get cart data for order details
+                        const cartData = JSON.parse(localStorage.getItem('cartData')) || { totalPrice: 0, totalItems: 0 };
+                        const deliveryCharges = 25;
+                        const discount = cartData.totalPrice > 500 ? 50 : 0;
+                        const itemsAmount = cartData.totalPrice - deliveryCharges + discount;
+                        
+                        // Redirect to success page with order details
+                        window.location.href = `payment-success.html?orderId=${orderId}&trackingId=${trackingId}&deliveryDate=${encodeURIComponent(deliveryDate)}&paymentMethod=Card&amount=${cartData.totalPrice}&items=${itemsAmount}&deliveryCharges=${deliveryCharges}&discount=${discount}`;
                     }, 2000);
                 } else {
                     showNotification('Payment failed. Please try again or use a different payment method.', 'error');
@@ -2102,8 +2125,20 @@
                             
                             // Show success message and redirect
                             setTimeout(() => {
-                                alert(`Payment successful via ${selectedBankName}! Your order has been confirmed. You will be redirected to the main page.`);
-                                window.location.href = 'index.html';
+                                // Generate order details
+                                const orderId = 'DMR-' + new Date().getFullYear() + '-' + Math.floor(Math.random() * 900000 + 100000);
+                                const trackingId = 'TRK-' + Math.floor(Math.random() * 900000000 + 100000000);
+                                const deliveryTime = new Date(Date.now() + 3 * 24 * 60 * 60 * 1000);
+                                const deliveryDate = deliveryTime.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
+                                
+                                // Get cart data for order details
+                                const cartData = JSON.parse(localStorage.getItem('cartData')) || { totalPrice: 0, totalItems: 0 };
+                                const deliveryCharges = 25;
+                                const discount = cartData.totalPrice > 500 ? 50 : 0;
+                                const itemsAmount = cartData.totalPrice - deliveryCharges + discount;
+                                
+                                // Redirect to success page with order details
+                                window.location.href = `payment-success.html?orderId=${orderId}&trackingId=${trackingId}&deliveryDate=${encodeURIComponent(deliveryDate)}&paymentMethod=${selectedBankName}&amount=${cartData.totalPrice}&items=${itemsAmount}&deliveryCharges=${deliveryCharges}&discount=${discount}`;
                             }, 2000);
                         } else {
                             showNotification('Payment failed or cancelled. Please try again.', 'error');
