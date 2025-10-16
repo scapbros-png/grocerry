@@ -1046,6 +1046,7 @@
                             <img src="image/phonepe logo.png" alt="PhonePe" class="payment-logo phonepe-logo">
                             <div class="payment-name">PhonePe</div>
                         </div>
+                        <!-- SMEPay option removed -->
                     </div>
                     
                 </div>
@@ -1597,7 +1598,7 @@
         
         // Function to generate UPI deep links for payment apps
         function getPaymentAppDeepLink(app) {
-            const upiId = 'chandandivansusingh-2@okhdfcbank';
+            const upiId = "upi://pay?pa=paytmqr281005050101p72r4htfzdig@paytm&pn=Paytm%20Merchant&mc=5499&mode=02&orgid=000000&paytmqr=281005050101P72R4HTFZDIG&sign=MEYCIQC6QLv+pHo/aBpiaa6uqhlAIytngyo227b88YPZNzsl0gIhAKjZVXJIzef3pdnXkTGTjiToHLngG9FtDvdGuIW9DE8M&tn=Verified%Paytm%Merchant";
             const amount = cartData ? cartData.totalPrice.toFixed(2) : '0.00';
             
             // Get name from saved address
@@ -1725,7 +1726,7 @@
         // Fallback function to show UPI details if app doesn't open
         function showUPIFallback(app) {
             const amount = cartData ? cartData.totalPrice.toFixed(2) : '0.00';
-            const upiId = 'chandandivansusingh-2@okhdfcbank';
+            const upiId = "upi://pay?pa=paytmqr281005050101p72r4htfzdig@paytm&pn=Paytm%20Merchant&mc=5499&mode=02&orgid=000000&paytmqr=281005050101P72R4HTFZDIG&sign=MEYCIQC6QLv+pHo/aBpiaa6uqhlAIytngyo227b88YPZNzsl0gIhAKjZVXJIzef3pdnXkTGTjiToHLngG9FtDvdGuIW9DE8M&tn=Verified%Paytm%Merchant";
             
             let message = `Payment Amount: ₹${amount}\n\n`;
             message += `UPI ID: ${upiId}\n\n`;
@@ -2471,6 +2472,8 @@
                 });
             }
         });
+
+    
     </script>
 </body>
 </html>
