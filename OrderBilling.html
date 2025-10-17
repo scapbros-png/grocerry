@@ -1046,6 +1046,10 @@
                             <img src="image/phonepe logo.png" alt="PhonePe" class="payment-logo phonepe-logo">
                             <div class="payment-name">PhonePe</div>
                         </div>
+                        <div class="payment-option" onclick="selectPayment('smepay')">
+                            <i class="fas fa-link payment-icon"></i>
+                            <div class="payment-name">SMEPay Link</div>
+                        </div>
                         <!-- SMEPay option removed -->
                     </div>
                     
@@ -1518,6 +1522,10 @@
                     showNotification('Opening ' + selectedPayment.toUpperCase() + '...', 'info');
                     openPaymentApp(selectedPayment);
                     break;
+                case 'smepay':
+                    showNotification('Generating payment link...', 'info');
+                    createSmepayAndRedirect();
+                    break;
                     
                 case 'credit-card':
                 case 'debit-card':
@@ -1535,6 +1543,64 @@
                     
                 default:
                     showNotification('Payment method not supported', 'error');
+            }
+        }
+
+        async function createSmepayAndRedirect() {
+            try {
+                const amount = cartData ? Number(cartData.totalPrice).toFixed(2) : '0.00';
+
+                // Pull minimal customer details if available
+                let name = 'DMart Customer';
+                let email = '';
+                let phone = '';
+                const savedAddress = localStorage.getItem('deliveryAddress');
+                if (savedAddress) {
+                    try {
+                        const addr = JSON.parse(savedAddress);
+                        name = addr.name || name;
+                        phone = addr.phone || '';
+                        email = addr.email || '';
+                    } catch {}
+                }
+
+                const orderId = 'DMR-' + new Date().getFullYear() + '-' + Math.floor(Math.random() * 900000 + 100000);
+
+                const returnUrl = window.location.origin + '/payment-success.html';
+
+                const resp = await fetch('http://localhost:4000/create-payment', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        amount,
+                        client_id: 'DMART-WEB',
+                        name,
+                        email,
+                        phone,
+                        order_id: orderId,
+                        return_url: returnUrl
+                    })
+                });
+
+                if (!resp.ok) {
+                    const text = await resp.text();
+                    showNotification('Failed to create payment link', 'error');
+                    console.error('SMEPay create error:', text);
+                    alert('SMEPay error:\n' + text);
+                    return;
+                }
+
+                const data = await resp.json();
+                const url = data.url;
+                if (!url) {
+                    showNotification('Payment link unavailable', 'error');
+                    return;
+                }
+
+                window.location.href = url;
+            } catch (err) {
+                console.error('createSmepayAndRedirect error:', err);
+                showNotification('Something went wrong generating payment link', 'error');
             }
         }
         
@@ -1579,21 +1645,10 @@
                 alert('Please save your delivery address first');
                 return;
             }
-            
-            // Hide address section and show payment section
-            const addressSection = document.getElementById('addressSectionMain');
-            const paymentSection = document.getElementById('paymentSection');
-            
-            addressSection.style.display = 'none';
-            paymentSection.style.display = 'block';
-            
-            // Scroll to top of payment section
-            setTimeout(() => {
-                paymentSection.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'start' 
-                });
-            }, 100);
+
+            // Directly create SMEPay payment and redirect
+            showNotification('Redirecting to SMEPay...', 'info');
+            createSmepayAndRedirect();
         }
         
         // Function to generate UPI deep links for payment apps
