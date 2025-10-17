@@ -1598,39 +1598,34 @@
         
         // Function to generate UPI deep links for payment apps
         function getPaymentAppDeepLink(app) {
-            const upiId = "paytmqr281005050101p72r4htfzdig@paytm";
+            // Merchant/payee details from user request
+            const upiPayeeVpa = "chandandivansusingh-1@oksbi";
+            const upiPayeeName = "CHANDAN KUMAR";
+            const upiAid = "uGICAgIC4sriwYg"; // optional AID passed through when supported
+
             const amount = cartData ? cartData.totalPrice.toFixed(2) : '0.00';
-            
-            // Get name from saved address
-            let name = 'D-Mart Customer';
-            const savedAddress = localStorage.getItem('deliveryAddress');
-            if (savedAddress) {
-                try {
-                    const addressData = JSON.parse(savedAddress);
-                    name = addressData.name || 'D-Mart Customer';
-                } catch (error) {
-                    console.error('Error parsing address data:', error);
-                }
-            }
-            
+
             // Generate unique transaction reference
             const transactionRef = `DMART${Date.now()}`;
-            
+
             // Ensure amount is properly formatted
             const formattedAmount = parseFloat(amount).toFixed(2);
-            
+
+            // Generic UPI intent (many apps support picking app via upi://)
+            const genericUpi = `upi://pay?pa=${encodeURIComponent(upiPayeeVpa)}&pn=${encodeURIComponent(upiPayeeName)}&am=${formattedAmount}&cu=INR&tr=${transactionRef}&tid=${transactionRef}&aid=${encodeURIComponent(upiAid)}`;
+
             switch(app) {
                 case 'gpay':
-                    // Google Pay supports multiple URL formats
-                    return `tez://upi/pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${formattedAmount}&cu=INR&tr=${transactionRef}&mc=0000&tid=${transactionRef}`;
+                    // Google Pay specific scheme; fall back to generic if needed
+                    return `tez://upi/pay?pa=${encodeURIComponent(upiPayeeVpa)}&pn=${encodeURIComponent(upiPayeeName)}&am=${formattedAmount}&cu=INR&tr=${transactionRef}&mc=0000&tid=${transactionRef}&aid=${encodeURIComponent(upiAid)}`;
                 case 'paytm':
                     // Paytm deep link format
-                    return `paytmmp://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${formattedAmount}&cu=INR&tr=${transactionRef}`;
+                    return `paytmmp://pay?pa=${encodeURIComponent(upiPayeeVpa)}&pn=${encodeURIComponent(upiPayeeName)}&am=${formattedAmount}&cu=INR&tr=${transactionRef}&tid=${transactionRef}&aid=${encodeURIComponent(upiAid)}`;
                 case 'phonepe':
                     // PhonePe deep link format
-                    return `phonepe://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${formattedAmount}&cu=INR&tr=${transactionRef}`;
+                    return `phonepe://pay?pa=${encodeURIComponent(upiPayeeVpa)}&pn=${encodeURIComponent(upiPayeeName)}&am=${formattedAmount}&cu=INR&tr=${transactionRef}&tid=${transactionRef}&aid=${encodeURIComponent(upiAid)}`;
                 default:
-                    return '#';
+                    return genericUpi;
             }
         }
         
@@ -1726,23 +1721,24 @@
         // Fallback function to show UPI details if app doesn't open
         function showUPIFallback(app) {
             const amount = cartData ? cartData.totalPrice.toFixed(2) : '0.00';
-            const upiId = "paytmqr281005050101p72r4htfzdig@paytm";
-            
+            const upiId = "chandandivansusingh-1@oksbi";
+
             let message = `Payment Amount: ₹${amount}\n\n`;
-            message += `UPI ID: ${upiId}\n\n`;
-            
+            message += `UPI ID: ${upiId}\n`;
+            message += `Payee: CHANDAN KUMAR\n\n`;
+
             switch(app) {
                 case 'gpay':
-                    message += 'Please open Google Pay manually and scan this QR or use the UPI ID above.';
+                    message += 'Please open Google Pay and use the UPI ID above to pay.';
                     break;
                 case 'paytm':
-                    message += 'Please open Paytm manually and scan this QR or use the UPI ID above.';
+                    message += 'Please open Paytm and use the UPI ID above to pay.';
                     break;
                 case 'phonepe':
-                    message += 'Please open PhonePe manually and scan this QR or use the UPI ID above.';
+                    message += 'Please open PhonePe and use the UPI ID above to pay.';
                     break;
             }
-            
+
             alert(message);
         }
 
